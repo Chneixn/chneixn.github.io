@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='http://localhost:1313/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='http://localhost:1313/css/frameworks.min.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/github.min.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/github-style.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/light.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/dark.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/syntax.css' />
+    <title>Unity 的热更新 - Chneixn Blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='http://localhost:1313/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    
+
+    
+    <meta name="description"
+  content="热更新 HybridCLR &#43; Addressable 环境确认 1.1 Unity 1.1.1 使用的Unity版本为2022.3.13f1
+1.1.2 安装UnityComponent添加对IL2CPP的支持
+笔记：https://blog.csdn.net/Chenxin_37/article/details/136747145
+1.2 Visual Studio 1.2.1 安装“使用Unity的游戏开发”和“使用C&#43;&#43;的游戏开发”套件
+1.2.2 安装Window10-SDK最新版即可
+框架搭建 2.1 创建新项目 2.2 安装HybridCLR
+安装详看文档
+文档主页：https://hybridclr.doc.code-philosophy.com/docs/beginner/quickstart
+国内Git地址：https://gitee.com/focus-creative-games/hybridclr_unity.git
+国外Git地址：https://github.com/focus-creative-games/hybridclr_unity.git
+2.3 创建Asset/HotUpdate文件夹
+2.4 在HotUpdate文件夹创建HotUpdate的程序集（Assembly Definition）
+2.5 在HotUpdate文件夹任意创建一个脚本
+2.6 在Visual Studio重载项目，此时的解决方案资源管理器应该显示两个程序集，如图
+2.7 选择Unity的上方菜单项HybridCLR/Installer&hellip;
+选择Install（安装成功后控制台会打印成功的信息，以及绿框位置显示为True）
+2.8 选择Unity的上方菜单项HybridCLR/Settings&hellip;
+2.9 在热更新Assembly Definition中添加在HotUpdate文件夹中的程序集
+如果没有显示HybridCLR Settings，重启Unity
+2.10 选择Unity的上方菜单项Edit/Project Settings&hellip;
+在左侧选择Player
+在下方展开Other Settings
+2.11 按照图中选项修改
+2.12 选择Unity的上方菜单项HybridCLR/Generate/All
+2.13 将{proj}/HybridCLRData/HotUpdateDlls/StandaloneWindows64(MacOS下为StandaloneMacXxx)目录下的HotUpdate.dll重命名为HotUpdate.dll.bytes，将其复制到Asset/HotUpdate/Dlls内（无则新建）
+（可选：对项目进行一次打包）
+2.14 在HotUpdate文件夹下的所有脚本发生任何变更后，都需要在Unity的上方菜单项选择HybridCLR/CompileDll/ActiveBuildTarget
+" />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="http://localhost:1313/post/%E7%83%AD%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%9D%97/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Unity 的热更新 - Chneixn Blog" />
+<meta name="twitter:description"
+  content="热更新 HybridCLR &#43; Addressable 环境确认 1.1 Unity 1.1.1 使用的Unity版本为2022.3.13f1
+1.1.2 安装UnityComponent添加对IL2CPP的支持
+笔记：https://blog.csdn.net/Chenxin_37/article/details/136747145
+1.2 Visual Studio 1.2.1 安装“使用Unity的游戏开发”和“使用C&#43;&#43;的游戏开发”套件
+1.2.2 安装Window10-SDK最新版即可
+框架搭建 2.1 创建新项目 2.2 安装HybridCLR
+安装详看文档
+文档主页：https://hybridclr.doc.code-philosophy.com/docs/beginner/quickstart
+国内Git地址：https://gitee.com/focus-creative-games/hybridclr_unity.git
+国外Git地址：https://github.com/focus-creative-games/hybridclr_unity.git
+2.3 创建Asset/HotUpdate文件夹
+2.4 在HotUpdate文件夹创建HotUpdate的程序集（Assembly Definition）
+2.5 在HotUpdate文件夹任意创建一个脚本
+2.6 在Visual Studio重载项目，此时的解决方案资源管理器应该显示两个程序集，如图
+2.7 选择Unity的上方菜单项HybridCLR/Installer&hellip;
+选择Install（安装成功后控制台会打印成功的信息，以及绿框位置显示为True）
+2.8 选择Unity的上方菜单项HybridCLR/Settings&hellip;
+2.9 在热更新Assembly Definition中添加在HotUpdate文件夹中的程序集
+如果没有显示HybridCLR Settings，重启Unity
+2.10 选择Unity的上方菜单项Edit/Project Settings&hellip;
+在左侧选择Player
+在下方展开Other Settings
+2.11 按照图中选项修改
+2.12 选择Unity的上方菜单项HybridCLR/Generate/All
+2.13 将{proj}/HybridCLRData/HotUpdateDlls/StandaloneWindows64(MacOS下为StandaloneMacXxx)目录下的HotUpdate.dll重命名为HotUpdate.dll.bytes，将其复制到Asset/HotUpdate/Dlls内（无则新建）
+（可选：对项目进行一次打包）
+2.14 在HotUpdate文件夹下的所有脚本发生任何变更后，都需要在Unity的上方菜单项选择HybridCLR/CompileDll/ActiveBuildTarget
+" />
+<meta name="twitter:site" content="http://localhost:1313/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="http://localhost:1313/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Unity 的热更新 - Chneixn Blog">
+<meta property="og:description"
+  content="热更新 HybridCLR &#43; Addressable 环境确认 1.1 Unity 1.1.1 使用的Unity版本为2022.3.13f1
+1.1.2 安装UnityComponent添加对IL2CPP的支持
+笔记：https://blog.csdn.net/Chenxin_37/article/details/136747145
+1.2 Visual Studio 1.2.1 安装“使用Unity的游戏开发”和“使用C&#43;&#43;的游戏开发”套件
+1.2.2 安装Window10-SDK最新版即可
+框架搭建 2.1 创建新项目 2.2 安装HybridCLR
+安装详看文档
+文档主页：https://hybridclr.doc.code-philosophy.com/docs/beginner/quickstart
+国内Git地址：https://gitee.com/focus-creative-games/hybridclr_unity.git
+国外Git地址：https://github.com/focus-creative-games/hybridclr_unity.git
+2.3 创建Asset/HotUpdate文件夹
+2.4 在HotUpdate文件夹创建HotUpdate的程序集（Assembly Definition）
+2.5 在HotUpdate文件夹任意创建一个脚本
+2.6 在Visual Studio重载项目，此时的解决方案资源管理器应该显示两个程序集，如图
+2.7 选择Unity的上方菜单项HybridCLR/Installer&hellip;
+选择Install（安装成功后控制台会打印成功的信息，以及绿框位置显示为True）
+2.8 选择Unity的上方菜单项HybridCLR/Settings&hellip;
+2.9 在热更新Assembly Definition中添加在HotUpdate文件夹中的程序集
+如果没有显示HybridCLR Settings，重启Unity
+2.10 选择Unity的上方菜单项Edit/Project Settings&hellip;
+在左侧选择Player
+在下方展开Other Settings
+2.11 按照图中选项修改
+2.12 选择Unity的上方菜单项HybridCLR/Generate/All
+2.13 将{proj}/HybridCLRData/HotUpdateDlls/StandaloneWindows64(MacOS下为StandaloneMacXxx)目录下的HotUpdate.dll重命名为HotUpdate.dll.bytes，将其复制到Asset/HotUpdate/Dlls内（无则新建）
+（可选：对项目进行一次打包）
+2.14 在HotUpdate文件夹下的所有脚本发生任何变更后，都需要在Unity的上方菜单项选择HybridCLR/CompileDll/ActiveBuildTarget
+" />
+<meta property="og:url" content="http://localhost:1313/post/%E7%83%AD%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%9D%97/" />
+<meta property="og:site_name" content="Unity 的热更新" />
+<meta property="og:image"
+  content="http://localhost:1313/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="http://localhost:1313/">
+        <img class="octicon" height="32" width="32" src="">
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:http://localhost:1313/">
+            </label>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="http://localhost:1313/">
+        <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="">
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+
+  <div id="search-result" class="container-lg px-3 new-discussion-timeline" style="display: none;">
+</div>
+
+  
+<div class="application-main">
+  <div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="http://localhost:1313/">
+                  <img class=" avatar-user"
+                    src="http://localhost:1313/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="http://localhost:1313/"></a>
+                  </span>
+                  <span class="path-divider">/</span>
+                  <strong class="css-truncate css-truncate-target mr-1" style="max-width: 410px">
+                    <a href="http://localhost:1313/post/%E7%83%AD%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%9D%97/">Unity 的热更新</a>
+                  </strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Mon, 01 Jan 0001 00:00:00 &#43;0000"
+                    class="no-wrap">
+                    Mon, 01 Jan 0001 00:00:00 &#43;0000</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      2061 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/unity">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      Unity
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/hotupdate">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      HotUpdate
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><h1 id="热更新">热更新</h1>
+<h2 id="hybridclr--addressable">HybridCLR + Addressable</h2>
+<h3 id="环境确认">环境确认</h3>
+<h4 id="11-unity">1.1 Unity</h4>
+<p>1.1.1 使用的Unity版本为2022.3.13f1</p>
+<p>1.1.2 安装UnityComponent添加对IL2CPP的支持</p>
+<p>笔记：https://blog.csdn.net/Chenxin_37/article/details/136747145</p>
+<h4 id="12-visual-studio">1.2 Visual Studio</h4>
+<p>1.2.1 安装“使用Unity的游戏开发”和“使用C++的游戏开发”套件</p>
+<p>1.2.2 安装Window10-SDK最新版即可</p>
+<p><img src="assets/image.png" alt="image"></p>
+<h3 id="框架搭建">框架搭建</h3>
+<h4 id="21-创建新项目">2.1 创建新项目</h4>
+<p>2.2 安装HybridCLR</p>
+<p>安装详看文档</p>
+<p>文档主页：https://hybridclr.doc.code-philosophy.com/docs/beginner/quickstart</p>
+<p>国内Git地址：https://gitee.com/focus-creative-games/hybridclr_unity.git</p>
+<p>国外Git地址：https://github.com/focus-creative-games/hybridclr_unity.git</p>
+<p>2.3 创建Asset/HotUpdate文件夹</p>
+<p>2.4 在HotUpdate文件夹创建HotUpdate的程序集（Assembly Definition）</p>
+<p>2.5 在HotUpdate文件夹任意创建一个脚本</p>
+<p>2.6 在Visual Studio重载项目，此时的解决方案资源管理器应该显示两个程序集，如图</p>
+<p><img src="assets/image-1740498352544-13.png" alt="image"></p>
+<p>2.7 选择Unity的上方菜单项HybridCLR/Installer&hellip;</p>
+<p>选择Install（安装成功后控制台会打印成功的信息，以及绿框位置显示为True）</p>
+<p><img src="assets/image-1740498363409-15.png" alt="image"></p>
+<p>2.8 选择Unity的上方菜单项HybridCLR/Settings&hellip;</p>
+<p>2.9 在热更新Assembly Definition中添加在HotUpdate文件夹中的程序集</p>
+<blockquote>
+<p>如果没有显示HybridCLR Settings，重启Unity</p></blockquote>
+<p><img src="assets/image-1740498375113-17.png" alt="image"></p>
+<p>2.10 选择Unity的上方菜单项Edit/Project Settings&hellip;</p>
+<p>在左侧选择Player</p>
+<p>在下方展开Other Settings</p>
+<p><img src="assets/image-1740498388801-19.png" alt="image"></p>
+<p>2.11 按照图中选项修改</p>
+<p><img src="assets/image-1740498399272-21.png" alt="image"></p>
+<p>2.12 选择Unity的上方菜单项HybridCLR/Generate/All</p>
+<p>2.13 将{proj}/HybridCLRData/HotUpdateDlls/StandaloneWindows64(MacOS下为StandaloneMacXxx)目录下的HotUpdate.dll重命名为HotUpdate.dll.bytes，将其复制到Asset/HotUpdate/Dlls内（无则新建）</p>
+<p>（可选：对项目进行一次打包）</p>
+<p>2.14 在HotUpdate文件夹下的所有脚本发生任何变更后，都需要在Unity的上方菜单项选择HybridCLR/CompileDll/ActiveBuildTarget</p>
+<h3 id="安装adressable">安装Adressable</h3>
+<p>3.1 打开Package Manager窗口</p>
+<p>选择Package：Unity Registry</p>
+<p>搜索Addressable</p>
+<p>点击Install安装</p>
+<p><img src="assets/image-1740498412328-23.png" alt="image"></p>
+<p>3.2 选择Unity的上方菜单项Window/Asset Management/Addressable/Groups</p>
+<p>选择Generate&hellip;</p>
+<p>选择Profile：Default</p>
+<p><img src="assets/image-1740498436165-25.png" alt="image"></p>
+<p>选择Manage Profiles</p>
+<p><img src="assets/image-1740498443946-27.png" alt="image"></p>
+<p>3.3 修改设置</p>
+<p>选择Remote 为 Custom</p>
+<p>将Remote.LoadPath修改为自己的远程或本地的http资源服务器，路径内文件为本地的{project}/ServerData/[BuildTarget]</p>
+<p><img src="assets/image-1740498461399-29.png" alt="image"></p>
+<p>3.4 点击Addressables Groups窗口的New</p>
+<p>创建一个新的组并命名为HotUpdateDll</p>
+<p><img src="assets/image-1740498474011-31.png" alt="image"></p>
+<p>选择组，在右侧Inspector窗口修改Build &amp; Load Paths 为 Remote</p>
+<p><img src="assets/image-1740498495082-33.png" alt="image"></p>
+<p>3.5 在Project窗口找到AddressableAssetSettings</p>
+<p><img src="assets/image-1740498507616-35.png" alt="image"></p>
+<p>在Inspector窗口勾选Build Remote Catalog</p>
+<p><img src="assets/image-1740498515911-37.png" alt="image"></p>
+<p>3.6 选择Asset/HotUpdate/Dlls/HotUpdate.dll</p>
+<p>（此时该文件在文件管理器中的后缀应为.bytes）</p>
+<p><img src="assets/image-1740498528435-39.png" alt="image"></p>
+<p>将其拖入Addressables Groups窗口的HotUpdateDll组内（打上标签Dll）</p>
+<p><img src="assets/image-1740498540148-41.png" alt="image"></p>
+<p>3.7 选择Play Mode Script里的第三项Use Exiting Build（Window）</p>
+<p><img src="assets/image-1740498550345-43.png" alt="image"></p>
+<p>3.8 点击Player Mode&hellip; 左侧的Build，选择New Build/Defalut Build Script</p>
+<p>此时在{Project}/ServerData下会有文件夹为StandardWindow64文件夹</p>
+<p>此文件夹内文件需与资源服务器内容同步</p>
+<p><img src="assets/image-1740498561893-45.png" alt="image"></p>
+<h3 id="脚本热更新操作步骤">脚本热更新操作步骤</h3>
+<p>4.1 在HotUpdate文件夹下的所有脚本发生任何变更后，都需要在Unity的上方菜单项选择HybridCLR/CompileDll/ActiveBuildTarget</p>
+<p>4.2 在Addressables Groups窗口选择Build/New Build/Defalut Build Script</p>
+<p>4.3 同步ServerData文件夹内的文件至资源服务器</p>
+<p>4.4 运行客户端下载</p>
+<h3 id="在hotupdate文件下的脚本注意">在HotUpdate文件下的脚本注意</h3>
+<p>5.1 在引用其他命名空间时，在客户端有可能会出现Script Missing错误</p>
+<p>因此需要选择HotUpdate文件夹里的HotUpdate程序集</p>
+<p><img src="assets/image-1740498574241-47.png" alt="image"></p>
+<p>在Inspector勾选Allow &lsquo;unsafe&rsquo; Code</p>
+<p>在Assembly Definition Reference添加引用的命名空间程序集</p>
+<p><img src="assets/image-1740498582068-49.png" alt="image"></p>
+<p>5.2 在Assets/StreamingAssets文件夹放置对应所需的Dll文件</p>
+<p>并在客户端的资源检查脚本第一时间读取</p>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='http://localhost:1313/js/toc.js'></script>
+<link rel="stylesheet" href='http://localhost:1313/css/toc.css' />
+
+  
+</div>
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="http://localhost:1313/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+      <li class="mr-3 mr-lg-0">GitHub and the Invertocat logo are trademarks of <a href="https://github.com/">GitHub, Inc.</a></li>
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+
+</body>
+
+<script type="application/javascript" src="http://localhost:1313/js/github-style.js"></script>
+
+
+
+
+
+
+
+</html>
