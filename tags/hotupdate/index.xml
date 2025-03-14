@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>HotUpdate on Chneixn Blog</title><link>https://chneixn.github.io/tags/hotupdate/</link><description>Recent content in HotUpdate on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://chneixn.github.io/tags/hotupdate/index.xml" rel="self" type="application/rss+xml"/><item><title>Unity 的热更新</title><link>https://chneixn.github.io/post/%E7%83%AD%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%9D%97/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/%E7%83%AD%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%9D%97/</guid><description>&lt;h1 id="热更新">热更新&lt;/h1>
+&lt;h2 id="hybridclr--addressable">HybridCLR + Addressable&lt;/h2>
+&lt;h3 id="环境确认">环境确认&lt;/h3>
+&lt;h4 id="11-unity">1.1 Unity&lt;/h4>
+&lt;p>1.1.1 使用的Unity版本为2022.3.13f1&lt;/p>
+&lt;p>1.1.2 安装UnityComponent添加对IL2CPP的支持&lt;/p>
+&lt;p>笔记：https://blog.csdn.net/Chenxin_37/article/details/136747145&lt;/p>
+&lt;h4 id="12-visual-studio">1.2 Visual Studio&lt;/h4>
+&lt;p>1.2.1 安装“使用Unity的游戏开发”和“使用C++的游戏开发”套件&lt;/p>
+&lt;p>1.2.2 安装Window10-SDK最新版即可&lt;/p>
+&lt;p>&lt;img src="assets/image.png" alt="image">&lt;/p>
+&lt;h3 id="框架搭建">框架搭建&lt;/h3>
+&lt;h4 id="21-创建新项目">2.1 创建新项目&lt;/h4>
+&lt;p>2.2 安装HybridCLR&lt;/p>
+&lt;p>安装详看文档&lt;/p>
+&lt;p>文档主页：https://hybridclr.doc.code-philosophy.com/docs/beginner/quickstart&lt;/p></description></item></channel></rss>

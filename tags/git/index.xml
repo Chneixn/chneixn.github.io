@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Chneixn Blog</title><link>https://chneixn.github.io/tags/git/</link><description>Recent content in Git on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://chneixn.github.io/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>SVN 与 Git 的区别</title><link>https://chneixn.github.io/post/svn%E4%B8%8Egit%E7%9A%84%E5%8C%BA%E5%88%AB/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/svn%E4%B8%8Egit%E7%9A%84%E5%8C%BA%E5%88%AB/</guid><description>&lt;h1 id="svn-与-git-的区别">&lt;strong>SVN 与 Git 的区别&lt;/strong>&lt;/h1>
+&lt;p>选择 SVN 的场景包括：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>**传统团队：**对于一些较老的项目，团队对分布式开发的要求不高，或者团队成员对 SVN 更为熟悉等情况下，选择 SVN 可能更为合适。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>**集中式开发：**如果团队成员集中在一个地理位置，或者不需要进行远程协作开发，SVN 的集中式特性可能更符合团队的需求。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>**较简单的项目：**对于一些较为简单的项目，SVN 的版本控制功能可能已经足够满足需求，而且相对容易上手。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>选择 Git 的场景包括：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>**分布式团队：**如果团队成员分布在不同的地理位置，或者需要进行远程协作开发，Git 的分布式特性能够更好地支持这种开发模式。&lt;/p></description></item></channel></rss>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="总字数统计 “发表了x篇文章，共计x字” 在 layouts/partials/footer/footer.html 文件中添加以下代码\n参考 添加总字数统计\n在assets/scss/partials/footer.scss里修改风格:\n修改目录滚动条样式 当文章的目录太长时便会产生滚动条，默认的滚动条样式比较丑陋，所以可以修改成如下样式\n支持数学公式编辑 使文章能够支持数学公式的编辑\n我们需要在主题根目录的 /layouts/partials 创建 math.html 文件，之后在这个文件中加入如下代码\n这段代码能够自动渲染数学公式，当然这样还是不够的，我们还需要在每篇文章的 markdown 的 header 加上 math=&quot;true&quot; 的选择字段。\n">
+<title>Hugo Stack 个性化修改</title>
+
+<link rel='canonical' href='http://localhost:1313/post/hugo-stack-%E4%B8%AA%E6%80%A7%E5%8C%96%E4%BF%AE%E6%94%B9/'>
+
+<link rel="stylesheet" href="/scss/style.min.14fc16a329537716096bd4b9d80d61feea0f38415f0c1b359cdec11a83fedbad.css"><meta property='og:title' content="Hugo Stack 个性化修改">
+<meta property='og:description' content="总字数统计 “发表了x篇文章，共计x字” 在 layouts/partials/footer/footer.html 文件中添加以下代码\n参考 添加总字数统计\n在assets/scss/partials/footer.scss里修改风格:\n修改目录滚动条样式 当文章的目录太长时便会产生滚动条，默认的滚动条样式比较丑陋，所以可以修改成如下样式\n支持数学公式编辑 使文章能够支持数学公式的编辑\n我们需要在主题根目录的 /layouts/partials 创建 math.html 文件，之后在这个文件中加入如下代码\n这段代码能够自动渲染数学公式，当然这样还是不够的，我们还需要在每篇文章的 markdown 的 header 加上 math=&quot;true&quot; 的选择字段。\n">
+<meta property='og:url' content='http://localhost:1313/post/hugo-stack-%E4%B8%AA%E6%80%A7%E5%8C%96%E4%BF%AE%E6%94%B9/'>
+<meta property='og:site_name' content='Chneixn Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Stack' />
+<meta name="twitter:title" content="Hugo Stack 个性化修改">
+<meta name="twitter:description" content="总字数统计 “发表了x篇文章，共计x字” 在 layouts/partials/footer/footer.html 文件中添加以下代码\n参考 添加总字数统计\n在assets/scss/partials/footer.scss里修改风格:\n修改目录滚动条样式 当文章的目录太长时便会产生滚动条，默认的滚动条样式比较丑陋，所以可以修改成如下样式\n支持数学公式编辑 使文章能够支持数学公式的编辑\n我们需要在主题根目录的 /layouts/partials 创建 math.html 文件，之后在这个文件中加入如下代码\n这段代码能够自动渲染数学公式，当然这样还是不够的，我们还需要在每篇文章的 markdown 的 header 加上 math=&quot;true&quot; 的选择字段。\n">
+    <link rel="shortcut icon" href="/icons/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_9a7db2fefd0155a4.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Chneixn Blog</a></h1>
+            <h2 class="site-description">世界以痛吻我，要我报之以歌</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/hugo/" >
+                Hugo
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/hugo-stack-%E4%B8%AA%E6%80%A7%E5%8C%96%E4%BF%AE%E6%94%B9/">Hugo Stack 个性化修改</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="总字数统计-发表了x篇文章共计x字"><a href="#%e6%80%bb%e5%ad%97%e6%95%b0%e7%bb%9f%e8%ae%a1-%e5%8f%91%e8%a1%a8%e4%ba%86x%e7%af%87%e6%96%87%e7%ab%a0%e5%85%b1%e8%ae%a1x%e5%ad%97" class="header-anchor"></a>总字数统计 “发表了x篇文章，共计x字”
+</h1><p>在 <code>layouts/partials/footer/footer.html</code> 文件中添加以下代码</p>
+<p>参考 <a class="link" href="https://thirdshire.com/hugo-stack-renovation/#%E6%80%BB%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E5%8F%91%E8%A1%A8%E4%BA%86x%E7%AF%87%E6%96%87%E7%AB%A0%E5%85%B1%E8%AE%A1x%E5%AD%97"  target="_blank" rel="noopener"
+    >添加总字数统计</a></p>
+<p>在assets/scss/partials/footer.scss里修改风格:</p>
+<h1 id="修改目录滚动条样式"><a href="#%e4%bf%ae%e6%94%b9%e7%9b%ae%e5%bd%95%e6%bb%9a%e5%8a%a8%e6%9d%a1%e6%a0%b7%e5%bc%8f" class="header-anchor"></a>修改目录滚动条样式
+</h1><p>当文章的目录太长时便会产生滚动条，默认的滚动条样式比较丑陋，所以可以修改成如下样式</p>
+<h1 id="支持数学公式编辑"><a href="#%e6%94%af%e6%8c%81%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f%e7%bc%96%e8%be%91" class="header-anchor"></a>支持数学公式编辑
+</h1><p>使文章能够支持数学公式的编辑</p>
+<p>我们需要在主题根目录的 <code>/layouts/partials</code> 创建 <code>math.html</code> 文件，之后在这个文件中加入如下代码</p>
+<p>这段代码能够自动渲染数学公式，当然这样还是不够的，我们还需要在每篇文章的 markdown 的 header 加上 <code>math=&quot;true&quot;</code> 的选择字段。</p>
+<h1 id="个性化代码块渲染"><a href="#%e4%b8%aa%e6%80%a7%e5%8c%96%e4%bb%a3%e7%a0%81%e5%9d%97%e6%b8%b2%e6%9f%93" class="header-anchor"></a>个性化代码块渲染
+</h1><p>❗ 参考 <a class="link" href="https://ygria.site/prettier-codeblock/"  target="_blank" rel="noopener"
+    >Hugo Stack - 个性化代码块渲染</a> 还没做完</p>
+<p>在主题文件夹下（如果没有主题，则在根目录下），新建文件 <code>render-codeblock.html</code> (注意文件名一定不能弄错，否则会无法解析到)</p>
+<ul>
+<li>hugo-site
+<ul>
+<li>themes
+<ul>
+<li>theme-name
+<ul>
+<li>layouts
+<ul>
+<li>_default
+<ul>
+<li>_markup
+<ul>
+<li>render-codeblock.html</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>在 hugo 配置中添加</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/hugo/">Hugo</a>
+        
+            <a href="/tags/stack/">Stack</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2024 -
+        
+        2025 Chneixn Blog
+    </section>
+
+    
+    <section class="totalcount">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        发表了23篇文章 ·
+        总计8.97k字
+    </section>
+
+    <section class="powerby">
+        
+        © Chneixn 2726269548@qq.com <br />
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
+                data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.e2f4cfbf6362fdc1ca06af81f4f8441841c51ca7e52665f5c5ab24ba7ebb14b0.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

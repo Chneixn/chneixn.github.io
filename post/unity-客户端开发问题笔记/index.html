@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="3.3 游戏开发问题\n关于游戏开发的通用问题。各个模块会再问一些特定引擎的问题，对照上面的3.2。\n1.游戏AI\n①常用的做法简述（NavMesh + 寻路）\n②NavMesh的生成过程简述\n③A*寻路算法的原理\n④是否了解多个AI都在自动寻路时的动态避障算法\n2.物理碰撞\n①如何判断子弹射击到敌人（然后继续问包围盒、碰撞检测算法等），如果子弹特别快怎么办\n②BVH、八叉树等场景管理加速结构，在这些树上检测碰撞的过程\n3.网络同步\n①状态同步和帧同步的原理\n">
+<title>Unity 客户端开发问题笔记</title>
+
+<link rel='canonical' href='http://localhost:1313/post/unity-%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E7%AC%94%E8%AE%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.14fc16a329537716096bd4b9d80d61feea0f38415f0c1b359cdec11a83fedbad.css"><meta property='og:title' content="Unity 客户端开发问题笔记">
+<meta property='og:description' content="3.3 游戏开发问题\n关于游戏开发的通用问题。各个模块会再问一些特定引擎的问题，对照上面的3.2。\n1.游戏AI\n①常用的做法简述（NavMesh + 寻路）\n②NavMesh的生成过程简述\n③A*寻路算法的原理\n④是否了解多个AI都在自动寻路时的动态避障算法\n2.物理碰撞\n①如何判断子弹射击到敌人（然后继续问包围盒、碰撞检测算法等），如果子弹特别快怎么办\n②BVH、八叉树等场景管理加速结构，在这些树上检测碰撞的过程\n3.网络同步\n①状态同步和帧同步的原理\n">
+<meta property='og:url' content='http://localhost:1313/post/unity-%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E7%AC%94%E8%AE%B0/'>
+<meta property='og:site_name' content='Chneixn Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='面试' /><meta property='article:tag' content='Unity' />
+<meta name="twitter:title" content="Unity 客户端开发问题笔记">
+<meta name="twitter:description" content="3.3 游戏开发问题\n关于游戏开发的通用问题。各个模块会再问一些特定引擎的问题，对照上面的3.2。\n1.游戏AI\n①常用的做法简述（NavMesh + 寻路）\n②NavMesh的生成过程简述\n③A*寻路算法的原理\n④是否了解多个AI都在自动寻路时的动态避障算法\n2.物理碰撞\n①如何判断子弹射击到敌人（然后继续问包围盒、碰撞检测算法等），如果子弹特别快怎么办\n②BVH、八叉树等场景管理加速结构，在这些树上检测碰撞的过程\n3.网络同步\n①状态同步和帧同步的原理\n">
+    <link rel="shortcut icon" href="/icons/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_9a7db2fefd0155a4.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Chneixn Blog</a></h1>
+            <h2 class="site-description">世界以痛吻我，要我报之以歌</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/unity/" >
+                Unity
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/unity-%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E7%AC%94%E8%AE%B0/">Unity 客户端开发问题笔记</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 4 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>3.3 游戏开发问题</p>
+<p>关于游戏开发的通用问题。各个模块会再问一些特定引擎的问题，对照上面的3.2。</p>
+<p>1.游戏AI</p>
+<p>①常用的做法简述（NavMesh + 寻路）</p>
+<p>②NavMesh的生成过程简述</p>
+<p>③A*寻路算法的原理</p>
+<p>④是否了解多个AI都在自动寻路时的动态避障算法</p>
+<p>2.物理碰撞</p>
+<p>①如何判断子弹射击到敌人（然后继续问包围盒、碰撞检测算法等），如果子弹特别快怎么办</p>
+<p>②BVH、八叉树等场景管理加速结构，在这些树上检测碰撞的过程</p>
+<p>3.网络同步</p>
+<p>①状态同步和帧同步的原理</p>
+<p>②上面两个在反作弊、断线重连、实时性等等场合，用哪种同步策略好</p>
+<p>③TCP和UDP应用上的区别和游戏开发中的使用偏向（不用细说它们的原理）</p>
+<p>4.场景题</p>
+<p>①跳跃到最高点自动开枪，这个功能应该怎么做</p>
+<p>②游戏分辨率变换、窗口尺寸变换时，UI应该怎么适配</p>
+<p>③角色可以穿脱装备，每个装备对角色的血量有不同的buff，该如何设计这个功能</p>
+<p>④水的着色应该写在vertex shader还是fragment shader</p>
+<p>⑤游戏中物体从不透明变成透明，对渲染有什么难度</p>
+<p>5.游戏设计模式</p>
+<p>①单例模式的作用，使用单例模式和只创建一个static对象有什么区别</p>
+<p>②工厂模式，有构造函数为什么还要设计抽象工厂模式</p>
+<p>③观察者模式，MVC是什么、怎样对应观察者模式，观察者模式的应用场景</p>
+<p>6.其他</p>
+<p>①Unity对象生命周期（乍一听不知道是什么意思，实际上是问MonoBehaviour类的tick过程中，各函数调用的顺序，Awake、Update、FixedUpdate、OnDisable等等）</p>
+<p>②让你设计一个游戏引擎UI框架，有什么想法，要考虑什么</p>
+<p>③游戏引擎的RHI是干嘛的</p>
+<p>④游戏开发中的对象池技术是干嘛的</p>
+<p>3.4 图形学</p>
+<p>对于客户端开发，图形学只是加分项，不算特别重要。我是入门水平，也没有相关的项目，所以被问到的不多，绝大多数公司只让讲一下渲染管线就好了。</p>
+<p>1.图形渲染管线，会先让你大致讲一下渲染管线，然后问一些细节问题</p>
+<p>①drawcall是什么，为什么要减小drawcall</p>
+<p>②粗细粒度culling的区别</p>
+<p>③MVP、viewport分别进行什么变换</p>
+<p>④深度测试是什么，early-z是什么</p>
+<p>⑤延迟渲染管线是什么，有什么优缺点</p>
+<p>⑥半透明物体的渲染顺序</p>
+<p>⑦shader中为什么要避免使用if语句</p>
+<p>2.抗锯齿技术</p>
+<p>①MSAA、SSAA的区别</p>
+<p>②延迟渲染为什么用不了硬件AA</p>
+<p>③DLSS原理的简单说明</p>
+<p>3.光照模型</p>
+<p>①BRDF概念</p>
+<p>②简单描述blinn-phong光照模型，specular、ambiant、diffuse</p>
+<p>③简单描述pbr光照模型，lambert漫反射 + cooktorrence反射（DGF）</p>
+<p>3.5 计算机基础</p>
+<p>五百年没看了，只记得几个经典知识点，再问详细的实在是忘了。跟面试官说不会，基本上也不会再细究。</p>
+<p>编译的过程，几个阶段分别发生什么</p>
+<p>寻址的过程</p>
+<p>虚拟内存空间的概念</p>
+<p>进程和线程的概念</p>
+<p>进程间通信方式</p>
+<p>进程的多个线程是否共享进程的全部资源</p>
+<p>进程切换、线程切换，是否引起上下文切换、用户态/内核态切换</p>
+<p>为什么线程太多会导致性能下降（1s的进程分10个线程，比分100个线程的执行时间要更短，为什么？我答了调度有消耗但面试官不认同）</p>
+<p>怎么发现、定位内存泄漏</p>
+<p>OSI网络模型</p>
+<p>TCP、UDP的区别</p>
+<p>在应用层如何保证UDP的可靠传输</p>
+<p>TCP的三次握手四次挥手</p>
+<p>3.6 算法题、数学题、脑筋急转弯</p>
+<p>口述：判断扇形攻击命中（2D空间判断点在扇形内）</p>
+<p>口述：2D空间中，在三角形/圆内如何随机并且均匀采样点，均匀是指点各自占的面积尽量均匀</p>
+<p>口述：判断点在三角形内（比较基础，但经常被问。重心坐标、叉乘法、面积求和）</p>
+<p>口述：层次遍历二叉树</p>
+<p>口述：快速排序</p>
+<p>口述：绳子分成3段，要求三段长度乘积最大</p>
+<p>口述：两个鸡蛋判断最少从哪层楼扔下来会碎，怎么弄比较好</p>
+<p>口述：如何检测链表相交的所有情况，包括有环、在环上相交、入环点不一样等等</p>
+<p>手撕：1、2、3、4、5、6、7、8的链表变成1、8、2、7、3、6、4、5，不使用额外存储空间</p>
+<p>手撕：合并n个有序链表</p>
+<p>手撕：有重复元素的顺序数组，查找新来的元素最前面的插入位置</p>
+<p>手撕：DFS解数独</p>
+<p>手撕：数组的最长递增连续子序列长度</p>
+<p>手撕：两个字符串的最长不连续公共子串（逆天，看一眼直接放弃）</p>
+<p>手撕：链表的倒数第k个元素</p>
+<p>手撕：顺时针90度旋转矩阵</p>
+<p>手撕：数组的第k大元素</p>
+<p>手撕：判断汉字的unicode编码是否合法（题很长，记不清了）</p>
+<p>手撕：判断回文链表，不使用额外存储空间</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+        
+            <a href="/tags/unity/">Unity</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/unitask-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">UniTask 学习笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unity-cinemachine-3.0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity Cinemachine 3.0</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unity-inspector-%E6%8B%93%E5%B1%95%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity Inspector 拓展笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unity-mathf-%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity Mathf 笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unity-xr-interaction-%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity XR Interaction 笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2024 -
+        
+        2025 Chneixn Blog
+    </section>
+
+    
+    <section class="totalcount">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        发表了23篇文章 ·
+        总计8.97k字
+    </section>
+
+    <section class="powerby">
+        
+        © Chneixn 2726269548@qq.com <br />
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
+                data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.e2f4cfbf6362fdc1ca06af81f4f8441841c51ca7e52665f5c5ab24ba7ebb14b0.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

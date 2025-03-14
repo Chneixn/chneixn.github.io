@@ -1,357 +1,573 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <script type="application/javascript" src='http://localhost:1313/js/theme-mode.js'></script>
-    <link rel="stylesheet" href='http://localhost:1313/css/frameworks.min.css' />
-    <link rel="stylesheet" href='http://localhost:1313/css/github.min.css' />
-    <link rel="stylesheet" href='http://localhost:1313/css/github-style.css' />
-    <link rel="stylesheet" href='http://localhost:1313/css/light.css' />
-    <link rel="stylesheet" href='http://localhost:1313/css/dark.css' />
-    <link rel="stylesheet" href='http://localhost:1313/css/syntax.css' />
-    <title>UniTask 学习笔记 - Chneixn Blog</title>
-    
-    <link rel="icon" type="image/x-icon" href='http://localhost:1313/images/favicon.ico'>
-    
-    <meta name="theme-color" content="#1e2327">
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="UniTask UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越\nForGet 是在同步方法中调用异步方法的一个方式, Fire and forget.\nCancel 取消异步操作 C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消\n抛出异常式 返回值式 取消异步操作 在创建异步操作后，取消异步操作\n特别的，有时需要连锁取消的功能\n">
+<title>UniTask 学习笔记</title>
 
-    
-    
+<link rel='canonical' href='http://localhost:1313/post/unitask%E7%AC%94%E8%AE%B0/'>
 
-    
-    <meta name="description"
-  content="UniTask UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越
-ForGet 是在同步方法中调用异步方法的一个方式, Fire and forget.
-public void Call() { Run().Forget(); } private async UniTask Run() { await UniTask.WaitForSeconds(0.02f); } Cancel 取消异步操作 C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消
-抛出异常式 private CancellationTokenSource cancelSource; public async void Run(){ try{ await AsyncMethod(cancelTolen.Token) } catch(OperationCanceledException e){ Debug.Log(&#34;Runner had canceled.&#34;); } } 返回值式 private CancellationTokenSource cancelSource; public async void Run(){ // AsyncMethod 无返回值 var result = await AsyncMethod(cancelTolen.Token).SupperessCancellationThrow(); if (result){ // do something } // AsyncMethod 有返回值 var (result2, returnValue) = await AsyncMethodWithReturnValue(cancelTolen.Token).SupperessCancellationThrow(); if (result2){ // do something } } public async UniTask&lt;int&gt; AsyncMethodWithReturnValue(CancellationToken cancelToken){ await UniTask.NextFrame(cancelToken) return 0; } 取消异步操作 在创建异步操作后，取消异步操作
-" />
-<meta name="keywords"
-  content='' />
-<meta name="robots" content="noodp" />
-<link rel="canonical" href="http://localhost:1313/post/unitask%E7%AC%94%E8%AE%B0/" />
+<link rel="stylesheet" href="/scss/style.min.14fc16a329537716096bd4b9d80d61feea0f38415f0c1b359cdec11a83fedbad.css"><meta property='og:title' content="UniTask 学习笔记">
+<meta property='og:description' content="UniTask UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越\nForGet 是在同步方法中调用异步方法的一个方式, Fire and forget.\nCancel 取消异步操作 C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消\n抛出异常式 返回值式 取消异步操作 在创建异步操作后，取消异步操作\n特别的，有时需要连锁取消的功能\n">
+<meta property='og:url' content='http://localhost:1313/post/unitask%E7%AC%94%E8%AE%B0/'>
+<meta property='og:site_name' content='Chneixn Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='UniTask' /><meta property='article:tag' content='Unity' />
+<meta name="twitter:title" content="UniTask 学习笔记">
+<meta name="twitter:description" content="UniTask UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越\nForGet 是在同步方法中调用异步方法的一个方式, Fire and forget.\nCancel 取消异步操作 C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消\n抛出异常式 返回值式 取消异步操作 在创建异步操作后，取消异步操作\n特别的，有时需要连锁取消的功能\n">
+    <link rel="shortcut icon" href="/icons/favicon.ico" />
 
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="UniTask 学习笔记 - Chneixn Blog" />
-<meta name="twitter:description"
-  content="UniTask UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越
-ForGet 是在同步方法中调用异步方法的一个方式, Fire and forget.
-public void Call() { Run().Forget(); } private async UniTask Run() { await UniTask.WaitForSeconds(0.02f); } Cancel 取消异步操作 C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消
-抛出异常式 private CancellationTokenSource cancelSource; public async void Run(){ try{ await AsyncMethod(cancelTolen.Token) } catch(OperationCanceledException e){ Debug.Log(&#34;Runner had canceled.&#34;); } } 返回值式 private CancellationTokenSource cancelSource; public async void Run(){ // AsyncMethod 无返回值 var result = await AsyncMethod(cancelTolen.Token).SupperessCancellationThrow(); if (result){ // do something } // AsyncMethod 有返回值 var (result2, returnValue) = await AsyncMethodWithReturnValue(cancelTolen.Token).SupperessCancellationThrow(); if (result2){ // do something } } public async UniTask&lt;int&gt; AsyncMethodWithReturnValue(CancellationToken cancelToken){ await UniTask.NextFrame(cancelToken) return 0; } 取消异步操作 在创建异步操作后，取消异步操作
-" />
-<meta name="twitter:site" content="http://localhost:1313/" />
-<meta name="twitter:creator" content="" />
-<meta name="twitter:image"
-  content="http://localhost:1313/">
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
 
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
 
-<meta property="og:type" content="article" />
-<meta property="og:title" content="UniTask 学习笔记 - Chneixn Blog">
-<meta property="og:description"
-  content="UniTask UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越
-ForGet 是在同步方法中调用异步方法的一个方式, Fire and forget.
-public void Call() { Run().Forget(); } private async UniTask Run() { await UniTask.WaitForSeconds(0.02f); } Cancel 取消异步操作 C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消
-抛出异常式 private CancellationTokenSource cancelSource; public async void Run(){ try{ await AsyncMethod(cancelTolen.Token) } catch(OperationCanceledException e){ Debug.Log(&#34;Runner had canceled.&#34;); } } 返回值式 private CancellationTokenSource cancelSource; public async void Run(){ // AsyncMethod 无返回值 var result = await AsyncMethod(cancelTolen.Token).SupperessCancellationThrow(); if (result){ // do something } // AsyncMethod 有返回值 var (result2, returnValue) = await AsyncMethodWithReturnValue(cancelTolen.Token).SupperessCancellationThrow(); if (result2){ // do something } } public async UniTask&lt;int&gt; AsyncMethodWithReturnValue(CancellationToken cancelToken){ await UniTask.NextFrame(cancelToken) return 0; } 取消异步操作 在创建异步操作后，取消异步操作
-" />
-<meta property="og:url" content="http://localhost:1313/post/unitask%E7%AC%94%E8%AE%B0/" />
-<meta property="og:site_name" content="UniTask 学习笔记" />
-<meta property="og:image"
-  content="http://localhost:1313/">
-<meta property="og:image:width" content="2048">
-<meta property="og:image:height" content="1024">
-
-<meta property="article:published_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
-
-
-
-
-
-
-
-
-
-
-
-</head>
-
-
-<body>
-  <div style="position: relative">
-  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
-    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
-      <a class="Header-link" href="http://localhost:1313/">
-        <img class="octicon" height="32" width="32" src="">
-      </a>
-    </div>
-    <div class="Header-item d-md-none">
-      <button class="Header-link btn-link js-details-target" type="button"
-        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
-        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
-          <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
-          </path>
-        </svg>
-      </button>
-    </div>
-    <div style="display: none;" id="header-search"
-      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
-      <div
-        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
-        <div class="position-relative">
-          
-          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
-            autocomplete="off">
-            <label
-              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
-              <input type="text"
-                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
-                name="q" value="" placeholder="Search" autocomplete="off">
-              <input type="hidden" name="q" value="site:http://localhost:1313/">
-            </label>
-          </form>
-          
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_9a7db2fefd0155a4.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Chneixn Blog</a></h1>
+            <h2 class="site-description">世界以痛吻我，要我报之以歌</h2>
         </div>
-      </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#forget">ForGet</a></li>
+    <li><a href="#cancel-取消异步操作">Cancel 取消异步操作</a>
+      <ol>
+        <li><a href="#抛出异常式">抛出异常式</a></li>
+        <li><a href="#返回值式">返回值式</a></li>
+        <li><a href="#取消异步操作">取消异步操作</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/unity/" >
+                Unity
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/unitask%E7%AC%94%E8%AE%B0/">UniTask 学习笔记</a>
+        </h2>
+    
+        
     </div>
 
-    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
-      <a class="Header-link " href="http://localhost:1313/">
-        <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="">
-      </a>
-    </div>
-    <div class="Header-item" style="margin-right: 0;">
-      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
-        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
-          version="1.1" width="16" height="16">
-          <path fill-rule="evenodd" clip-rule="evenodd"
-            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
-          </path>
-        </svg>
-      </a>
-    </div>
-  </header>
-</div>
+    
+    
+    
+    
+    <footer class="article-time">
+        
 
-  <div id="search-result" class="container-lg px-3 new-discussion-timeline" style="display: none;">
-</div>
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
 
-  
-<div class="application-main">
-  <div>
-  <main>
-    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
-      <div class="px-0">
-        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
-          <div class="flex-auto min-width-0 width-fit mr-3">
-            <div class="d-flex">
-              <div class="d-none d-md-block">
-                <a class="avatar mr-2 flex-shrink-0" href="http://localhost:1313/">
-                  <img class=" avatar-user"
-                    src="http://localhost:1313/images/avatar.png"
-                    width="32" height="32"></a>
-              </div>
-              <div class="d-flex flex-column">
-                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
-                  <span class="author">
-                    <a href="http://localhost:1313/"></a>
-                  </span>
-                  <span class="path-divider">/</span>
-                  <strong class="css-truncate css-truncate-target mr-1" style="max-width: 410px">
-                    <a href="http://localhost:1313/post/unitask%E7%AC%94%E8%AE%B0/">UniTask 学习笔记</a>
-                  </strong>
-                </h1>
-                <div class="note m-0">
-                  Created <relative-time datetime="Mon, 01 Jan 0001 00:00:00 &#43;0000"
-                    class="no-wrap">
-                    Mon, 01 Jan 0001 00:00:00 &#43;0000</relative-time>
 
-                  
-                </div>
-              </div>
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        
+    </footer>
+    
 
-    <div class="container-lg px-3 new-discussion-timeline">
-      <div class="repository-content gist-content">
-        <div>
-          <div class="js-gist-file-update-container js-task-list-container file-box">
-            <div id="file-pytest" class="file my-2">
-              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
-                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
-                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
-                    
-                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
-                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
-                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-                      </svg>
-                    </summary>
-                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
-                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
-                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
-                        </div>
-                      </div>
-                    </details-menu>
-                      316 Words
-                    
-
-                  </div>
-                  <div class="file-actions flex-order-2 pt-0">
-                    
-                    
-                    <a class="muted-link mr-3" href="/tags/unitask">
-                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                        <path fill-rule="evenodd"
-                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                        </path>
-                      </svg>
-                      UniTask
-                    </a>
-                    
-                    <a class="muted-link mr-3" href="/tags/unity">
-                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                        <path fill-rule="evenodd"
-                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                        </path>
-                      </svg>
-                      Unity
-                    </a>
-                    
-                    
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="Box-body px-5 pb-5" style="z-index: 1">
-                <article class="markdown-body entry-content container-lg"><h1 id="unitask">UniTask</h1>
-<p>UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越</p>
-<h2 id="forget">ForGet</h2>
-<p>是在同步方法中调用异步方法的一个方式, Fire and forget.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Call()
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    Run().Forget();
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">async</span> UniTask Run()
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> UniTask.WaitForSeconds(<span style="color:#ae81ff">0.02f</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="cancel-取消异步操作">Cancel 取消异步操作</h2>
-<p>C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消</p>
-<h3 id="抛出异常式">抛出异常式</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> CancellationTokenSource cancelSource;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">void</span> Run(){
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>{
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> AsyncMethod(cancelTolen.Token)
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">catch</span>(OperationCanceledException e){
-</span></span><span style="display:flex;"><span>        Debug.Log(<span style="color:#e6db74">&#34;Runner had canceled.&#34;</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="返回值式">返回值式</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> CancellationTokenSource cancelSource; 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">void</span> Run(){
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// AsyncMethod 无返回值</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> result = <span style="color:#66d9ef">await</span> AsyncMethod(cancelTolen.Token).SupperessCancellationThrow();
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (result){
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// do something</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// AsyncMethod 有返回值</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> (result2, returnValue) = <span style="color:#66d9ef">await</span> AsyncMethodWithReturnValue(cancelTolen.Token).SupperessCancellationThrow();
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (result2){
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// do something</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> UniTask&lt;<span style="color:#66d9ef">int</span>&gt; AsyncMethodWithReturnValue(CancellationToken cancelToken){
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> UniTask.NextFrame(cancelToken)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="取消异步操作">取消异步操作</h3>
-<p>在创建异步操作后，取消异步操作</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> CallCancel(){
-</span></span><span style="display:flex;"><span>    cancelSource.Cancel();
-</span></span><span style="display:flex;"><span>    cancelSource.Dispose();
-</span></span><span style="display:flex;"><span>    cancelSource = <span style="color:#66d9ef">new</span> CancellationTokenSource();
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>特别的，有时需要连锁取消的功能</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> CancellationTokenSource first; 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> CancellationTokenSource second; 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> CancellationTokenSource linkedCancelSource; 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> LinkCancelSource(){
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    linkedCancelSource = CancellationTokenSource.CreateLinkedTokenSource(first.Token, second.Token);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> CallCancel(){
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 此时同时取消两个 Token</span>
-</span></span><span style="display:flex;"><span>    linkedCancelSource.Cancel();
-</span></span><span style="display:flex;"><span>    linkedCancelSource.Dispose();
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 每个 CancellationTokenSource 只能使用一次，所以需要重新创建</span>
-</span></span><span style="display:flex;"><span>    LinkCancelSource();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></article>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-</div>
-<script type="application/javascript" src='http://localhost:1313/js/toc.js'></script>
-<link rel="stylesheet" href='http://localhost:1313/css/toc.css' />
-
-  
+    
 </div>
 
-  <div class="footer container-xl width-full p-responsive">
-  <div
-    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
-    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="http://localhost:1313/">
-      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
-        <path fill-rule="evenodd"
-          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
-        </path>
-      </svg>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="unitask"><a href="#unitask" class="header-anchor"></a>UniTask
+</h1><p>UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越</p>
+<h2 id="forget"><a href="#forget" class="header-anchor"></a>ForGet
+</h2><p>是在同步方法中调用异步方法的一个方式, Fire and forget.</p>
+<h2 id="cancel-取消异步操作"><a href="#cancel-%e5%8f%96%e6%b6%88%e5%bc%82%e6%ad%a5%e6%93%8d%e4%bd%9c" class="header-anchor"></a>Cancel 取消异步操作
+</h2><p>C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消</p>
+<h3 id="抛出异常式"><a href="#%e6%8a%9b%e5%87%ba%e5%bc%82%e5%b8%b8%e5%bc%8f" class="header-anchor"></a>抛出异常式
+</h3><h3 id="返回值式"><a href="#%e8%bf%94%e5%9b%9e%e5%80%bc%e5%bc%8f" class="header-anchor"></a>返回值式
+</h3><h3 id="取消异步操作"><a href="#%e5%8f%96%e6%b6%88%e5%bc%82%e6%ad%a5%e6%93%8d%e4%bd%9c" class="header-anchor"></a>取消异步操作
+</h3><p>在创建异步操作后，取消异步操作</p>
+<p>特别的，有时需要连锁取消的功能</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/unitask/">UniTask</a>
+        
+            <a href="/tags/unity/">Unity</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/cinemachine%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity Cinemachine 3.0</h2>
+        </div>
     </a>
-    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
-      
-      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
-      
-      <li class="mr-3 mr-lg-0">GitHub and the Invertocat logo are trademarks of <a href="https://github.com/">GitHub, Inc.</a></li>
-    </ul>
-  </div>
-  <div class="d-flex flex-justify-center pb-6">
-    <span class="f6 text-gray-light"></span>
-  </div>
+</article>
 
+            
+                
+<article class="">
+    <a href="/post/unityinspector%E6%89%A9%E5%B1%95/">
+        
+        
 
-</div>
+        <div class="article-details">
+            <h2 class="article-title">Unity Inspector 拓展笔记</h2>
+        </div>
+    </a>
+</article>
 
-</body>
+            
+                
+<article class="">
+    <a href="/post/unitymathf/">
+        
+        
 
-<script type="application/javascript" src="http://localhost:1313/js/github-style.js"></script>
+        <div class="article-details">
+            <h2 class="article-title">Unity Mathf 笔记</h2>
+        </div>
+    </a>
+</article>
 
+            
+                
+<article class="">
+    <a href="/post/unity-pico-xr-interaction%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">
+        
+        
 
+        <div class="article-details">
+            <h2 class="article-title">Unity XR Interaction 笔记</h2>
+        </div>
+    </a>
+</article>
 
+            
+                
+<article class="">
+    <a href="/post/unityxr-alxygrab/">
+        
+        
 
+        <div class="article-details">
+            <h2 class="article-title">Unity XR 像 Alyx 一样抓取物体</h2>
+        </div>
+    </a>
+</article>
 
+            
+        </div>
+    </div>
+</aside>
 
+     
+    
+        
+    
 
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2024 -
+        
+        2025 Chneixn Blog
+    </section>
+
+    
+    <section class="totalcount">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        发表了23篇文章 ·
+        总计8.97k字
+    </section>
+
+    <section class="powerby">
+        
+        © Chneixn 2726269548@qq.com <br />
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
+                data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.e2f4cfbf6362fdc1ca06af81f4f8441841c51ca7e52665f5c5ab24ba7ebb14b0.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

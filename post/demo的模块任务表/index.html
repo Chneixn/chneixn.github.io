@@ -1,341 +1,743 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <script type="application/javascript" src='http://localhost:1313/js/theme-mode.js'></script>
-    <link rel="stylesheet" href='http://localhost:1313/css/frameworks.min.css' />
-    <link rel="stylesheet" href='http://localhost:1313/css/github.min.css' />
-    <link rel="stylesheet" href='http://localhost:1313/css/github-style.css' />
-    <link rel="stylesheet" href='http://localhost:1313/css/light.css' />
-    <link rel="stylesheet" href='http://localhost:1313/css/dark.css' />
-    <link rel="stylesheet" href='http://localhost:1313/css/syntax.css' />
-    <title>Unity 学习 Demo 的模块任务表 - Chneixn Blog</title>
-    
-    <link rel="icon" type="image/x-icon" href='http://localhost:1313/images/favicon.ico'>
-    
-    <meta name="theme-color" content="#1e2327">
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name="color-scheme" content='dark'><meta name='description' content="3D Demo 特点 Reliable FPS System 可靠的fps系统\nSmooth Control And Responsive 流畅的控制和灵敏的反应\nFullbody System 全身渲染和运动系统\n功能模块 UI框架（TODO） 基于Dotween进行UI动效制作\n存档系统✓ 利用双列表建立可序列化字典，进行游戏数据记录，存档时转为JSON文件实现数据持久化保存和读取\n库存系统✓ 基于ScriptableObject的物品数据库\n交互操作✓ Camera✓ 使用Unity提供的Cinemachine进行相机管理，实现第一人称视角与第三人称视角的相机跟随\n角色控制系统（Doing） 基于Unity.InputSystem和下推状态机的输入系统解决方案\n">
+<title>Unity 学习 Demo 的模块任务表</title>
 
-    
-    
+<link rel='canonical' href='http://localhost:1313/post/demo%E7%9A%84%E6%A8%A1%E5%9D%97%E4%BB%BB%E5%8A%A1%E8%A1%A8/'>
 
-    
-    <meta name="description"
-  content="3D Demo 特点 Reliable FPS System 可靠的fps系统
-Smooth Control And Responsive 流畅的控制和灵敏的反应
-Fullbody System 全身渲染和运动系统
-功能模块 UI框架（TODO） 基于Dotween进行UI动效制作
-存档系统✓ 利用双列表建立可序列化字典，进行游戏数据记录，存档时转为JSON文件实现数据持久化保存和读取
-库存系统✓ 基于ScriptableObject的物品数据库
-交互操作✓ Camera✓ 使用Unity提供的Cinemachine进行相机管理，实现第一人称视角与第三人称视角的相机跟随
-角色控制系统（Doing） 基于Unity.InputSystem和下推状态机的输入系统解决方案
-角色运动状态机
-角色胶囊体运动模拟计算使用KCC插件管理
-多载具控制
-音效系统（TODO） Wwise
-资源管理与热更新✓ 使用AssetsAddressable进行远程资源加载，使用HybridCLR&#43;Addressables实现热更新
-泛型对象池✓ 基于纯C#类的泛型对象池，可扩展实现继承MonoBehavior的对象池，从而减少实例化次数，优化游戏性能
-角色动画 第三人称动画与角色状态匹配
-行为树 AI 寻路算法" />
-<meta name="keywords"
-  content='' />
-<meta name="robots" content="noodp" />
-<link rel="canonical" href="http://localhost:1313/post/demo%E7%9A%84%E6%A8%A1%E5%9D%97%E4%BB%BB%E5%8A%A1%E8%A1%A8/" />
+<link rel="stylesheet" href="/scss/style.min.8797f750e6244e0e848f6b213441796ce66692fc43f8fdd2787e0196adb3207d.css"><meta property='og:title' content="Unity 学习 Demo 的模块任务表">
+<meta property='og:description' content="3D Demo 特点 Reliable FPS System 可靠的fps系统\nSmooth Control And Responsive 流畅的控制和灵敏的反应\nFullbody System 全身渲染和运动系统\n功能模块 UI框架（TODO） 基于Dotween进行UI动效制作\n存档系统✓ 利用双列表建立可序列化字典，进行游戏数据记录，存档时转为JSON文件实现数据持久化保存和读取\n库存系统✓ 基于ScriptableObject的物品数据库\n交互操作✓ Camera✓ 使用Unity提供的Cinemachine进行相机管理，实现第一人称视角与第三人称视角的相机跟随\n角色控制系统（Doing） 基于Unity.InputSystem和下推状态机的输入系统解决方案\n">
+<meta property='og:url' content='http://localhost:1313/post/demo%E7%9A%84%E6%A8%A1%E5%9D%97%E4%BB%BB%E5%8A%A1%E8%A1%A8/'>
+<meta property='og:site_name' content='Chneixn Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Demo' /><meta property='article:tag' content='Unity' /><meta property='article:modified_time' content='2025-03-12T21:51:56&#43;08:00'/>
+<meta name="twitter:title" content="Unity 学习 Demo 的模块任务表">
+<meta name="twitter:description" content="3D Demo 特点 Reliable FPS System 可靠的fps系统\nSmooth Control And Responsive 流畅的控制和灵敏的反应\nFullbody System 全身渲染和运动系统\n功能模块 UI框架（TODO） 基于Dotween进行UI动效制作\n存档系统✓ 利用双列表建立可序列化字典，进行游戏数据记录，存档时转为JSON文件实现数据持久化保存和读取\n库存系统✓ 基于ScriptableObject的物品数据库\n交互操作✓ Camera✓ 使用Unity提供的Cinemachine进行相机管理，实现第一人称视角与第三人称视角的相机跟随\n角色控制系统（Doing） 基于Unity.InputSystem和下推状态机的输入系统解决方案\n">
+    <link rel="shortcut icon" href="/favicon.ico" />
+<style>
+     
+    :root {
+        --code-font-family: "JetBrains Mono";  
+    }
 
+    code {
+        font-size: 1.4rem;  
+    }
 
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Unity 学习 Demo 的模块任务表 - Chneixn Blog" />
-<meta name="twitter:description"
-  content="3D Demo 特点 Reliable FPS System 可靠的fps系统
-Smooth Control And Responsive 流畅的控制和灵敏的反应
-Fullbody System 全身渲染和运动系统
-功能模块 UI框架（TODO） 基于Dotween进行UI动效制作
-存档系统✓ 利用双列表建立可序列化字典，进行游戏数据记录，存档时转为JSON文件实现数据持久化保存和读取
-库存系统✓ 基于ScriptableObject的物品数据库
-交互操作✓ Camera✓ 使用Unity提供的Cinemachine进行相机管理，实现第一人称视角与第三人称视角的相机跟随
-角色控制系统（Doing） 基于Unity.InputSystem和下推状态机的输入系统解决方案
-角色运动状态机
-角色胶囊体运动模拟计算使用KCC插件管理
-多载具控制
-音效系统（TODO） Wwise
-资源管理与热更新✓ 使用AssetsAddressable进行远程资源加载，使用HybridCLR&#43;Addressables实现热更新
-泛型对象池✓ 基于纯C#类的泛型对象池，可扩展实现继承MonoBehavior的对象池，从而减少实例化次数，优化游戏性能
-角色动画 第三人称动画与角色状态匹配
-行为树 AI 寻路算法" />
-<meta name="twitter:site" content="http://localhost:1313/" />
-<meta name="twitter:creator" content="" />
-<meta name="twitter:image"
-  content="http://localhost:1313/">
+    pre {
+        font-size: 1.4rem;  
+    }
+</style>
 
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=JetBrains Mono:wght@300;700&display=swap";  
 
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Unity 学习 Demo 的模块任务表 - Chneixn Blog">
-<meta property="og:description"
-  content="3D Demo 特点 Reliable FPS System 可靠的fps系统
-Smooth Control And Responsive 流畅的控制和灵敏的反应
-Fullbody System 全身渲染和运动系统
-功能模块 UI框架（TODO） 基于Dotween进行UI动效制作
-存档系统✓ 利用双列表建立可序列化字典，进行游戏数据记录，存档时转为JSON文件实现数据持久化保存和读取
-库存系统✓ 基于ScriptableObject的物品数据库
-交互操作✓ Camera✓ 使用Unity提供的Cinemachine进行相机管理，实现第一人称视角与第三人称视角的相机跟随
-角色控制系统（Doing） 基于Unity.InputSystem和下推状态机的输入系统解决方案
-角色运动状态机
-角色胶囊体运动模拟计算使用KCC插件管理
-多载具控制
-音效系统（TODO） Wwise
-资源管理与热更新✓ 使用AssetsAddressable进行远程资源加载，使用HybridCLR&#43;Addressables实现热更新
-泛型对象池✓ 基于纯C#类的泛型对象池，可扩展实现继承MonoBehavior的对象池，从而减少实例化次数，优化游戏性能
-角色动画 第三人称动画与角色状态匹配
-行为树 AI 寻路算法" />
-<meta property="og:url" content="http://localhost:1313/post/demo%E7%9A%84%E6%A8%A1%E5%9D%97%E4%BB%BB%E5%8A%A1%E8%A1%A8/" />
-<meta property="og:site_name" content="Unity 学习 Demo 的模块任务表" />
-<meta property="og:image"
-  content="http://localhost:1313/">
-<meta property="og:image:width" content="2048">
-<meta property="og:image:height" content="1024">
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
 
-<meta property="article:published_time" content="0001-01-01 00:00:00 &#43;0000 UTC" />
+        document.head.appendChild(customFont);
+    }());
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
 
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
 
-
-
-
-
-
-
-
-
-</head>
-
-
-<body>
-  <div style="position: relative">
-  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
-    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
-      <a class="Header-link" href="http://localhost:1313/">
-        <img class="octicon" height="32" width="32" src="">
-      </a>
-    </div>
-    <div class="Header-item d-md-none">
-      <button class="Header-link btn-link js-details-target" type="button"
-        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
-        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
-          <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
-          </path>
-        </svg>
-      </button>
-    </div>
-    <div style="display: none;" id="header-search"
-      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
-      <div
-        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
-        <div class="position-relative">
-          
-          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
-            autocomplete="off">
-            <label
-              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
-              <input type="text"
-                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
-                name="q" value="" placeholder="Search" autocomplete="off">
-              <input type="hidden" name="q" value="site:http://localhost:1313/">
-            </label>
-          </form>
-          
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_9a7db2fefd0155a4.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Chneixn Blog</a></h1>
+            <h2 class="site-description">世界以痛吻我，要我报之以歌</h2>
         </div>
-      </div>
-    </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='http://space.bilibili.com/18346372'
+                        target="_blank"
+                        title="BiliBili"
+                        rel="me"
+                    >
+                        
+                        
+                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier">
+<defs>
+<style>.a{fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;}</style>
+</defs>
+<rect class="a" x="6.1336" y="9.4032" width="35.7327" height="26.5581" rx="6.7532"/>
+<line class="a" x1="17.4835" y1="4.5" x2="20.4078" y2="9.4032"/>
+<line class="a" x1="13.2594" y1="21.6849" x2="20.0829" y2="18.9592"/>
+<line class="a" x1="30.5165" y1="4.5" x2="27.5922" y2="9.4032"/>
+<line class="a" x1="34.7406" y1="21.6849" x2="27.9171" y2="18.9592"/>
+<path class="a" d="M29.0544,24.9161c-.5827,1.4721-1.1508,2.54-2.5273,2.54-1.074,0-1.666-.4976-2.5271-1.8363-.8611,1.3387-1.4531,1.8363-2.5271,1.8363-1.3765,0-1.9446-1.0682-2.5273-2.54"/>
+<path class="a" d="M25.9676,35.9613v2.033s8.6917.2889,8.6917,5.5057H13.3407c0-5.2168,8.6917-5.5057,8.6917-5.5057v-2.033"/>
+</g>
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='/about'
+                        
+                        title="Email 2726269548@qq.com"
+                        rel="me"
+                    >
+                        
+                        
+                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier">
+<defs>
+<style>.cls-1{fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;}</style>
+</defs>
+<path class="cls-1" d="M6.47,10.71a2,2,0,0,0-2,2h0V35.32a2,2,0,0,0,2,2H41.53a2,2,0,0,0,2-2h0V12.68a2,2,0,0,0-2-2H6.47Zm33.21,3.82L24,26.07,8.32,14.53"/>
+</g>
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Chenixn'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier">
+<defs>
+<style>.cls-1{fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;fill-rule:evenodd;}</style>
+</defs>
+<path class="cls-1" d="M24,2.5a21.5,21.5,0,0,0-6.8,41.9c1.08.2,1.47-.46,1.47-1s0-1.86,0-3.65c-6,1.3-7.24-2.88-7.24-2.88A5.7,5.7,0,0,0,9,33.68c-1.95-1.33.15-1.31.15-1.31a4.52,4.52,0,0,1,3.29,2.22c1.92,3.29,5,2.34,6.26,1.79a4.61,4.61,0,0,1,1.37-2.88c-4.78-.54-9.8-2.38-9.8-10.62a8.29,8.29,0,0,1,2.22-5.77,7.68,7.68,0,0,1,.21-5.69s1.8-.58,5.91,2.2a20.46,20.46,0,0,1,10.76,0c4.11-2.78,5.91-2.2,5.91-2.2a7.74,7.74,0,0,1,.21,5.69,8.28,8.28,0,0,1,2.21,5.77c0,8.26-5,10.07-9.81,10.61a5.12,5.12,0,0,1,1.46,4c0,2.87,0,5.19,0,5.9s.39,1.24,1.48,1A21.5,21.5,0,0,0,24,2.5"/>
+</g>
+</svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
 
-    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
-      <a class="Header-link " href="http://localhost:1313/">
-        <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="">
-      </a>
-    </div>
-    <div class="Header-item" style="margin-right: 0;">
-      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
-        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
-          version="1.1" width="16" height="16">
-          <path fill-rule="evenodd" clip-rule="evenodd"
-            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
-          </path>
-        </svg>
-      </a>
-    </div>
-  </header>
-</div>
 
-  <div id="search-result" class="container-lg px-3 new-discussion-timeline" style="display: none;">
-</div>
 
-  
-<div class="application-main">
-  <div>
-  <main>
-    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
-      <div class="px-0">
-        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
-          <div class="flex-auto min-width-0 width-fit mr-3">
-            <div class="d-flex">
-              <div class="d-none d-md-block">
-                <a class="avatar mr-2 flex-shrink-0" href="http://localhost:1313/">
-                  <img class=" avatar-user"
-                    src="http://localhost:1313/images/avatar.png"
-                    width="32" height="32"></a>
-              </div>
-              <div class="d-flex flex-column">
-                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
-                  <span class="author">
-                    <a href="http://localhost:1313/"></a>
-                  </span>
-                  <span class="path-divider">/</span>
-                  <strong class="css-truncate css-truncate-target mr-1" style="max-width: 410px">
-                    <a href="http://localhost:1313/post/demo%E7%9A%84%E6%A8%A1%E5%9D%97%E4%BB%BB%E5%8A%A1%E8%A1%A8/">Unity 学习 Demo 的模块任务表</a>
-                  </strong>
-                </h1>
-                <div class="note m-0">
-                  Created <relative-time datetime="Mon, 01 Jan 0001 00:00:00 &#43;0000"
-                    class="no-wrap">
-                    Mon, 01 Jan 0001 00:00:00 &#43;0000</relative-time>
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
 
-                  
-                </div>
-              </div>
-            </div>
-          </div>
+
+
+                
+                <span>关于我</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
         </div>
-      </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#3d-demo">3D Demo</a>
+      <ol>
+        <li><a href="#特点">特点</a></li>
+        <li><a href="#功能模块">功能模块</a>
+          <ol>
+            <li><a href="#ui框架todo"><strong>UI框架（TODO）</strong></a></li>
+            <li><a href="#存档系统"><strong>存档系统✓</strong></a></li>
+            <li><a href="#库存系统"><strong>库存系统✓</strong></a></li>
+            <li><a href="#交互操作"><strong>交互操作✓</strong></a></li>
+            <li><a href="#camera"><strong>Camera✓</strong></a></li>
+            <li><a href="#角色控制系统doing"><strong>角色控制系统（Doing）</strong></a></li>
+            <li><a href="#音效系统todo"><strong>音效系统（TODO）</strong></a></li>
+            <li><a href="#资源管理与热更新"><strong>资源管理与热更新✓</strong></a></li>
+            <li><a href="#泛型对象池"><strong>泛型对象池✓</strong></a></li>
+            <li><a href="#角色动画">角色动画</a></li>
+            <li><a href="#行为树-ai">行为树 AI</a></li>
+            <li><a href="#寻路算法">寻路算法</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+        <a href="/categories/unity/" >
+            Unity
+        </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/demo%E7%9A%84%E6%A8%A1%E5%9D%97%E4%BB%BB%E5%8A%A1%E8%A1%A8/">Unity 学习 Demo 的模块任务表</a>
+        </h2>
+
+        
     </div>
 
-    <div class="container-lg px-3 new-discussion-timeline">
-      <div class="repository-content gist-content">
-        <div>
-          <div class="js-gist-file-update-container js-task-list-container file-box">
-            <div id="file-pytest" class="file my-2">
-              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
-                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
-                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
-                    
-                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
-                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
-                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-                      </svg>
-                    </summary>
-                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
-                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
-                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
-                        </div>
-                      </div>
-                    </details-menu>
-                      452 Words
-                    
+    
+    
+    
+    
+    <footer class="article-time">
+        
 
-                  </div>
-                  <div class="file-actions flex-order-2 pt-0">
-                    
-                    
-                    <a class="muted-link mr-3" href="/tags/demo">
-                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                        <path fill-rule="evenodd"
-                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                        </path>
-                      </svg>
-                      Demo
-                    </a>
-                    
-                    <a class="muted-link mr-3" href="/tags/unity">
-                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
-                        <path fill-rule="evenodd"
-                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
-                        </path>
-                      </svg>
-                      Unity
-                    </a>
-                    
-                    
-                  </div>
-                </div>
-              </div>
+        
+        <div class="article-time--lastmod">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+            <time>
+                2025 Mar 12 21:51 CST
+            </time>
+        </div></footer>
+    
 
+    
+</div>
+</header>
 
-              <div class="Box-body px-5 pb-5" style="z-index: 1">
-                <article class="markdown-body entry-content container-lg"><h1 id="3d-demo">3D Demo</h1>
-<h2 id="特点">特点</h2>
-<p>Reliable FPS System 可靠的fps系统</p>
+    <section class="article-content">
+    
+    
+    <h1 id="3d-demo"><a href="#3d-demo" class="header-anchor"></a>3D Demo
+</h1><h2 id="特点"><a href="#%e7%89%b9%e7%82%b9" class="header-anchor"></a>特点
+</h2><p>Reliable FPS System 可靠的fps系统</p>
 <p>Smooth Control And Responsive 流畅的控制和灵敏的反应</p>
 <p>Fullbody System 全身渲染和运动系统</p>
-<h2 id="功能模块">功能模块</h2>
-<h3 id="ui框架todo"><strong>UI框架（TODO）</strong></h3>
-<p>基于Dotween进行UI动效制作</p>
-<h3 id="存档系统"><strong>存档系统✓</strong></h3>
-<p>利用双列表建立可序列化字典，进行游戏数据记录，存档时转为JSON文件实现数据持久化保存和读取</p>
-<h3 id="库存系统"><strong>库存系统✓</strong></h3>
-<p>基于ScriptableObject的物品数据库</p>
-<h3 id="交互操作"><strong>交互操作✓</strong></h3>
-<h3 id="camera"><strong>Camera✓</strong></h3>
-<p>使用Unity提供的Cinemachine进行相机管理，实现第一人称视角与第三人称视角的相机跟随</p>
-<h3 id="角色控制系统doing"><strong>角色控制系统（Doing）</strong></h3>
-<p>基于Unity.InputSystem和下推状态机的输入系统解决方案</p>
+<h2 id="功能模块"><a href="#%e5%8a%9f%e8%83%bd%e6%a8%a1%e5%9d%97" class="header-anchor"></a>功能模块
+</h2><h3 id="ui框架todo"><a href="#ui%e6%a1%86%e6%9e%b6todo" class="header-anchor"></a><strong>UI框架（TODO）</strong>
+</h3><p>基于Dotween进行UI动效制作</p>
+<h3 id="存档系统"><a href="#%e5%ad%98%e6%a1%a3%e7%b3%bb%e7%bb%9f" class="header-anchor"></a><strong>存档系统✓</strong>
+</h3><p>利用双列表建立可序列化字典，进行游戏数据记录，存档时转为JSON文件实现数据持久化保存和读取</p>
+<h3 id="库存系统"><a href="#%e5%ba%93%e5%ad%98%e7%b3%bb%e7%bb%9f" class="header-anchor"></a><strong>库存系统✓</strong>
+</h3><p>基于ScriptableObject的物品数据库</p>
+<h3 id="交互操作"><a href="#%e4%ba%a4%e4%ba%92%e6%93%8d%e4%bd%9c" class="header-anchor"></a><strong>交互操作✓</strong>
+</h3><h3 id="camera"><a href="#camera" class="header-anchor"></a><strong>Camera✓</strong>
+</h3><p>使用Unity提供的Cinemachine进行相机管理，实现第一人称视角与第三人称视角的相机跟随</p>
+<h3 id="角色控制系统doing"><a href="#%e8%a7%92%e8%89%b2%e6%8e%a7%e5%88%b6%e7%b3%bb%e7%bb%9fdoing" class="header-anchor"></a><strong>角色控制系统（Doing）</strong>
+</h3><p>基于Unity.InputSystem和下推状态机的输入系统解决方案</p>
 <p>角色运动状态机</p>
 <p>角色胶囊体运动模拟计算使用KCC插件管理</p>
 <p>多载具控制</p>
-<h3 id="音效系统todo"><strong>音效系统（TODO）</strong></h3>
-<p>Wwise</p>
-<h3 id="资源管理与热更新"><strong>资源管理与热更新✓</strong></h3>
-<p>使用AssetsAddressable进行远程资源加载，使用HybridCLR+Addressables实现热更新</p>
-<h3 id="泛型对象池"><strong>泛型对象池✓</strong></h3>
-<p>基于纯C#类的泛型对象池，可扩展实现继承MonoBehavior的对象池，从而减少实例化次数，优化游戏性能</p>
-<h3 id="角色动画">角色动画</h3>
-<p>第三人称动画与角色状态匹配</p>
-<h3 id="行为树-ai">行为树 AI</h3>
-<h3 id="寻路算法">寻路算法</h3>
+<h3 id="音效系统todo"><a href="#%e9%9f%b3%e6%95%88%e7%b3%bb%e7%bb%9ftodo" class="header-anchor"></a><strong>音效系统（TODO）</strong>
+</h3><p>Wwise</p>
+<h3 id="资源管理与热更新"><a href="#%e8%b5%84%e6%ba%90%e7%ae%a1%e7%90%86%e4%b8%8e%e7%83%ad%e6%9b%b4%e6%96%b0" class="header-anchor"></a><strong>资源管理与热更新✓</strong>
+</h3><p>使用AssetsAddressable进行远程资源加载，使用HybridCLR+Addressables实现热更新</p>
+<h3 id="泛型对象池"><a href="#%e6%b3%9b%e5%9e%8b%e5%af%b9%e8%b1%a1%e6%b1%a0" class="header-anchor"></a><strong>泛型对象池✓</strong>
+</h3><p>基于纯C#类的泛型对象池，可扩展实现继承MonoBehavior的对象池，从而减少实例化次数，优化游戏性能</p>
+<h3 id="角色动画"><a href="#%e8%a7%92%e8%89%b2%e5%8a%a8%e7%94%bb" class="header-anchor"></a>角色动画
+</h3><p>第三人称动画与角色状态匹配</p>
+<h3 id="行为树-ai"><a href="#%e8%a1%8c%e4%b8%ba%e6%a0%91-ai" class="header-anchor"></a>行为树 AI
+</h3><h3 id="寻路算法"><a href="#%e5%af%bb%e8%b7%af%e7%ae%97%e6%b3%95" class="header-anchor"></a>寻路算法
+</h3>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/demo/">Demo</a>
+        
+            <a href="/tags/unity/">Unity</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 2025 Mar 12 21:51 CST
+        </span>
+    </section></footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
 </article>
-              </div>
-            </div>
-          </div>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/unitask/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">UniTask 学习笔记</h2>
         </div>
-      </div>
-    </div>
-  </main>
-</div>
-<script type="application/javascript" src='http://localhost:1313/js/toc.js'></script>
-<link rel="stylesheet" href='http://localhost:1313/css/toc.css' />
-
-  
-</div>
-
-  <div class="footer container-xl width-full p-responsive">
-  <div
-    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
-    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="http://localhost:1313/">
-      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
-        <path fill-rule="evenodd"
-          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
-        </path>
-      </svg>
     </a>
-    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
-      
-      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
-      
-      <li class="mr-3 mr-lg-0">GitHub and the Invertocat logo are trademarks of <a href="https://github.com/">GitHub, Inc.</a></li>
-    </ul>
-  </div>
-  <div class="d-flex flex-justify-center pb-6">
-    <span class="f6 text-gray-light"></span>
-  </div>
+</article>
 
+            
+                
+<article class="">
+    <a href="/post/cinemachine/">
+        
+        
 
-</div>
+        <div class="article-details">
+            <h2 class="article-title">Unity Cinemachine 3.0</h2>
+        </div>
+    </a>
+</article>
 
-</body>
+            
+                
+<article class="">
+    <a href="/post/unityinspector%E6%89%A9%E5%B1%95/">
+        
+        
 
-<script type="application/javascript" src="http://localhost:1313/js/github-style.js"></script>
+        <div class="article-details">
+            <h2 class="article-title">Unity Inspector 拓展笔记</h2>
+        </div>
+    </a>
+</article>
 
+            
+                
+<article class="">
+    <a href="/post/unitymathf/">
+        
+        
 
+        <div class="article-details">
+            <h2 class="article-title">Unity Mathf 笔记</h2>
+        </div>
+    </a>
+</article>
 
+            
+                
+<article class="">
+    <a href="/post/xr-interactiontoolkit/">
+        
+        
 
+        <div class="article-details">
+            <h2 class="article-title">Unity XR Interaction 笔记</h2>
+        </div>
+    </a>
+</article>
 
+            
+        </div>
+    </div>
+</aside>
 
+     
+    
+        
+    
 
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2024 -
+        
+        2025 Chneixn Blog
+    </section>
+
+    
+    <section class="totalcount">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        发表了23篇文章 ·
+        总计11.20k字
+    </section>
+
+    <section class="powerby">
+        
+        Chneixn 2726269548@qq.com <br />
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
+                data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.e2f4cfbf6362fdc1ca06af81f4f8441841c51ca7e52665f5c5ab24ba7ebb14b0.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

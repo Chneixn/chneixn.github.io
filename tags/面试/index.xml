@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>面试 on Chneixn Blog</title><link>https://chneixn.github.io/tags/%E9%9D%A2%E8%AF%95/</link><description>Recent content in 面试 on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://chneixn.github.io/tags/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml"/><item><title>Unity 客户端开发问题笔记</title><link>https://chneixn.github.io/post/unity%E9%9D%A2%E8%AF%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/unity%E9%9D%A2%E8%AF%95/</guid><description>&lt;p>3.3 游戏开发问题&lt;/p>
+&lt;p>关于游戏开发的通用问题。各个模块会再问一些特定引擎的问题，对照上面的3.2。&lt;/p>
+&lt;p>1.游戏AI&lt;/p>
+&lt;p>①常用的做法简述（NavMesh + 寻路）&lt;/p>
+&lt;p>②NavMesh的生成过程简述&lt;/p>
+&lt;p>③A*寻路算法的原理&lt;/p>
+&lt;p>④是否了解多个AI都在自动寻路时的动态避障算法&lt;/p>
+&lt;p>2.物理碰撞&lt;/p>
+&lt;p>①如何判断子弹射击到敌人（然后继续问包围盒、碰撞检测算法等），如果子弹特别快怎么办&lt;/p>
+&lt;p>②BVH、八叉树等场景管理加速结构，在这些树上检测碰撞的过程&lt;/p>
+&lt;p>3.网络同步&lt;/p>
+&lt;p>①状态同步和帧同步的原理&lt;/p></description></item></channel></rss>

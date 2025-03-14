@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="热更新 HybridCLR + Addressable 环境确认 1.1 Unity 1.1.1 使用的Unity版本为2022.3.13f1\n1.1.2 安装UnityComponent添加对IL2CPP的支持\n笔记：https://blog.csdn.net/Chenxin_37/article/details/136747145\n1.2 Visual Studio 1.2.1 安装“使用Unity的游戏开发”和“使用C++的游戏开发”套件\n1.2.2 安装Window10-SDK最新版即可\n框架搭建 2.1 创建新项目 2.2 安装HybridCLR\n安装详看文档\n文档主页：https://hybridclr.doc.code-philosophy.com/docs/beginner/quickstart\n">
+<title>Unity 的热更新</title>
+
+<link rel='canonical' href='http://localhost:1313/post/unity-%E7%9A%84%E7%83%AD%E6%9B%B4%E6%96%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.14fc16a329537716096bd4b9d80d61feea0f38415f0c1b359cdec11a83fedbad.css"><meta property='og:title' content="Unity 的热更新">
+<meta property='og:description' content="热更新 HybridCLR + Addressable 环境确认 1.1 Unity 1.1.1 使用的Unity版本为2022.3.13f1\n1.1.2 安装UnityComponent添加对IL2CPP的支持\n笔记：https://blog.csdn.net/Chenxin_37/article/details/136747145\n1.2 Visual Studio 1.2.1 安装“使用Unity的游戏开发”和“使用C++的游戏开发”套件\n1.2.2 安装Window10-SDK最新版即可\n框架搭建 2.1 创建新项目 2.2 安装HybridCLR\n安装详看文档\n文档主页：https://hybridclr.doc.code-philosophy.com/docs/beginner/quickstart\n">
+<meta property='og:url' content='http://localhost:1313/post/unity-%E7%9A%84%E7%83%AD%E6%9B%B4%E6%96%B0/'>
+<meta property='og:site_name' content='Chneixn Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Unity' /><meta property='article:tag' content='HotUpdate' />
+<meta name="twitter:title" content="Unity 的热更新">
+<meta name="twitter:description" content="热更新 HybridCLR + Addressable 环境确认 1.1 Unity 1.1.1 使用的Unity版本为2022.3.13f1\n1.1.2 安装UnityComponent添加对IL2CPP的支持\n笔记：https://blog.csdn.net/Chenxin_37/article/details/136747145\n1.2 Visual Studio 1.2.1 安装“使用Unity的游戏开发”和“使用C++的游戏开发”套件\n1.2.2 安装Window10-SDK最新版即可\n框架搭建 2.1 创建新项目 2.2 安装HybridCLR\n安装详看文档\n文档主页：https://hybridclr.doc.code-philosophy.com/docs/beginner/quickstart\n">
+    <link rel="shortcut icon" href="/icons/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_9a7db2fefd0155a4.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Chneixn Blog</a></h1>
+            <h2 class="site-description">世界以痛吻我，要我报之以歌</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#hybridclr--addressable">HybridCLR + Addressable</a>
+      <ol>
+        <li><a href="#环境确认">环境确认</a>
+          <ol>
+            <li><a href="#11-unity">1.1 Unity</a></li>
+            <li><a href="#12-visual-studio">1.2 Visual Studio</a></li>
+          </ol>
+        </li>
+        <li><a href="#框架搭建">框架搭建</a>
+          <ol>
+            <li><a href="#21-创建新项目">2.1 创建新项目</a></li>
+          </ol>
+        </li>
+        <li><a href="#安装adressable">安装Adressable</a></li>
+        <li><a href="#脚本热更新操作步骤">脚本热更新操作步骤</a></li>
+        <li><a href="#在hotupdate文件下的脚本注意">在HotUpdate文件下的脚本注意</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/unity/" >
+                Unity
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/unity-%E7%9A%84%E7%83%AD%E6%9B%B4%E6%96%B0/">Unity 的热更新</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="热更新"><a href="#%e7%83%ad%e6%9b%b4%e6%96%b0" class="header-anchor"></a>热更新
+</h1><h2 id="hybridclr--addressable"><a href="#hybridclr--addressable" class="header-anchor"></a>HybridCLR + Addressable
+</h2><h3 id="环境确认"><a href="#%e7%8e%af%e5%a2%83%e7%a1%ae%e8%ae%a4" class="header-anchor"></a>环境确认
+</h3><h4 id="11-unity"><a href="#11-unity" class="header-anchor"></a>1.1 Unity
+</h4><p>1.1.1 使用的Unity版本为2022.3.13f1</p>
+<p>1.1.2 安装UnityComponent添加对IL2CPP的支持</p>
+<p>笔记：https://blog.csdn.net/Chenxin_37/article/details/136747145</p>
+<h4 id="12-visual-studio"><a href="#12-visual-studio" class="header-anchor"></a>1.2 Visual Studio
+</h4><p>1.2.1 安装“使用Unity的游戏开发”和“使用C++的游戏开发”套件</p>
+<p>1.2.2 安装Window10-SDK最新版即可</p>
+<p><img src="/assets/image.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<h3 id="框架搭建"><a href="#%e6%a1%86%e6%9e%b6%e6%90%ad%e5%bb%ba" class="header-anchor"></a>框架搭建
+</h3><h4 id="21-创建新项目"><a href="#21-%e5%88%9b%e5%bb%ba%e6%96%b0%e9%a1%b9%e7%9b%ae" class="header-anchor"></a>2.1 创建新项目
+</h4><p>2.2 安装HybridCLR</p>
+<p>安装详看文档</p>
+<p>文档主页：https://hybridclr.doc.code-philosophy.com/docs/beginner/quickstart</p>
+<p>国内Git地址：https://gitee.com/focus-creative-games/hybridclr_unity.git</p>
+<p>国外Git地址：https://github.com/focus-creative-games/hybridclr_unity.git</p>
+<p>2.3 创建Asset/HotUpdate文件夹</p>
+<p>2.4 在HotUpdate文件夹创建HotUpdate的程序集（Assembly Definition）</p>
+<p>2.5 在HotUpdate文件夹任意创建一个脚本</p>
+<p>2.6 在Visual Studio重载项目，此时的解决方案资源管理器应该显示两个程序集，如图</p>
+<p><img src="/assets/image-1740498352544-13.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>2.7 选择Unity的上方菜单项HybridCLR/Installer&hellip;</p>
+<p>选择Install（安装成功后控制台会打印成功的信息，以及绿框位置显示为True）</p>
+<p><img src="/assets/image-1740498363409-15.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>2.8 选择Unity的上方菜单项HybridCLR/Settings&hellip;</p>
+<p>2.9 在热更新Assembly Definition中添加在HotUpdate文件夹中的程序集</p>
+<blockquote>
+<p>如果没有显示HybridCLR Settings，重启Unity</p></blockquote>
+<p><img src="/assets/image-1740498375113-17.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>2.10 选择Unity的上方菜单项Edit/Project Settings&hellip;</p>
+<p>在左侧选择Player</p>
+<p>在下方展开Other Settings</p>
+<p><img src="/assets/image-1740498388801-19.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>2.11 按照图中选项修改</p>
+<p><img src="/assets/image-1740498399272-21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>2.12 选择Unity的上方菜单项HybridCLR/Generate/All</p>
+<p>2.13 将{proj}/HybridCLRData/HotUpdateDlls/StandaloneWindows64(MacOS下为StandaloneMacXxx)目录下的HotUpdate.dll重命名为HotUpdate.dll.bytes，将其复制到Asset/HotUpdate/Dlls内（无则新建）</p>
+<p>（可选：对项目进行一次打包）</p>
+<p>2.14 在HotUpdate文件夹下的所有脚本发生任何变更后，都需要在Unity的上方菜单项选择HybridCLR/CompileDll/ActiveBuildTarget</p>
+<h3 id="安装adressable"><a href="#%e5%ae%89%e8%a3%85adressable" class="header-anchor"></a>安装Adressable
+</h3><p>3.1 打开Package Manager窗口</p>
+<p>选择Package：Unity Registry</p>
+<p>搜索Addressable</p>
+<p>点击Install安装</p>
+<p><img src="/assets/image-1740498412328-23.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>3.2 选择Unity的上方菜单项Window/Asset Management/Addressable/Groups</p>
+<p>选择Generate&hellip;</p>
+<p>选择Profile：Default</p>
+<p><img src="/assets/image-1740498436165-25.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>选择Manage Profiles</p>
+<p><img src="/assets/image-1740498443946-27.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>3.3 修改设置</p>
+<p>选择Remote 为 Custom</p>
+<p>将Remote.LoadPath修改为自己的远程或本地的http资源服务器，路径内文件为本地的{project}/ServerData/[BuildTarget]</p>
+<p><img src="/assets/image-1740498461399-29.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>3.4 点击Addressables Groups窗口的New</p>
+<p>创建一个新的组并命名为HotUpdateDll</p>
+<p><img src="/assets/image-1740498474011-31.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>选择组，在右侧Inspector窗口修改Build &amp; Load Paths 为 Remote</p>
+<p><img src="/assets/image-1740498495082-33.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>3.5 在Project窗口找到AddressableAssetSettings</p>
+<p><img src="/assets/image-1740498507616-35.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>在Inspector窗口勾选Build Remote Catalog</p>
+<p><img src="/assets/image-1740498515911-37.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>3.6 选择Asset/HotUpdate/Dlls/HotUpdate.dll</p>
+<p>（此时该文件在文件管理器中的后缀应为.bytes）</p>
+<p><img src="/assets/image-1740498528435-39.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>将其拖入Addressables Groups窗口的HotUpdateDll组内（打上标签Dll）</p>
+<p><img src="/assets/image-1740498540148-41.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>3.7 选择Play Mode Script里的第三项Use Exiting Build（Window）</p>
+<p><img src="/assets/image-1740498550345-43.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>3.8 点击Player Mode&hellip; 左侧的Build，选择New Build/Defalut Build Script</p>
+<p>此时在{Project}/ServerData下会有文件夹为StandardWindow64文件夹</p>
+<p>此文件夹内文件需与资源服务器内容同步</p>
+<p><img src="/assets/image-1740498561893-45.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<h3 id="脚本热更新操作步骤"><a href="#%e8%84%9a%e6%9c%ac%e7%83%ad%e6%9b%b4%e6%96%b0%e6%93%8d%e4%bd%9c%e6%ad%a5%e9%aa%a4" class="header-anchor"></a>脚本热更新操作步骤
+</h3><p>4.1 在HotUpdate文件夹下的所有脚本发生任何变更后，都需要在Unity的上方菜单项选择HybridCLR/CompileDll/ActiveBuildTarget</p>
+<p>4.2 在Addressables Groups窗口选择Build/New Build/Defalut Build Script</p>
+<p>4.3 同步ServerData文件夹内的文件至资源服务器</p>
+<p>4.4 运行客户端下载</p>
+<h3 id="在hotupdate文件下的脚本注意"><a href="#%e5%9c%a8hotupdate%e6%96%87%e4%bb%b6%e4%b8%8b%e7%9a%84%e8%84%9a%e6%9c%ac%e6%b3%a8%e6%84%8f" class="header-anchor"></a>在HotUpdate文件下的脚本注意
+</h3><p>5.1 在引用其他命名空间时，在客户端有可能会出现Script Missing错误</p>
+<p>因此需要选择HotUpdate文件夹里的HotUpdate程序集</p>
+<p><img src="/assets/image-1740498574241-47.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>在Inspector勾选Allow &lsquo;unsafe&rsquo; Code</p>
+<p>在Assembly Definition Reference添加引用的命名空间程序集</p>
+<p><img src="/assets/image-1740498582068-49.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>5.2 在Assets/StreamingAssets文件夹放置对应所需的Dll文件</p>
+<p>并在客户端的资源检查脚本第一时间读取</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/unity/">Unity</a>
+        
+            <a href="/tags/hotupdate/">HotUpdate</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/unitask-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">UniTask 学习笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unity-cinemachine-3.0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity Cinemachine 3.0</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unity-inspector-%E6%8B%93%E5%B1%95%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity Inspector 拓展笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unity-mathf-%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity Mathf 笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unity-xr-interaction-%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity XR Interaction 笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2024 -
+        
+        2025 Chneixn Blog
+    </section>
+
+    
+    <section class="totalcount">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        发表了23篇文章 ·
+        总计8.97k字
+    </section>
+
+    <section class="powerby">
+        
+        © Chneixn 2726269548@qq.com <br />
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
+                data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.e2f4cfbf6362fdc1ca06af81f4f8441841c51ca7e52665f5c5ab24ba7ebb14b0.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

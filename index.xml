@@ -1,12 +1,121 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Chneixn Blog</title><link>https://chneixn.github.io/</link><description>Recent content on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://chneixn.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://chneixn.github.io/readme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/readme/</guid><description>&lt;p>Hello World!&lt;/p></description></item><item><title>C# Switch 语法</title><link>https://chneixn.github.io/post/c%23-switch-%E8%AF%AD%E6%B3%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/c%23-switch-%E8%AF%AD%E6%B3%95/</guid><description>&lt;h1 id="switch语句">switch语句&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Chneixn Blog</title><link>https://chneixn.github.io/</link><description>Recent content on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://chneixn.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://chneixn.github.io/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/about/</guid><description>&lt;p>Hello World!&lt;/p></description></item><item><title>C# Switch 语法</title><link>https://chneixn.github.io/post/c%23switch/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/c%23switch/</guid><description>&lt;h1 id="switch语句">switch语句&lt;/h1>
 &lt;h2 id="弃元模式-c70">弃元模式 C#7.0&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6e7681">1&lt;/span>&lt;span>&lt;span style="color:#ff7b72">var&lt;/span> result = score &lt;span style="color:#ff7b72">switch&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6e7681">2&lt;/span>&lt;span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6e7681">3&lt;/span>&lt;span> &amp;gt;= &lt;span style="color:#a5d6ff">80&lt;/span> =&amp;gt; &lt;span style="color:#a5d6ff">&amp;#34;excellent&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6e7681">4&lt;/span>&lt;span> &amp;gt;= &lt;span style="color:#a5d6ff">60&lt;/span> =&amp;gt; &lt;span style="color:#a5d6ff">&amp;#34;good&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6e7681">5&lt;/span>&lt;span> _ =&amp;gt; &lt;span style="color:#a5d6ff">&amp;#34;poor&amp;#34;&lt;/span> &lt;span style="color:#8b949e;font-style:italic">//弃元在switch表达式中就相当于default&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6e7681">6&lt;/span>&lt;span> };
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>ss&lt;/p></description></item><item><title>Unity Cinemachine 3.0</title><link>https://chneixn.github.io/post/unity-cinemachine-3.0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/unity-cinemachine-3.0/</guid><description>&lt;h1 id="cinemachine-的更新-30">Cinemachine 的更新 3.0&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e5c07b">var&lt;/span> &lt;span style="color:#e06c75">result&lt;/span> = &lt;span style="color:#e06c75">score&lt;/span> &lt;span style="color:#c678dd">switch&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;gt;= &lt;span style="color:#d19a66">80&lt;/span> =&amp;gt; &lt;span style="color:#98c379">&amp;#34;excellent&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;gt;= &lt;span style="color:#d19a66">60&lt;/span> =&amp;gt; &lt;span style="color:#98c379">&amp;#34;good&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">_&lt;/span> =&amp;gt; &lt;span style="color:#98c379">&amp;#34;poor&amp;#34;&lt;/span> &lt;span style="color:#7f848e">//弃元在switch表达式中就相当于default&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Hugo Stack 个性化修改</title><link>https://chneixn.github.io/post/hugo-stack/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/hugo-stack/</guid><description>&lt;h1 id="总字数统计-发表了x篇文章共计x字">总字数统计 “发表了x篇文章，共计x字”&lt;/h1>
+&lt;p>在 &lt;code>layouts/partials/footer/footer.html&lt;/code> 文件中添加以下代码&lt;/p>
+&lt;p>参考 &lt;a href="https://thirdshire.com/hugo-stack-renovation/#%E6%80%BB%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E5%8F%91%E8%A1%A8%E4%BA%86x%E7%AF%87%E6%96%87%E7%AB%A0%E5%85%B1%E8%AE%A1x%E5%AD%97">第三夏尔-添加总字数统计&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7f848e">&amp;lt;!-- Add total page and word count time --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#e06c75">section&lt;/span> &lt;span style="color:#e06c75">class&lt;/span>&lt;span style="color:#56b6c2">=&lt;/span>&lt;span style="color:#98c379">&amp;#34;totalcount&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{$scratch := newScratch}}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{ range (where .Site.Pages &amp;#34;Kind&amp;#34; &amp;#34;page&amp;#34; )}}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{$scratch.Add &amp;#34;total&amp;#34; .WordCount}}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{ end }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 发表了{{ len (where .Site.RegularPages &amp;#34;Section&amp;#34; &amp;#34;post&amp;#34;) }}篇文章 · 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 总计{{ div ($scratch.Get &amp;#34;total&amp;#34;) 1000.0 | lang.FormatNumber 2 }}k字
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#e06c75">section&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在assets/scss/partials/footer.scss里修改风格:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-css" data-lang="css">&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#e5c07b">totalcount&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">color&lt;/span>: &lt;span style="color:#61afef;font-weight:bold">var&lt;/span>(&lt;span style="color:#56b6c2">--&lt;/span>&lt;span style="color:#e06c75">card&lt;/span>&lt;span style="color:#56b6c2">-&lt;/span>&lt;span style="color:#e5c07b">text&lt;/span>&lt;span style="color:#56b6c2">-&lt;/span>&lt;span style="color:#e5c07b">color&lt;/span>&lt;span style="color:#56b6c2">-&lt;/span>&lt;span style="color:#e06c75">secondary&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">font-weight&lt;/span>: &lt;span style="color:#e5c07b">normal&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">margin-bottom&lt;/span>: &lt;span style="color:#d19a66">5&lt;/span>&lt;span style="color:#e5c07b">px&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="修改目录滚动条样式">修改目录滚动条样式&lt;/h1>
+&lt;p>当文章的目录太长时便会产生滚动条，默认的滚动条样式比较丑陋，所以可以修改成如下样式&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ::-webkit-scrollbar {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> width: 20px;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ::-webkit-scrollbar-track {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> background-color: transparent;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ::-webkit-scrollbar-thumb {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> background-color: #d6dee1;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> border-radius: 20px;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> border: 6px solid transparent;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> background-clip: content-box;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ::-webkit-scrollbar-thumb:hover {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> background-color: #a8bbbf;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="支持数学公式编辑">支持数学公式编辑&lt;/h1>
+&lt;p>使文章能够支持数学公式的编辑&lt;/p></description></item><item><title>SVN 与 Git 的区别</title><link>https://chneixn.github.io/post/svn%E4%B8%8Egit%E7%9A%84%E5%8C%BA%E5%88%AB/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/svn%E4%B8%8Egit%E7%9A%84%E5%8C%BA%E5%88%AB/</guid><description>&lt;h1 id="svn-与-git-的区别">&lt;strong>SVN 与 Git 的区别&lt;/strong>&lt;/h1>
+&lt;p>选择 SVN 的场景包括：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>**传统团队：**对于一些较老的项目，团队对分布式开发的要求不高，或者团队成员对 SVN 更为熟悉等情况下，选择 SVN 可能更为合适。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>**集中式开发：**如果团队成员集中在一个地理位置，或者不需要进行远程协作开发，SVN 的集中式特性可能更符合团队的需求。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>**较简单的项目：**对于一些较为简单的项目，SVN 的版本控制功能可能已经足够满足需求，而且相对容易上手。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>选择 Git 的场景包括：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>**分布式团队：**如果团队成员分布在不同的地理位置，或者需要进行远程协作开发，Git 的分布式特性能够更好地支持这种开发模式。&lt;/p></description></item><item><title>UniTask 学习笔记</title><link>https://chneixn.github.io/post/unitask/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/unitask/</guid><description>&lt;h1 id="unitask">UniTask&lt;/h1>
+&lt;p>UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越&lt;/p>
+&lt;h2 id="forget">ForGet&lt;/h2>
+&lt;p>是在同步方法中调用异步方法的一个方式, Fire and forget.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">Call&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">Run&lt;/span>().&lt;span style="color:#e06c75">Forget&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">private&lt;/span> &lt;span style="color:#c678dd">async&lt;/span> &lt;span style="color:#e06c75">UniTask&lt;/span> &lt;span style="color:#e06c75">Run&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">await&lt;/span> &lt;span style="color:#e06c75">UniTask&lt;/span>.&lt;span style="color:#e06c75">WaitForSeconds&lt;/span>(&lt;span style="color:#d19a66">0.02f&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="cancel-取消异步操作">Cancel 取消异步操作&lt;/h2>
+&lt;p>C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消&lt;/p>
+&lt;h3 id="抛出异常式">抛出异常式&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">private&lt;/span> &lt;span style="color:#e06c75">CancellationTokenSource&lt;/span> &lt;span style="color:#e06c75">cancelSource&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">async&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">Run&lt;/span>(){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">try&lt;/span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">await&lt;/span> &lt;span style="color:#e06c75">AsyncMethod&lt;/span>(&lt;span style="color:#e06c75">cancelTolen&lt;/span>.&lt;span style="color:#e06c75">Token&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">catch&lt;/span>(&lt;span style="color:#e06c75">OperationCanceledException&lt;/span> &lt;span style="color:#e06c75">e&lt;/span>){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">Debug&lt;/span>.&lt;span style="color:#e06c75">Log&lt;/span>(&lt;span style="color:#98c379">&amp;#34;Runner had canceled.&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="返回值式">返回值式&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">private&lt;/span> &lt;span style="color:#e06c75">CancellationTokenSource&lt;/span> &lt;span style="color:#e06c75">cancelSource&lt;/span>; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">async&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">Run&lt;/span>(){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// AsyncMethod 无返回值&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e5c07b">var&lt;/span> &lt;span style="color:#e06c75">result&lt;/span> = &lt;span style="color:#c678dd">await&lt;/span> &lt;span style="color:#e06c75">AsyncMethod&lt;/span>(&lt;span style="color:#e06c75">cancelTolen&lt;/span>.&lt;span style="color:#e06c75">Token&lt;/span>).&lt;span style="color:#e06c75">SupperessCancellationThrow&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (&lt;span style="color:#e06c75">result&lt;/span>){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// do something&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// AsyncMethod 有返回值&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e5c07b">var&lt;/span> (&lt;span style="color:#e06c75">result2&lt;/span>, &lt;span style="color:#e06c75">returnValue&lt;/span>) = &lt;span style="color:#c678dd">await&lt;/span> &lt;span style="color:#e06c75">AsyncMethodWithReturnValue&lt;/span>(&lt;span style="color:#e06c75">cancelTolen&lt;/span>.&lt;span style="color:#e06c75">Token&lt;/span>).&lt;span style="color:#e06c75">SupperessCancellationThrow&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (&lt;span style="color:#e06c75">result2&lt;/span>){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// do something&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">async&lt;/span> &lt;span style="color:#e06c75">UniTask&lt;/span>&amp;lt;&lt;span style="color:#e5c07b">int&lt;/span>&amp;gt; &lt;span style="color:#e06c75">AsyncMethodWithReturnValue&lt;/span>(&lt;span style="color:#e06c75">CancellationToken&lt;/span> &lt;span style="color:#e06c75">cancelToken&lt;/span>){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">await&lt;/span> &lt;span style="color:#e06c75">UniTask&lt;/span>.&lt;span style="color:#e06c75">NextFrame&lt;/span>(&lt;span style="color:#e06c75">cancelToken&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">return&lt;/span> &lt;span style="color:#d19a66">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="取消异步操作">取消异步操作&lt;/h3>
+&lt;p>在创建异步操作后，取消异步操作&lt;/p></description></item><item><title>Unity Cinemachine 3.0</title><link>https://chneixn.github.io/post/cinemachine/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/cinemachine/</guid><description>&lt;h1 id="cinemachine-的更新-30">Cinemachine 的更新 3.0&lt;/h1>
 &lt;h2 id="cinemachin-e的基本介绍">Cinemachin e的基本介绍&lt;/h2>
 &lt;p>&lt;a href="https://www.cnblogs.com/blueberryzzz/p/12452838.html">介绍 - CSDN&lt;/a>&lt;/p>
 &lt;h2 id="cinemachine-brain">Cinemachine Brain&lt;/h2>
@@ -35,4 +144,429 @@
  &lt;td>手动在脚本里调用，目前demo里的用法，在lateupdate里调用，再同步一些物体的旋转，防止抖动&lt;/td>
  &lt;/tr>
  &lt;/tbody>
-&lt;/table></description></item></channel></rss>
+&lt;/table></description></item><item><title>Unity Inspector 拓展笔记</title><link>https://chneixn.github.io/post/unityinspector%E6%89%A9%E5%B1%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/unityinspector%E6%89%A9%E5%B1%95/</guid><description>&lt;h1 id="inspector-扩展">Inspector 扩展&lt;/h1>
+&lt;h2 id="将-inspector-扩展应用到子类">将 Inspector 扩展应用到子类&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e06c75">[CustomEditor(typeof(BaseGun), true)]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">class&lt;/span> &lt;span style="color:#e5c07b">CustomInspector&lt;/span> : &lt;span style="color:#e06c75">Editor&lt;/span>{ }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="重写-oninspectorgui-imgui框架">重写 OnInspectorGUI (IMGUI框架)&lt;/h2>
+&lt;h3 id="添加默认显示的-attribute">添加默认显示的 Attribute&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">base&lt;/span>.&lt;span style="color:#e06c75">OnInspectorGUI&lt;/span>();
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="重写-createinspectorgui-uitoolkit框架">重写 CreateInspectorGUI (UIToolkit框架)&lt;/h2>
+&lt;h3 id="添加默认显示的-attribute-1">添加默认显示的 Attribute&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e5c07b">var&lt;/span> &lt;span style="color:#e06c75">root&lt;/span> = &lt;span style="color:#c678dd">new&lt;/span> &lt;span style="color:#e06c75">VisualElement&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e06c75">root&lt;/span>.&lt;span style="color:#e06c75">Add&lt;/span>(&lt;span style="color:#c678dd">new&lt;/span> &lt;span style="color:#e06c75">IMGUIContainer&lt;/span>(&lt;span style="color:#e06c75">OnInspectorGUI&lt;/span>));
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Unity Mathf 笔记</title><link>https://chneixn.github.io/post/unitymathf/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/unitymathf/</guid><description>&lt;h1 id="pingpong">PingPong&lt;/h1>
+&lt;p>PingPong 返回一个在零和长度之间递增和递减的值。它遵循三角波公式，其中底部设置为零，峰值设置为长度。&lt;/p>
+&lt;p>PingPong 要求值 t 是自增量值。例如，Time.time和Time.unscaledTime。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e5c07b">var&lt;/span> &lt;span style="color:#e06c75">amplitude&lt;/span> = &lt;span style="color:#d19a66">2&lt;/span>; &lt;span style="color:#7f848e">// 振幅&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e5c07b">var&lt;/span> &lt;span style="color:#e06c75">period&lt;/span> = &lt;span style="color:#d19a66">2&lt;/span>; &lt;span style="color:#7f848e">// 一往復する周期（秒）&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e5c07b">var&lt;/span> &lt;span style="color:#e06c75">phase&lt;/span> = &lt;span style="color:#d19a66">0.25f&lt;/span>; &lt;span style="color:#7f848e">// 位相（１で１周分）&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7f848e">// 位相を考慮した時間補正&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e5c07b">var&lt;/span> &lt;span style="color:#e06c75">t&lt;/span> = &lt;span style="color:#d19a66">4&lt;/span> * &lt;span style="color:#e06c75">amplitude&lt;/span> * (&lt;span style="color:#e06c75">Time&lt;/span>.&lt;span style="color:#e06c75">time&lt;/span> / &lt;span style="color:#e06c75">period&lt;/span> + &lt;span style="color:#e06c75">phase&lt;/span> + &lt;span style="color:#d19a66">0.25f&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7f848e">// 指定された振幅、周期、位相のPingPong&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e5c07b">var&lt;/span> &lt;span style="color:#c678dd">value&lt;/span> = &lt;span style="color:#e06c75">Mathf&lt;/span>.&lt;span style="color:#e06c75">PingPong&lt;/span>(&lt;span style="color:#e06c75">t&lt;/span>, &lt;span style="color:#d19a66">2&lt;/span> * &lt;span style="color:#e06c75">amplitude&lt;/span>) - &lt;span style="color:#e06c75">amplitude&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="assets/unity-pingpong-5-dark-768x440.png" alt="unity-pingpong">&lt;/p></description></item><item><title>Unity XR Interaction 笔记</title><link>https://chneixn.github.io/post/xr-interactiontoolkit/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/xr-interactiontoolkit/</guid><description>&lt;h1 id="interactor">Interactor&lt;/h1>
+&lt;h2 id="select-action-trigger">Select Action Trigger&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Name&lt;/th>
+ &lt;th>Description&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>State&lt;/td>
+ &lt;td>Unity将考虑在按下按钮时激活输入。用户可以在交互成为可能之前保持按钮，并且仍然在交互成为可能时触发交互。（一只手交互时，另一只手不能获取交互物）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>StateChange&lt;/td>
+ &lt;td>Unity将考虑仅在按下按钮的框架上激活输入，如果成功，则保持接合，直到释放输入。当交互可能触发交互时，用户必须按下按钮。如果他们在交互成为可能之前开始按下按钮，他们将不会触发交互。（一只手交互时，另一只手可以获取物品交互权）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Sticky&lt;/td>
+ &lt;td>交互在输入被按压的帧上开始，并且保持接合直到输入被第二次释放。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Toggle&lt;/td>
+ &lt;td>交互在输入被按压的帧上开始，并且保持接合直到输入被第二次按压。&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table></description></item><item><title>Unity XR 像 Alyx 一样抓取物体</title><link>https://chneixn.github.io/post/unityxr-alxygrab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/unityxr-alxygrab/</guid><description>&lt;h1 id="像-alyx-一样抓取物体">像 Alyx 一样抓取物体&lt;/h1>
+&lt;p>Source Video: &lt;a href="https://www.youtube.com/watch?v=WU23Uj1oeh8">https://www.youtube.com/watch?v=WU23Uj1oeh8&lt;/a>&lt;/p>
+&lt;p>基于 Unity XR Interaction Toolkit 2.6.3&lt;/p>
+&lt;h2 id="ray-interactor">Ray Interactor&lt;/h2>
+&lt;p>在 Interaction Layer Mask 设置好交互层级为 &lt;code>Interactable&lt;/code> &lt;code>Default&lt;/code>&lt;/p>
+&lt;p>&lt;code>Anchor Control&lt;/code> 选项可选&lt;/p>
+&lt;p>&lt;img src="RayInteractorInspector.png" alt="RayInteractorInspector">&lt;/p>
+&lt;h2 id="grablale-object">Grablale Object&lt;/h2>
+&lt;p>可以抓取的物体需要有 &lt;code>mesh collider&lt;/code> 组件&lt;/p>
+&lt;p>注意 &lt;code>Interaction Layer Mask&lt;/code> 以及 &lt;code>Movement Type&lt;/code> 的设置&lt;/p>
+&lt;p>&lt;img src="GrablaleObjectInspector.png" alt="GrablaleObjectInspector">&lt;/p>
+&lt;h2 id="xr-alyx-grab-interactable">XR Alyx Grab Interactable&lt;/h2>
+&lt;p>该脚本继承于 &lt;code>XRGrabInteractable&lt;/code>&lt;/p>
+&lt;p>功能简介：&lt;/p>
+&lt;ul>
+&lt;li>对准可抓取的物体时显示射线，物体会显示描边（可选显示一层覆盖颜色）&lt;/li>
+&lt;li>按住抓取按键时选中物体&lt;/li>
+&lt;li>选中物体后将手柄向上提起，物体会向手部位置飞去&lt;/li>
+&lt;/ul>
+&lt;p>❗&lt;strong>飞来的物体需要再次按抓取键才能抓在手上&lt;/strong>&lt;/p>
+&lt;p>下面是脚本代码&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">using&lt;/span> &lt;span style="color:#e06c75">System.Collections&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">using&lt;/span> &lt;span style="color:#e06c75">System.Collections.Generic&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">using&lt;/span> &lt;span style="color:#e06c75">UnityEngine&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">using&lt;/span> &lt;span style="color:#e06c75">UnityEngine.XR.Interaction.Toolkit&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">class&lt;/span> &lt;span style="color:#e5c07b">XRAlyxGrabInteractable&lt;/span> : &lt;span style="color:#e06c75">XRGrabInteractable&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e06c75"> [Tooltip(&amp;#34;跳跃的速度阈值&amp;#34;)]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#e5c07b">float&lt;/span> &lt;span style="color:#e06c75">velocityThreshold&lt;/span> = &lt;span style="color:#d19a66">2f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e06c75"> [Tooltip(&amp;#34;跳跃时的角度&amp;#34;)]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#e5c07b">float&lt;/span> &lt;span style="color:#e06c75">jumpAngleInDegree&lt;/span> = &lt;span style="color:#d19a66">60f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">private&lt;/span> &lt;span style="color:#e06c75">XRRayInteractor&lt;/span> &lt;span style="color:#e06c75">rayInteractor&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">private&lt;/span> &lt;span style="color:#e06c75">Vector3&lt;/span> &lt;span style="color:#e06c75">previousPos&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">private&lt;/span> &lt;span style="color:#e06c75">Rigidbody&lt;/span> &lt;span style="color:#e06c75">rb&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">private&lt;/span> &lt;span style="color:#e5c07b">bool&lt;/span> &lt;span style="color:#e06c75">canJump&lt;/span> = &lt;span style="color:#e5c07b">true&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">protected&lt;/span> &lt;span style="color:#c678dd">override&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">Awake&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">base&lt;/span>.&lt;span style="color:#e06c75">Awake&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">rb&lt;/span> = &lt;span style="color:#e06c75">GetComponent&lt;/span>&amp;lt;&lt;span style="color:#e06c75">Rigidbody&lt;/span>&amp;gt;();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">private&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">Update&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (&lt;span style="color:#e06c75">isSelected&lt;/span> &amp;amp;&amp;amp; &lt;span style="color:#e06c75">canJump&lt;/span> &amp;amp;&amp;amp; &lt;span style="color:#e06c75">firstInteractorSelecting&lt;/span> &lt;span style="color:#c678dd">is&lt;/span> &lt;span style="color:#e06c75">XRRayInteractor&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// 当物体被抓住时，计算速度是否超过阈值，超过则执行跳跃&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">Vector3&lt;/span> &lt;span style="color:#e06c75">velocity&lt;/span> = (&lt;span style="color:#e06c75">rayInteractor&lt;/span>.&lt;span style="color:#e06c75">transform&lt;/span>.&lt;span style="color:#e06c75">position&lt;/span> - &lt;span style="color:#e06c75">previousPos&lt;/span>) / &lt;span style="color:#e06c75">Time&lt;/span>.&lt;span style="color:#e06c75">deltaTime&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">previousPos&lt;/span> = &lt;span style="color:#e06c75">rayInteractor&lt;/span>.&lt;span style="color:#e06c75">transform&lt;/span>.&lt;span style="color:#e06c75">position&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (&lt;span style="color:#e06c75">velocity&lt;/span>.&lt;span style="color:#e06c75">magnitude&lt;/span> &amp;gt; &lt;span style="color:#e06c75">velocityThreshold&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// 脱离抓取&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">Drop&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// 计算跳跃初速度&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">rb&lt;/span>.&lt;span style="color:#e06c75">velocity&lt;/span> = &lt;span style="color:#e06c75">ComputeVelocity&lt;/span>(&lt;span style="color:#e06c75">transform&lt;/span>.&lt;span style="color:#e06c75">position&lt;/span>, &lt;span style="color:#e06c75">rayInteractor&lt;/span>.&lt;span style="color:#e06c75">transform&lt;/span>.&lt;span style="color:#e06c75">position&lt;/span>, &lt;span style="color:#e06c75">jumpAngleInDegree&lt;/span>, &lt;span style="color:#e06c75">Physics&lt;/span>.&lt;span style="color:#e06c75">gravity&lt;/span>.&lt;span style="color:#e06c75">y&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">canJump&lt;/span> = &lt;span style="color:#e5c07b">false&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// &amp;lt;summary&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// 基于重力计算弹道轨迹，计算从自身跳跃到指定地点的跳跃速度&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// &amp;lt;/summary&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// &amp;lt;param name=&amp;#34;selfPos&amp;#34;&amp;gt;&amp;lt;/param&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// &amp;lt;param name=&amp;#34;targetPos&amp;#34;&amp;gt;&amp;lt;/param&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// &amp;lt;param name=&amp;#34;jumpAngle&amp;#34;&amp;gt;&amp;lt;/param&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// &amp;lt;param name=&amp;#34;gravity&amp;#34;&amp;gt;&amp;lt;/param&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">static&lt;/span> &lt;span style="color:#e06c75">Vector3&lt;/span> &lt;span style="color:#e06c75">ComputeVelocity&lt;/span>(&lt;span style="color:#e06c75">Vector3&lt;/span> &lt;span style="color:#e06c75">selfPos&lt;/span>, &lt;span style="color:#e06c75">Vector3&lt;/span> &lt;span style="color:#e06c75">targetPos&lt;/span>, &lt;span style="color:#e5c07b">float&lt;/span> &lt;span style="color:#e06c75">jumpAngle&lt;/span>, &lt;span style="color:#e5c07b">float&lt;/span> &lt;span style="color:#e06c75">gravity&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">Vector3&lt;/span> &lt;span style="color:#e06c75">diff&lt;/span> = &lt;span style="color:#e06c75">targetPos&lt;/span> - &lt;span style="color:#e06c75">selfPos&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">Vector3&lt;/span> &lt;span style="color:#e06c75">diffXZ&lt;/span> = &lt;span style="color:#c678dd">new&lt;/span>(&lt;span style="color:#e06c75">diff&lt;/span>.&lt;span style="color:#e06c75">x&lt;/span>, &lt;span style="color:#d19a66">0&lt;/span>, &lt;span style="color:#e06c75">diff&lt;/span>.&lt;span style="color:#e06c75">z&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e5c07b">float&lt;/span> &lt;span style="color:#e06c75">diffXZLength&lt;/span> = &lt;span style="color:#e06c75">diffXZ&lt;/span>.&lt;span style="color:#e06c75">magnitude&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e5c07b">float&lt;/span> &lt;span style="color:#e06c75">diffYLength&lt;/span> = &lt;span style="color:#e06c75">diff&lt;/span>.&lt;span style="color:#e06c75">y&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e5c07b">float&lt;/span> &lt;span style="color:#e06c75">angleInRadian&lt;/span> = &lt;span style="color:#e06c75">Mathf&lt;/span>.&lt;span style="color:#e06c75">Clamp&lt;/span>(&lt;span style="color:#e06c75">diff&lt;/span>.&lt;span style="color:#e06c75">normalized&lt;/span>.&lt;span style="color:#e06c75">y&lt;/span> * &lt;span style="color:#d19a66">90&lt;/span>, &lt;span style="color:#e06c75">jumpAngle&lt;/span>, &lt;span style="color:#d19a66">90&lt;/span>) * &lt;span style="color:#e06c75">Mathf&lt;/span>.&lt;span style="color:#e06c75">Deg2Rad&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e5c07b">float&lt;/span> &lt;span style="color:#e06c75">jumpSpeed&lt;/span> = &lt;span style="color:#e06c75">Mathf&lt;/span>.&lt;span style="color:#e06c75">Sqrt&lt;/span>(-&lt;span style="color:#e06c75">gravity&lt;/span> * &lt;span style="color:#e06c75">Mathf&lt;/span>.&lt;span style="color:#e06c75">Pow&lt;/span>(&lt;span style="color:#e06c75">diffXZLength&lt;/span>, &lt;span style="color:#d19a66">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> / (&lt;span style="color:#d19a66">2&lt;/span> * &lt;span style="color:#e06c75">Mathf&lt;/span>.&lt;span style="color:#e06c75">Cos&lt;/span>(&lt;span style="color:#e06c75">angleInRadian&lt;/span>) * &lt;span style="color:#e06c75">Mathf&lt;/span>.&lt;span style="color:#e06c75">Cos&lt;/span>(&lt;span style="color:#e06c75">angleInRadian&lt;/span>) * (&lt;span style="color:#e06c75">diffXZ&lt;/span>.&lt;span style="color:#e06c75">magnitude&lt;/span> * &lt;span style="color:#e06c75">Mathf&lt;/span>.&lt;span style="color:#e06c75">Tan&lt;/span>(&lt;span style="color:#e06c75">angleInRadian&lt;/span>) - &lt;span style="color:#e06c75">diffYLength&lt;/span>)));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">Vector3&lt;/span> &lt;span style="color:#e06c75">jumpVelocityVector&lt;/span> = &lt;span style="color:#e06c75">jumpSpeed&lt;/span> * &lt;span style="color:#e06c75">Mathf&lt;/span>.&lt;span style="color:#e06c75">Cos&lt;/span>(&lt;span style="color:#e06c75">angleInRadian&lt;/span>) * &lt;span style="color:#e06c75">diffXZ&lt;/span>.&lt;span style="color:#e06c75">normalized&lt;/span> + &lt;span style="color:#e06c75">jumpSpeed&lt;/span> * &lt;span style="color:#e06c75">Mathf&lt;/span>.&lt;span style="color:#e06c75">Sin&lt;/span>(&lt;span style="color:#e06c75">angleInRadian&lt;/span>) * &lt;span style="color:#e06c75">Vector3&lt;/span>.&lt;span style="color:#e06c75">up&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">return&lt;/span> &lt;span style="color:#e06c75">jumpVelocityVector&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">protected&lt;/span> &lt;span style="color:#c678dd">override&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">OnSelectEntered&lt;/span>(&lt;span style="color:#e06c75">SelectEnterEventArgs&lt;/span> &lt;span style="color:#e06c75">args&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// 控制器检测 只响应射线交互器&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (&lt;span style="color:#e06c75">args&lt;/span>.&lt;span style="color:#e06c75">interactableObject&lt;/span> &lt;span style="color:#c678dd">is&lt;/span> &lt;span style="color:#e06c75">XRRayInteractor&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">trackPosition&lt;/span> = &lt;span style="color:#e5c07b">false&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">trackRotation&lt;/span> = &lt;span style="color:#e5c07b">false&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">throwOnDetach&lt;/span> = &lt;span style="color:#e5c07b">false&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">rayInteractor&lt;/span> = (&lt;span style="color:#e06c75">XRRayInteractor&lt;/span>)&lt;span style="color:#e06c75">args&lt;/span>.&lt;span style="color:#e06c75">interactorObject&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">previousPos&lt;/span> = &lt;span style="color:#e06c75">rayInteractor&lt;/span>.&lt;span style="color:#e06c75">transform&lt;/span>.&lt;span style="color:#e06c75">position&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">canJump&lt;/span> = &lt;span style="color:#e5c07b">true&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">trackPosition&lt;/span> = &lt;span style="color:#e5c07b">true&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">trackRotation&lt;/span> = &lt;span style="color:#e5c07b">true&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">throwOnDetach&lt;/span> = &lt;span style="color:#e5c07b">true&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">base&lt;/span>.&lt;span style="color:#e06c75">OnSelectEntered&lt;/span>(&lt;span style="color:#e06c75">args&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Unity 单例</title><link>https://chneixn.github.io/post/%E5%8D%95%E4%BE%8B/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/%E5%8D%95%E4%BE%8B/</guid><description>&lt;h1 id="继承-monobehaviour">继承 MonoBehaviour&lt;/h1>
+&lt;h2 id="跨场景调用">跨场景调用&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">using&lt;/span> &lt;span style="color:#e06c75">UnityEngine&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">namespace&lt;/span> &lt;span style="color:#e06c75">UnityUtils&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// &amp;lt;summary&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// 跨场景使用的Mono单例基类&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// &amp;lt;/summary&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// &amp;lt;typeparam name=&amp;#34;T&amp;#34;&amp;gt;&amp;lt;/typeparam&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">class&lt;/span> &lt;span style="color:#e5c07b">PersistentSingleton&lt;/span>&amp;lt;&lt;span style="color:#e06c75">T&lt;/span>&amp;gt; : &lt;span style="color:#e06c75">MonoBehaviour&lt;/span> &lt;span style="color:#c678dd">where&lt;/span> &lt;span style="color:#e06c75">T&lt;/span> : &lt;span style="color:#e06c75">Component&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#e5c07b">bool&lt;/span> &lt;span style="color:#e06c75">AutoUnparentOnAwake&lt;/span> = &lt;span style="color:#e5c07b">true&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">protected&lt;/span> &lt;span style="color:#c678dd">static&lt;/span> &lt;span style="color:#e06c75">T&lt;/span> &lt;span style="color:#e06c75">instance&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">static&lt;/span> &lt;span style="color:#e5c07b">bool&lt;/span> &lt;span style="color:#e06c75">HasInstance&lt;/span> =&amp;gt; &lt;span style="color:#e06c75">instance&lt;/span> != &lt;span style="color:#e5c07b">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">static&lt;/span> &lt;span style="color:#e06c75">T&lt;/span> &lt;span style="color:#e06c75">TryGetInstance&lt;/span>() =&amp;gt; &lt;span style="color:#e06c75">HasInstance&lt;/span> ? &lt;span style="color:#e06c75">instance&lt;/span> : &lt;span style="color:#e5c07b">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">static&lt;/span> &lt;span style="color:#e06c75">T&lt;/span> &lt;span style="color:#e06c75">Instance&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">get&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (&lt;span style="color:#e06c75">instance&lt;/span> == &lt;span style="color:#e5c07b">null&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">instance&lt;/span> = &lt;span style="color:#e06c75">FindAnyObjectByType&lt;/span>&amp;lt;&lt;span style="color:#e06c75">T&lt;/span>&amp;gt;();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (&lt;span style="color:#e06c75">instance&lt;/span> == &lt;span style="color:#e5c07b">null&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e5c07b">var&lt;/span> &lt;span style="color:#e06c75">go&lt;/span> = &lt;span style="color:#c678dd">new&lt;/span> &lt;span style="color:#e06c75">GameObject&lt;/span>(&lt;span style="color:#c678dd">typeof&lt;/span>(&lt;span style="color:#e06c75">T&lt;/span>).&lt;span style="color:#e06c75">Name&lt;/span> + &lt;span style="color:#98c379">&amp;#34; Auto-Generated&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">instance&lt;/span> = &lt;span style="color:#e06c75">go&lt;/span>.&lt;span style="color:#e06c75">AddComponent&lt;/span>&amp;lt;&lt;span style="color:#e06c75">T&lt;/span>&amp;gt;();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">return&lt;/span> &lt;span style="color:#e06c75">instance&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// &amp;lt;summary&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// Make sure to call base.Awake() in override if you need awake.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">/// &amp;lt;/summary&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">protected&lt;/span> &lt;span style="color:#c678dd">virtual&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">Awake&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">InitializeSingleton&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">protected&lt;/span> &lt;span style="color:#c678dd">virtual&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">InitializeSingleton&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (!&lt;span style="color:#e06c75">Application&lt;/span>.&lt;span style="color:#e06c75">isPlaying&lt;/span>) &lt;span style="color:#c678dd">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (&lt;span style="color:#e06c75">AutoUnparentOnAwake&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">transform&lt;/span>.&lt;span style="color:#e06c75">SetParent&lt;/span>(&lt;span style="color:#e5c07b">null&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (&lt;span style="color:#e06c75">instance&lt;/span> == &lt;span style="color:#e5c07b">null&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">instance&lt;/span> = &lt;span style="color:#c678dd">this&lt;/span> &lt;span style="color:#c678dd">as&lt;/span> &lt;span style="color:#e06c75">T&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">DontDestroyOnLoad&lt;/span>(&lt;span style="color:#e06c75">gameObject&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (&lt;span style="color:#e06c75">instance&lt;/span> != &lt;span style="color:#c678dd">this&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">Destroy&lt;/span>(&lt;span style="color:#e06c75">gameObject&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="同场景调用">同场景调用&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">using&lt;/span> &lt;span style="color:#e06c75">System.Collections&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">using&lt;/span> &lt;span style="color:#e06c75">System.Collections.Generic&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">using&lt;/span> &lt;span style="color:#e06c75">UnityEngine&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7f848e">/// &amp;lt;summary&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7f848e">/// 单例模式基类 同场景内使用&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7f848e">/// &amp;lt;/summary&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7f848e">/// &amp;lt;typeparam name=&amp;#34;T&amp;#34;&amp;gt;子类&amp;lt;/typeparam&amp;gt; &amp;lt;summary&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">class&lt;/span> &lt;span style="color:#e5c07b">SameSceneSingleMono&lt;/span>&amp;lt;&lt;span style="color:#e06c75">T&lt;/span>&amp;gt; : &lt;span style="color:#e06c75">MonoBehaviour&lt;/span> &lt;span style="color:#c678dd">where&lt;/span> &lt;span style="color:#e06c75">T&lt;/span> : &lt;span style="color:#e06c75">SameSceneSingleMono&lt;/span>&amp;lt;&lt;span style="color:#e06c75">T&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">static&lt;/span> &lt;span style="color:#e06c75">T&lt;/span> &lt;span style="color:#e06c75">Instance&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">protected&lt;/span> &lt;span style="color:#c678dd">virtual&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">Awake&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (&lt;span style="color:#e06c75">Instance&lt;/span> != &lt;span style="color:#e5c07b">null&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">Debug&lt;/span>.&lt;span style="color:#e06c75">LogError&lt;/span>(&lt;span style="color:#c678dd">this&lt;/span> + &lt;span style="color:#98c379">&amp;#34;出现多个单例!&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">Instance&lt;/span> = (&lt;span style="color:#e06c75">T&lt;/span>)&lt;span style="color:#c678dd">this&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">protected&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">OnDestroy&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">Destroy&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">Destroy&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">Instance&lt;/span> = &lt;span style="color:#e5c07b">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Unity 的热更新</title><link>https://chneixn.github.io/post/%E7%83%AD%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%9D%97/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/%E7%83%AD%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%9D%97/</guid><description>&lt;h1 id="热更新">热更新&lt;/h1>
+&lt;h2 id="hybridclr--addressable">HybridCLR + Addressable&lt;/h2>
+&lt;h3 id="环境确认">环境确认&lt;/h3>
+&lt;h4 id="11-unity">1.1 Unity&lt;/h4>
+&lt;p>1.1.1 使用的Unity版本为2022.3.13f1&lt;/p>
+&lt;p>1.1.2 安装UnityComponent添加对IL2CPP的支持&lt;/p>
+&lt;p>笔记：https://blog.csdn.net/Chenxin_37/article/details/136747145&lt;/p>
+&lt;h4 id="12-visual-studio">1.2 Visual Studio&lt;/h4>
+&lt;p>1.2.1 安装“使用Unity的游戏开发”和“使用C++的游戏开发”套件&lt;/p>
+&lt;p>1.2.2 安装Window10-SDK最新版即可&lt;/p>
+&lt;p>&lt;img src="assets/image.png" alt="image">&lt;/p>
+&lt;h3 id="框架搭建">框架搭建&lt;/h3>
+&lt;h4 id="21-创建新项目">2.1 创建新项目&lt;/h4>
+&lt;p>2.2 安装HybridCLR&lt;/p>
+&lt;p>安装详看文档&lt;/p>
+&lt;p>文档主页：https://hybridclr.doc.code-philosophy.com/docs/beginner/quickstart&lt;/p></description></item><item><title>Unity 动画 API</title><link>https://chneixn.github.io/post/animation-api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/animation-api/</guid><description>&lt;h1 id="判断animator中是否存在动画">判断Animator中是否存在动画&lt;/h1>
+&lt;p>Unity中的animator是以哈希值存储动画状态的索引，先通过动画片段名字字符串获取哈希值，再用HasState这个API获取存在状态&lt;/p>
+&lt;p>再通过&lt;code>animator.CrossFadeInFixedTime(animationName, time);&lt;/code>过渡动画&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-C#" data-lang="C#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e5c07b">string&lt;/span> &lt;span style="color:#e06c75">animationName&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e5c07b">int&lt;/span> &lt;span style="color:#e06c75">stateID&lt;/span> = &lt;span style="color:#e06c75">Animator&lt;/span>.&lt;span style="color:#e06c75">StringToHash&lt;/span>(&lt;span style="color:#e06c75">animationName&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e5c07b">bool&lt;/span> &lt;span style="color:#e06c75">hasAnimation&lt;/span> = &lt;span style="color:#e06c75">animator&lt;/span>.&lt;span style="color:#e06c75">HasState&lt;/span>(&lt;span style="color:#e06c75">layerIndex&lt;/span>, &lt;span style="color:#e06c75">stateID&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Unity 基于下推状态机的输入系统解决方案</title><link>https://chneixn.github.io/post/input/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/input/</guid><description>&lt;h1 id="基于-unityinputsystem-和下推状态机的输入系统解决方案">基于 Unity.InputSystem 和下推状态机的输入系统解决方案&lt;/h1>
+&lt;blockquote>
+&lt;p>原贴地址：&lt;a href="https://zhuanlan.zhihu.com/p/527283873">王子饼干 - 知乎&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;h2 id="unityinputststem的优点">&lt;strong>Unity.InputStstem的优点&lt;/strong>&lt;/h2>
+&lt;p>InputSystem的优点在于它能够便捷的识别不同设备的按键输入，并使同一动作对不同设备的输入做出响应。&lt;/p>
+&lt;p>原生提供了开启和阻断输入的方法，以及切换绑定按键的方式。&lt;/p>
+&lt;h2 id="代理控制器">&lt;strong>代理控制器&lt;/strong>&lt;/h2>
+&lt;p>创建 DRockBridge 作为一个代理控制器来接收 InputSystem 的控制，然后这个代理对象再去控制上层游戏对象。&lt;/p>
+&lt;p>这样的 InputSystem 只需要与 Bridge 交流，游戏对象也只需要从 Bridge 接受输入。&lt;/p>
+&lt;p>同时也只需要在 Bridge 中切换绑定按键，而不影响游戏对象。&lt;/p>
+&lt;p>&lt;img src="./assets/input.png" alt="input">&lt;/p>
+&lt;h2 id="创建通用状态机">&lt;strong>创建通用状态机&lt;/strong>&lt;/h2>
+&lt;p>为什么要用状态机来管理所有控制对象，简单来说，大部分的时候只有一个控制器是有效的，而这个控制器被激活时也往往伴随着它要控制的 GameObject 的激活。比如打开主菜单时，代码需要激活主菜单，与此同时关闭角色控制器并打开 UI 控制器。&lt;/p></description></item><item><title>Unity 客户端开发问题笔记</title><link>https://chneixn.github.io/post/unity%E9%9D%A2%E8%AF%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/unity%E9%9D%A2%E8%AF%95/</guid><description>&lt;p>3.3 游戏开发问题&lt;/p>
+&lt;p>关于游戏开发的通用问题。各个模块会再问一些特定引擎的问题，对照上面的3.2。&lt;/p>
+&lt;p>1.游戏AI&lt;/p>
+&lt;p>①常用的做法简述（NavMesh + 寻路）&lt;/p>
+&lt;p>②NavMesh的生成过程简述&lt;/p>
+&lt;p>③A*寻路算法的原理&lt;/p>
+&lt;p>④是否了解多个AI都在自动寻路时的动态避障算法&lt;/p>
+&lt;p>2.物理碰撞&lt;/p>
+&lt;p>①如何判断子弹射击到敌人（然后继续问包围盒、碰撞检测算法等），如果子弹特别快怎么办&lt;/p>
+&lt;p>②BVH、八叉树等场景管理加速结构，在这些树上检测碰撞的过程&lt;/p>
+&lt;p>3.网络同步&lt;/p>
+&lt;p>①状态同步和帧同步的原理&lt;/p></description></item><item><title>Unity 序列化笔记</title><link>https://chneixn.github.io/post/unity%E5%BA%8F%E5%88%97%E5%8C%96/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/unity%E5%BA%8F%E5%88%97%E5%8C%96/</guid><description>&lt;h2 id="不支持-unity-序列化的字段">不支持 Unity 序列化的字段&lt;/h2>
+&lt;p>静态字段 static fields&lt;/p>
+&lt;p>只读字段 readonly fields&lt;/p>
+&lt;p>常量 const fields&lt;/p>
+&lt;p>未带有 [field: SerializeFied] 特性的属性&lt;/p>
+&lt;h2 id="支持-unity-序列化的字段">支持 Unity 序列化的字段&lt;/h2>
+&lt;p>公开的 非静态 非只读 非常量 字段&lt;/p>
+&lt;p>public non-static non-readonly non-const fields&lt;/p>
+&lt;p>带有 [SerialzeFied] 的非静态 非只读 非常量 字段&lt;/p></description></item><item><title>Unity 学习 Demo 的模块任务表</title><link>https://chneixn.github.io/post/demo%E7%9A%84%E6%A8%A1%E5%9D%97%E4%BB%BB%E5%8A%A1%E8%A1%A8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/demo%E7%9A%84%E6%A8%A1%E5%9D%97%E4%BB%BB%E5%8A%A1%E8%A1%A8/</guid><description>&lt;h1 id="3d-demo">3D Demo&lt;/h1>
+&lt;h2 id="特点">特点&lt;/h2>
+&lt;p>Reliable FPS System 可靠的fps系统&lt;/p>
+&lt;p>Smooth Control And Responsive 流畅的控制和灵敏的反应&lt;/p>
+&lt;p>Fullbody System 全身渲染和运动系统&lt;/p>
+&lt;h2 id="功能模块">功能模块&lt;/h2>
+&lt;h3 id="ui框架todo">&lt;strong>UI框架（TODO）&lt;/strong>&lt;/h3>
+&lt;p>基于Dotween进行UI动效制作&lt;/p>
+&lt;h3 id="存档系统">&lt;strong>存档系统✓&lt;/strong>&lt;/h3>
+&lt;p>利用双列表建立可序列化字典，进行游戏数据记录，存档时转为JSON文件实现数据持久化保存和读取&lt;/p>
+&lt;h3 id="库存系统">&lt;strong>库存系统✓&lt;/strong>&lt;/h3>
+&lt;p>基于ScriptableObject的物品数据库&lt;/p>
+&lt;h3 id="交互操作">&lt;strong>交互操作✓&lt;/strong>&lt;/h3>
+&lt;h3 id="camera">&lt;strong>Camera✓&lt;/strong>&lt;/h3>
+&lt;p>使用Unity提供的Cinemachine进行相机管理，实现第一人称视角与第三人称视角的相机跟随&lt;/p>
+&lt;h3 id="角色控制系统doing">&lt;strong>角色控制系统（Doing）&lt;/strong>&lt;/h3>
+&lt;p>基于Unity.InputSystem和下推状态机的输入系统解决方案&lt;/p></description></item><item><title>Unity 优化笔记</title><link>https://chneixn.github.io/post/unity%E4%BC%98%E5%8C%96%E6%B3%A8%E6%84%8F/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/unity%E4%BC%98%E5%8C%96%E6%B3%A8%E6%84%8F/</guid><description>&lt;h1 id="code">Code&lt;/h1>
+&lt;p>继承于unityobject的类的判空，unity对于 == 进行了重构，会带来GC消耗，因此尽量不要在update处进行判空&lt;/p></description></item><item><title>基于行为树的 AI</title><link>https://chneixn.github.io/post/%E5%9F%BA%E4%BA%8E%E8%A1%8C%E4%B8%BA%E6%A0%91%E7%9A%84ai/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/%E5%9F%BA%E4%BA%8E%E8%A1%8C%E4%B8%BA%E6%A0%91%E7%9A%84ai/</guid><description>&lt;h1 id="行为树">行为树&lt;/h1>
+&lt;h1 id="示例">示例&lt;/h1>
+&lt;h2 id="僵尸-ai">僵尸 AI&lt;/h2>
+&lt;h3 id="特点">特点&lt;/h3>
+&lt;p>僵尸 AI 能根据自身情况（生命值，中枪与否）和外部条件（周围是否存在玩家），采取合理的行动。&lt;/p>
+&lt;h3 id="ai基础">&lt;strong>AI基础&lt;/strong>&lt;/h3>
+&lt;p>基本行为操控（靠近，远离，追逐，逃避&amp;hellip;）&lt;/p>
+&lt;p>寻路能力（从游戏场景中一个位置移动到另一个位置，最短路径）&lt;/p>
+&lt;p>感知能力（自身状态如血量，听觉和视觉等感知能力）&lt;/p>
+&lt;p>自主决策能力（根据自身状态和外部条件作出合理的反应）&lt;/p>
+&lt;h3 id="基本行为操控">&lt;strong>基本行为操控&lt;/strong>&lt;/h3>
+&lt;p>基本运动：行走，奔跑&lt;/p>
+&lt;p>高级运动：跳跃，攀爬，躲避&lt;/p>
+&lt;p>攻击：近身攻击，远程攻击，破坏障碍物&lt;/p>
+&lt;h3 id="寻路">&lt;strong>寻路&lt;/strong>&lt;/h3>
+&lt;p>使用 Unity 的 Navigation 导航系统，实现自动寻路。&lt;/p></description></item><item><title>集群行为 AI子模块</title><link>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E9%9B%86%E7%BE%A4%E8%A1%8C%E4%B8%BA/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E9%9B%86%E7%BE%A4%E8%A1%8C%E4%B8%BA/</guid><description>&lt;h1 id="类鸟群行为集群行为">类鸟群行为（集群行为）&lt;/h1>
+&lt;p>有时在游戏中为了添加沉浸感，会在深海环境，自然开放环境加入鸟群，鱼群。如何控制鸟群的运动，使其符合现实，不会突兀，且性能友好是该部分讨论的内容。&lt;/p>
+&lt;p>参考视频：https://www.youtube.com/watch?v=bqtqltqcQhw&lt;/p>
+&lt;p>国内视频翻译：https://www.bilibili.com/video/BV1VJ411y7wE/&lt;/p>
+&lt;p>鸟群中每只鸟有以下三个规则：&lt;/p>
+&lt;p>偏离附近的其他鸟（分离）&lt;/p>
+&lt;p>迎合附近鸟群，转向同一方向（对齐）&lt;/p></description></item><item><title>库存管理系统</title><link>https://chneixn.github.io/post/charactercontrol/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/charactercontrol/</guid><description>&lt;h1 id="模块化角色控制状态机">模块化角色控制状态机&lt;/h1>
+&lt;p>在我的 3D Demo 中，我需要控制一个具有高可扩展性的角色控制器，因此对其开始探究&lt;/p>
+&lt;p>由于对引擎代码的理解不深，也暂时没有什么兴趣研究，因此选择了基于 KCC 角色控制器框架进行开发&lt;/p>
+&lt;p>文章引用：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://developer.unity.cn/projects/67399c19edbc2a001e3f7076">有限状态机的实现与使用&lt;/a>&lt;/li>
+&lt;li>Kinematic Character Controller&lt;/li>
+&lt;/ul>
+&lt;h2 id="charactercontrol">CharacterControl&lt;/h2>
+&lt;blockquote>
+&lt;p>继承 MonoBehaviour, ICharacterController&lt;/p>&lt;/blockquote>
+&lt;p>角色的控制器，也是这个模块最重要的一个组件&lt;/p>
+&lt;p>担任 MVC 模式中 Controller 角色&lt;/p>
+&lt;p>所有的状态模块在实例化后都需要在 CreateFSM 方法中加入 FSM 中才能被角色启用&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">private&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">CreateFSM&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// 在创建状态机时输入第一个状态&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">FSM&lt;/span> = &lt;span style="color:#c678dd">new&lt;/span>(&lt;span style="color:#e06c75">idle&lt;/span>, &lt;span style="color:#c678dd">this&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">FSM&lt;/span>.&lt;span style="color:#e06c75">AddState&lt;/span>(&lt;span style="color:#e06c75">fly&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">FSM&lt;/span>.&lt;span style="color:#e06c75">AddState&lt;/span>(&lt;span style="color:#e06c75">inAir&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">FSM&lt;/span>.&lt;span style="color:#e06c75">AddState&lt;/span>(&lt;span style="color:#e06c75">crouching&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="imovementstate">IMovementState&lt;/h2>
+&lt;blockquote>
+&lt;p>继承 ICharacterController&lt;/p>&lt;/blockquote>
+&lt;p>状态模块的基类，所有自定义的状态模块都需要继承该类&lt;/p></description></item><item><title>库存管理系统</title><link>https://chneixn.github.io/post/%E5%BA%93%E5%AD%98%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/%E5%BA%93%E5%AD%98%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid><description>&lt;h1 id="库存管理模块-inventory-system">库存管理模块 Inventory System&lt;/h1>
+&lt;h2 id="功能实现">功能实现&lt;/h2>
+&lt;h3 id="编辑器功能editor">编辑器功能（Editor）&lt;/h3>
+&lt;ul>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 列表显示物品库里所有物品&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 新增 Item 可以自动赋予 ID&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 允许编辑 ID&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 增加 Tip 提示&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 增加 Item 搜索功能&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 增加从 Excel 导入导出功能&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 增加从 JSON 导入导出功能&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> Item 可以使用 ItemType 进行分类显示&lt;/li>
+&lt;/ul>
+&lt;h3 id="游戏内界面ui">游戏内界面（UI）&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;input disabled="" type="checkbox"> 塔科夫式背包&lt;/p>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> 背包固定格子，每个物品需要占用不同的格子大小&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 支持拖拽移动背包物品&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 支持给可使用物品设置使用热键&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;input checked="" disabled="" type="checkbox"> 显示快捷物品栏&lt;/p>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> 允许在快捷物品栏滚轮切换物品选择&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 动态调整快捷物品栏容量&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;input disabled="" type="checkbox"> 背包界面&lt;/p>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> 允许鼠标拖拽物品&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 组合键获取一半的物品&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="核心代码code">核心代码（Code）&lt;/h3></description></item><item><title>搜索</title><link>https://chneixn.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/search/</guid><description/></item><item><title>随机洗牌算法</title><link>https://chneixn.github.io/post/%E6%B4%97%E7%89%8C/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/%E6%B4%97%E7%89%8C/</guid><description>&lt;h1 id="随机洗牌-knuth-durstenfeld-shuffle">随机洗牌 Knuth-Durstenfeld Shuffle&lt;/h1>
+&lt;blockquote>
+&lt;p>算法时间复杂度 &lt;em>O(n)&lt;/em>&lt;/p>
+&lt;p>算法空间复杂度 &lt;em>O(1)&lt;/em>&lt;/p>&lt;/blockquote>
+&lt;p>假设有这样一个数组 &lt;code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]&lt;/code>，我们使用 Knuth-Shuffle 算法将数据打乱。&lt;/p>
+&lt;p>基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第 1 个数之间，&lt;em>随机&lt;/em>选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的 Random 随机一个索引即可）。&lt;/p>
+&lt;p>例如上面的数组，第一次循环，当前数字为 10，我们从 1~10 之间，随机选择一个数，与 10 交换，这样第 9 个索引位就算洗完了，接下来就是第 8 个索引位，也就是数字为 9，我们从第 1 个索引位与第 8 个索引位之间，选择一个数，第 9 交换，这样第 8 个索引位也就洗完了&amp;hellip;&lt;/p></description></item><item><title>寻路算法</title><link>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/</guid><description>&lt;h1 id="动态避障算法-rvo">动态避障算法 RVO&lt;/h1>
+&lt;p>RVO是基于VO算法的优化&lt;/p>
+&lt;p>源码作者Github：https://github.com/snape&lt;/p>
+&lt;p>RVO仓库：https://gamma.cs.unc.edu/RVO2/&lt;/p>
+&lt;p>Unity实现例子：https://github.com/warmtrue/RVO2-Unity/tree/master&lt;/p>
+&lt;p>RVO算法的优化：&lt;/p>
+&lt;p>ORCA**（Optimal Reciprocal Collision Avoidance）**&lt;/p>
+&lt;p>ORCA中文文档：https://blog.csdn.net/u012740992/article/details/89397714&lt;/p></description></item></channel></rss>

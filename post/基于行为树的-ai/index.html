@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="行为树 示例 僵尸 AI 特点 僵尸 AI 能根据自身情况（生命值，中枪与否）和外部条件（周围是否存在玩家），采取合理的行动。\nAI基础 基本行为操控（靠近，远离，追逐，逃避&hellip;）\n寻路能力（从游戏场景中一个位置移动到另一个位置，最短路径）\n感知能力（自身状态如血量，听觉和视觉等感知能力）\n自主决策能力（根据自身状态和外部条件作出合理的反应）\n基本行为操控 基本运动：行走，奔跑\n高级运动：跳跃，攀爬，躲避\n攻击：近身攻击，远程攻击，破坏障碍物\n寻路 使用 Unity 的 Navigation 导航系统，实现自动寻路。\n">
+<title>基于行为树的 AI</title>
+
+<link rel='canonical' href='http://localhost:1313/post/%E5%9F%BA%E4%BA%8E%E8%A1%8C%E4%B8%BA%E6%A0%91%E7%9A%84-ai/'>
+
+<link rel="stylesheet" href="/scss/style.min.14fc16a329537716096bd4b9d80d61feea0f38415f0c1b359cdec11a83fedbad.css"><meta property='og:title' content="基于行为树的 AI">
+<meta property='og:description' content="行为树 示例 僵尸 AI 特点 僵尸 AI 能根据自身情况（生命值，中枪与否）和外部条件（周围是否存在玩家），采取合理的行动。\nAI基础 基本行为操控（靠近，远离，追逐，逃避&hellip;）\n寻路能力（从游戏场景中一个位置移动到另一个位置，最短路径）\n感知能力（自身状态如血量，听觉和视觉等感知能力）\n自主决策能力（根据自身状态和外部条件作出合理的反应）\n基本行为操控 基本运动：行走，奔跑\n高级运动：跳跃，攀爬，躲避\n攻击：近身攻击，远程攻击，破坏障碍物\n寻路 使用 Unity 的 Navigation 导航系统，实现自动寻路。\n">
+<meta property='og:url' content='http://localhost:1313/post/%E5%9F%BA%E4%BA%8E%E8%A1%8C%E4%B8%BA%E6%A0%91%E7%9A%84-ai/'>
+<meta property='og:site_name' content='Chneixn Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Unity' /><meta property='article:tag' content='AI' />
+<meta name="twitter:title" content="基于行为树的 AI">
+<meta name="twitter:description" content="行为树 示例 僵尸 AI 特点 僵尸 AI 能根据自身情况（生命值，中枪与否）和外部条件（周围是否存在玩家），采取合理的行动。\nAI基础 基本行为操控（靠近，远离，追逐，逃避&hellip;）\n寻路能力（从游戏场景中一个位置移动到另一个位置，最短路径）\n感知能力（自身状态如血量，听觉和视觉等感知能力）\n自主决策能力（根据自身状态和外部条件作出合理的反应）\n基本行为操控 基本运动：行走，奔跑\n高级运动：跳跃，攀爬，躲避\n攻击：近身攻击，远程攻击，破坏障碍物\n寻路 使用 Unity 的 Navigation 导航系统，实现自动寻路。\n">
+    <link rel="shortcut icon" href="/icons/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_9a7db2fefd0155a4.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Chneixn Blog</a></h1>
+            <h2 class="site-description">世界以痛吻我，要我报之以歌</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#僵尸-ai">僵尸 AI</a>
+      <ol>
+        <li><a href="#特点">特点</a></li>
+        <li><a href="#ai基础"><strong>AI基础</strong></a></li>
+        <li><a href="#基本行为操控"><strong>基本行为操控</strong></a></li>
+        <li><a href="#寻路"><strong>寻路</strong></a></li>
+        <li><a href="#感知能力"><strong>感知能力</strong></a></li>
+        <li><a href="#视觉"><strong>视觉</strong></a></li>
+        <li><a href="#听觉"><strong>听觉</strong></a></li>
+        <li><a href="#受击反馈"><strong>受击反馈</strong></a></li>
+        <li><a href="#自主决策能力"><strong>自主决策能力</strong></a>
+          <ol>
+            <li><a href="#有限状态机finite-state-machine">有限状态机（Finite State Machine）</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/unity/" >
+                Unity
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/%E5%9F%BA%E4%BA%8E%E8%A1%8C%E4%B8%BA%E6%A0%91%E7%9A%84-ai/">基于行为树的 AI</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 2 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="行为树"><a href="#%e8%a1%8c%e4%b8%ba%e6%a0%91" class="header-anchor"></a>行为树
+</h1><h1 id="示例"><a href="#%e7%a4%ba%e4%be%8b" class="header-anchor"></a>示例
+</h1><h2 id="僵尸-ai"><a href="#%e5%83%b5%e5%b0%b8-ai" class="header-anchor"></a>僵尸 AI
+</h2><h3 id="特点"><a href="#%e7%89%b9%e7%82%b9" class="header-anchor"></a>特点
+</h3><p>僵尸 AI 能根据自身情况（生命值，中枪与否）和外部条件（周围是否存在玩家），采取合理的行动。</p>
+<h3 id="ai基础"><a href="#ai%e5%9f%ba%e7%a1%80" class="header-anchor"></a><strong>AI基础</strong>
+</h3><p>基本行为操控（靠近，远离，追逐，逃避&hellip;）</p>
+<p>寻路能力（从游戏场景中一个位置移动到另一个位置，最短路径）</p>
+<p>感知能力（自身状态如血量，听觉和视觉等感知能力）</p>
+<p>自主决策能力（根据自身状态和外部条件作出合理的反应）</p>
+<h3 id="基本行为操控"><a href="#%e5%9f%ba%e6%9c%ac%e8%a1%8c%e4%b8%ba%e6%93%8d%e6%8e%a7" class="header-anchor"></a><strong>基本行为操控</strong>
+</h3><p>基本运动：行走，奔跑</p>
+<p>高级运动：跳跃，攀爬，躲避</p>
+<p>攻击：近身攻击，远程攻击，破坏障碍物</p>
+<h3 id="寻路"><a href="#%e5%af%bb%e8%b7%af" class="header-anchor"></a><strong>寻路</strong>
+</h3><p>使用 Unity 的 Navigation 导航系统，实现自动寻路。</p>
+<h3 id="感知能力"><a href="#%e6%84%9f%e7%9f%a5%e8%83%bd%e5%8a%9b" class="header-anchor"></a><strong>感知能力</strong>
+</h3><h3 id="视觉"><a href="#%e8%a7%86%e8%a7%89" class="header-anchor"></a><strong>视觉</strong>
+</h3><p>能够感知到玩家是否在视野范围内，视野内是否有障碍物</p>
+<h3 id="听觉"><a href="#%e5%90%ac%e8%a7%89" class="header-anchor"></a><strong>听觉</strong>
+</h3><p>能够感知到玩家的脚步声，枪声，环境噪声（如爆炸，器械启动）</p>
+<h3 id="受击反馈"><a href="#%e5%8f%97%e5%87%bb%e5%8f%8d%e9%a6%88" class="header-anchor"></a><strong>受击反馈</strong>
+</h3><p>在受到伤害时（如玩家攻击，爆炸等），会有受击动作，同时能感知到伤害来源</p>
+<h3 id="自主决策能力"><a href="#%e8%87%aa%e4%b8%bb%e5%86%b3%e7%ad%96%e8%83%bd%e5%8a%9b" class="header-anchor"></a><strong>自主决策能力</strong>
+</h3><p>实现方式有：有限状态机，行为树，行为树与有限状态机结合</p>
+<h4 id="有限状态机finite-state-machine"><a href="#%e6%9c%89%e9%99%90%e7%8a%b6%e6%80%81%e6%9c%bafinite-state-machine" class="header-anchor"></a>有限状态机（Finite State Machine）
+</h4><p>稍微复杂的僵尸逻辑</p>
+<p>僵尸的感知范围内没有玩家时-&gt;僵尸随机游荡</p>
+<p>僵尸受到攻击-&gt;僵尸向开枪时所在的方向进行搜索</p>
+<p>僵尸感知到玩家-&gt;僵尸追踪玩家</p>
+<p>玩家进入僵尸攻击范围-&gt;僵尸攻击玩家</p>
+<p>玩家死亡或脱离僵尸感知范围-&gt;僵尸回到随机游荡</p>
+<p>僵尸生命值变为0-&gt;僵尸进入死亡状态</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/unity/">Unity</a>
+        
+            <a href="/tags/ai/">AI</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">寻路算法</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/%E9%9B%86%E7%BE%A4%E8%A1%8C%E4%B8%BA-ai%E5%AD%90%E6%A8%A1%E5%9D%97/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">集群行为 AI子模块</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unitask-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">UniTask 学习笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unity-cinemachine-3.0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity Cinemachine 3.0</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unity-inspector-%E6%8B%93%E5%B1%95%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity Inspector 拓展笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2024 -
+        
+        2025 Chneixn Blog
+    </section>
+
+    
+    <section class="totalcount">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        发表了23篇文章 ·
+        总计8.97k字
+    </section>
+
+    <section class="powerby">
+        
+        © Chneixn 2726269548@qq.com <br />
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
+                data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.e2f4cfbf6362fdc1ca06af81f4f8441841c51ca7e52665f5c5ab24ba7ebb14b0.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

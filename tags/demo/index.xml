@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Demo on Chneixn Blog</title><link>https://chneixn.github.io/tags/demo/</link><description>Recent content in Demo on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://chneixn.github.io/tags/demo/index.xml" rel="self" type="application/rss+xml"/><item><title>Unity 学习 Demo 的模块任务表</title><link>https://chneixn.github.io/post/demo%E7%9A%84%E6%A8%A1%E5%9D%97%E4%BB%BB%E5%8A%A1%E8%A1%A8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/demo%E7%9A%84%E6%A8%A1%E5%9D%97%E4%BB%BB%E5%8A%A1%E8%A1%A8/</guid><description>&lt;h1 id="3d-demo">3D Demo&lt;/h1>
+&lt;h2 id="特点">特点&lt;/h2>
+&lt;p>Reliable FPS System 可靠的fps系统&lt;/p>
+&lt;p>Smooth Control And Responsive 流畅的控制和灵敏的反应&lt;/p>
+&lt;p>Fullbody System 全身渲染和运动系统&lt;/p>
+&lt;h2 id="功能模块">功能模块&lt;/h2>
+&lt;h3 id="ui框架todo">&lt;strong>UI框架（TODO）&lt;/strong>&lt;/h3>
+&lt;p>基于Dotween进行UI动效制作&lt;/p>
+&lt;h3 id="存档系统">&lt;strong>存档系统✓&lt;/strong>&lt;/h3>
+&lt;p>利用双列表建立可序列化字典，进行游戏数据记录，存档时转为JSON文件实现数据持久化保存和读取&lt;/p>
+&lt;h3 id="库存系统">&lt;strong>库存系统✓&lt;/strong>&lt;/h3>
+&lt;p>基于ScriptableObject的物品数据库&lt;/p>
+&lt;h3 id="交互操作">&lt;strong>交互操作✓&lt;/strong>&lt;/h3>
+&lt;h3 id="camera">&lt;strong>Camera✓&lt;/strong>&lt;/h3>
+&lt;p>使用Unity提供的Cinemachine进行相机管理，实现第一人称视角与第三人称视角的相机跟随&lt;/p>
+&lt;h3 id="角色控制系统doing">&lt;strong>角色控制系统（Doing）&lt;/strong>&lt;/h3>
+&lt;p>基于Unity.InputSystem和下推状态机的输入系统解决方案&lt;/p></description></item></channel></rss>

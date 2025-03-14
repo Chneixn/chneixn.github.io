@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Stack on Chneixn Blog</title><link>https://chneixn.github.io/tags/stack/</link><description>Recent content in Stack on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://chneixn.github.io/tags/stack/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo Stack 个性化修改</title><link>https://chneixn.github.io/post/hugo-stack/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/hugo-stack/</guid><description>&lt;h1 id="总字数统计-发表了x篇文章共计x字">总字数统计 “发表了x篇文章，共计x字”&lt;/h1>
+&lt;p>在 &lt;code>layouts/partials/footer/footer.html&lt;/code> 文件中添加以下代码&lt;/p>
+&lt;p>参考 &lt;a href="https://thirdshire.com/hugo-stack-renovation/#%E6%80%BB%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E5%8F%91%E8%A1%A8%E4%BA%86x%E7%AF%87%E6%96%87%E7%AB%A0%E5%85%B1%E8%AE%A1x%E5%AD%97">第三夏尔-添加总字数统计&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#7f848e">&amp;lt;!-- Add total page and word count time --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#e06c75">section&lt;/span> &lt;span style="color:#e06c75">class&lt;/span>&lt;span style="color:#56b6c2">=&lt;/span>&lt;span style="color:#98c379">&amp;#34;totalcount&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{$scratch := newScratch}}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{ range (where .Site.Pages &amp;#34;Kind&amp;#34; &amp;#34;page&amp;#34; )}}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{$scratch.Add &amp;#34;total&amp;#34; .WordCount}}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{ end }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 发表了{{ len (where .Site.RegularPages &amp;#34;Section&amp;#34; &amp;#34;post&amp;#34;) }}篇文章 · 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 总计{{ div ($scratch.Get &amp;#34;total&amp;#34;) 1000.0 | lang.FormatNumber 2 }}k字
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#e06c75">section&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在assets/scss/partials/footer.scss里修改风格:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-css" data-lang="css">&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#e5c07b">totalcount&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">color&lt;/span>: &lt;span style="color:#61afef;font-weight:bold">var&lt;/span>(&lt;span style="color:#56b6c2">--&lt;/span>&lt;span style="color:#e06c75">card&lt;/span>&lt;span style="color:#56b6c2">-&lt;/span>&lt;span style="color:#e5c07b">text&lt;/span>&lt;span style="color:#56b6c2">-&lt;/span>&lt;span style="color:#e5c07b">color&lt;/span>&lt;span style="color:#56b6c2">-&lt;/span>&lt;span style="color:#e06c75">secondary&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">font-weight&lt;/span>: &lt;span style="color:#e5c07b">normal&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">margin-bottom&lt;/span>: &lt;span style="color:#d19a66">5&lt;/span>&lt;span style="color:#e5c07b">px&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="修改目录滚动条样式">修改目录滚动条样式&lt;/h1>
+&lt;p>当文章的目录太长时便会产生滚动条，默认的滚动条样式比较丑陋，所以可以修改成如下样式&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ::-webkit-scrollbar {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> width: 20px;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ::-webkit-scrollbar-track {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> background-color: transparent;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ::-webkit-scrollbar-thumb {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> background-color: #d6dee1;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> border-radius: 20px;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> border: 6px solid transparent;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> background-clip: content-box;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ::-webkit-scrollbar-thumb:hover {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> background-color: #a8bbbf;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="支持数学公式编辑">支持数学公式编辑&lt;/h1>
+&lt;p>使文章能够支持数学公式的编辑&lt;/p></description></item></channel></rss>

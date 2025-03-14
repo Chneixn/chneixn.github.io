@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Inventory on Chneixn Blog</title><link>https://chneixn.github.io/tags/inventory/</link><description>Recent content in Inventory on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://chneixn.github.io/tags/inventory/index.xml" rel="self" type="application/rss+xml"/><item><title>库存管理系统</title><link>https://chneixn.github.io/post/charactercontrol/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/charactercontrol/</guid><description>&lt;h1 id="模块化角色控制状态机">模块化角色控制状态机&lt;/h1>
+&lt;p>在我的 3D Demo 中，我需要控制一个具有高可扩展性的角色控制器，因此对其开始探究&lt;/p>
+&lt;p>由于对引擎代码的理解不深，也暂时没有什么兴趣研究，因此选择了基于 KCC 角色控制器框架进行开发&lt;/p>
+&lt;p>文章引用：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://developer.unity.cn/projects/67399c19edbc2a001e3f7076">有限状态机的实现与使用&lt;/a>&lt;/li>
+&lt;li>Kinematic Character Controller&lt;/li>
+&lt;/ul>
+&lt;h2 id="charactercontrol">CharacterControl&lt;/h2>
+&lt;blockquote>
+&lt;p>继承 MonoBehaviour, ICharacterController&lt;/p>&lt;/blockquote>
+&lt;p>角色的控制器，也是这个模块最重要的一个组件&lt;/p>
+&lt;p>担任 MVC 模式中 Controller 角色&lt;/p>
+&lt;p>所有的状态模块在实例化后都需要在 CreateFSM 方法中加入 FSM 中才能被角色启用&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">private&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">CreateFSM&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// 在创建状态机时输入第一个状态&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">FSM&lt;/span> = &lt;span style="color:#c678dd">new&lt;/span>(&lt;span style="color:#e06c75">idle&lt;/span>, &lt;span style="color:#c678dd">this&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">FSM&lt;/span>.&lt;span style="color:#e06c75">AddState&lt;/span>(&lt;span style="color:#e06c75">fly&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">FSM&lt;/span>.&lt;span style="color:#e06c75">AddState&lt;/span>(&lt;span style="color:#e06c75">inAir&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">FSM&lt;/span>.&lt;span style="color:#e06c75">AddState&lt;/span>(&lt;span style="color:#e06c75">crouching&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="imovementstate">IMovementState&lt;/h2>
+&lt;blockquote>
+&lt;p>继承 ICharacterController&lt;/p>&lt;/blockquote>
+&lt;p>状态模块的基类，所有自定义的状态模块都需要继承该类&lt;/p></description></item><item><title>库存管理系统</title><link>https://chneixn.github.io/post/%E5%BA%93%E5%AD%98%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/%E5%BA%93%E5%AD%98%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid><description>&lt;h1 id="库存管理模块-inventory-system">库存管理模块 Inventory System&lt;/h1>
+&lt;h2 id="功能实现">功能实现&lt;/h2>
+&lt;h3 id="编辑器功能editor">编辑器功能（Editor）&lt;/h3>
+&lt;ul>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 列表显示物品库里所有物品&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 新增 Item 可以自动赋予 ID&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 允许编辑 ID&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 增加 Tip 提示&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 增加 Item 搜索功能&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 增加从 Excel 导入导出功能&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 增加从 JSON 导入导出功能&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> Item 可以使用 ItemType 进行分类显示&lt;/li>
+&lt;/ul>
+&lt;h3 id="游戏内界面ui">游戏内界面（UI）&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;input disabled="" type="checkbox"> 塔科夫式背包&lt;/p>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> 背包固定格子，每个物品需要占用不同的格子大小&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 支持拖拽移动背包物品&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 支持给可使用物品设置使用热键&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;input checked="" disabled="" type="checkbox"> 显示快捷物品栏&lt;/p>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> 允许在快捷物品栏滚轮切换物品选择&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 动态调整快捷物品栏容量&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;input disabled="" type="checkbox"> 背包界面&lt;/p>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> 允许鼠标拖拽物品&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 组合键获取一半的物品&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="核心代码code">核心代码（Code）&lt;/h3></description></item></channel></rss>

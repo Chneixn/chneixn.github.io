@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Input on Chneixn Blog</title><link>https://chneixn.github.io/tags/input/</link><description>Recent content in Input on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://chneixn.github.io/tags/input/index.xml" rel="self" type="application/rss+xml"/><item><title>Unity 基于下推状态机的输入系统解决方案</title><link>https://chneixn.github.io/post/input/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/input/</guid><description>&lt;h1 id="基于-unityinputsystem-和下推状态机的输入系统解决方案">基于 Unity.InputSystem 和下推状态机的输入系统解决方案&lt;/h1>
+&lt;blockquote>
+&lt;p>原贴地址：&lt;a href="https://zhuanlan.zhihu.com/p/527283873">王子饼干 - 知乎&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;h2 id="unityinputststem的优点">&lt;strong>Unity.InputStstem的优点&lt;/strong>&lt;/h2>
+&lt;p>InputSystem的优点在于它能够便捷的识别不同设备的按键输入，并使同一动作对不同设备的输入做出响应。&lt;/p>
+&lt;p>原生提供了开启和阻断输入的方法，以及切换绑定按键的方式。&lt;/p>
+&lt;h2 id="代理控制器">&lt;strong>代理控制器&lt;/strong>&lt;/h2>
+&lt;p>创建 DRockBridge 作为一个代理控制器来接收 InputSystem 的控制，然后这个代理对象再去控制上层游戏对象。&lt;/p>
+&lt;p>这样的 InputSystem 只需要与 Bridge 交流，游戏对象也只需要从 Bridge 接受输入。&lt;/p>
+&lt;p>同时也只需要在 Bridge 中切换绑定按键，而不影响游戏对象。&lt;/p>
+&lt;p>&lt;img src="./assets/input.png" alt="input">&lt;/p>
+&lt;h2 id="创建通用状态机">&lt;strong>创建通用状态机&lt;/strong>&lt;/h2>
+&lt;p>为什么要用状态机来管理所有控制对象，简单来说，大部分的时候只有一个控制器是有效的，而这个控制器被激活时也往往伴随着它要控制的 GameObject 的激活。比如打开主菜单时，代码需要激活主菜单，与此同时关闭角色控制器并打开 UI 控制器。&lt;/p></description></item></channel></rss>
