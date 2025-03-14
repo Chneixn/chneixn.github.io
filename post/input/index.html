@@ -11,7 +11,7 @@
 <meta property='og:description' content="基于 Unity.InputSystem 和下推状态机的输入系统解决方案 原贴地址：王子饼干 - 知乎\nUnity.InputStstem的优点 InputSystem的优点在于它能够便捷的识别不同设备的按键输入，并使同一动作对不同设备的输入做出响应。\n原生提供了开启和阻断输入的方法，以及切换绑定按键的方式。\n代理控制器 创建 DRockBridge 作为一个代理控制器来接收 InputSystem 的控制，然后这个代理对象再去控制上层游戏对象。\n这样的 InputSystem 只需要与 Bridge 交流，游戏对象也只需要从 Bridge 接受输入。\n同时也只需要在 Bridge 中切换绑定按键，而不影响游戏对象。\n">
 <meta property='og:url' content='http://localhost:1313/post/input/'>
 <meta property='og:site_name' content='Chneixn Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Unity' /><meta property='article:tag' content='Input' /><meta property='article:modified_time' content='2025-03-12T21:47:31&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Unity' /><meta property='article:tag' content='Input' /><meta property='article:modified_time' content='2025-03-14T21:21:39&#43;08:00'/>
 <meta name="twitter:title" content="Unity 基于下推状态机的输入系统解决方案">
 <meta name="twitter:description" content="基于 Unity.InputSystem 和下推状态机的输入系统解决方案 原贴地址：王子饼干 - 知乎\nUnity.InputStstem的优点 InputSystem的优点在于它能够便捷的识别不同设备的按键输入，并使同一动作对不同设备的输入做出响应。\n原生提供了开启和阻断输入的方法，以及切换绑定按键的方式。\n代理控制器 创建 DRockBridge 作为一个代理控制器来接收 InputSystem 的控制，然后这个代理对象再去控制上层游戏对象。\n这样的 InputSystem 只需要与 Bridge 交流，游戏对象也只需要从 Bridge 接受输入。\n同时也只需要在 Bridge 中切换绑定按键，而不影响游戏对象。\n">
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -357,7 +357,7 @@
   <path d="M18 16.496v1.504l1 1" />
 </svg>
             <time>
-                2025 Mar 12 21:47 CST
+                2025 Mar 14 21:21 CST
             </time>
         </div></footer>
     
@@ -493,7 +493,7 @@
 
 
         <span>
-            最后更新于 2025 Mar 12 21:47 CST
+            最后更新于 2025 Mar 14 21:21 CST
         </span>
     </section></footer>
 
@@ -608,6 +608,57 @@
      
     
         
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="Chneixn/chneixn.github.io"
+    data-repo-id="R_kgDOOIDvzg"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOOIDvzs4CoBrA"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light');
+            } else {
+                setGiscusTheme('dark');
+            }
+        }
+    })();
+</script>
+
     
 
     <footer class="site-footer">
@@ -674,7 +725,7 @@
         
         
         发表了23篇文章 ·
-        总计11.20k字
+        总计11.21k字
     </section>
 
     <section class="powerby">

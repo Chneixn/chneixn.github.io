@@ -11,7 +11,7 @@
 <meta property='og:description' content="判断Animator中是否存在动画 Unity中的animator是以哈希值存储动画状态的索引，先通过动画片段名字字符串获取哈希值，再用HasState这个API获取存在状态\n再通过animator.CrossFadeInFixedTime(animationName, time);过渡动画\nstring animationName; int stateID = Animator.StringToHash(animationName) bool hasAnimation = animator.HasState(layerIndex, stateID) ">
 <meta property='og:url' content='http://localhost:1313/post/animation-api/'>
 <meta property='og:site_name' content='Chneixn Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='动画' /><meta property='article:tag' content='Unity' /><meta property='article:modified_time' content='2025-03-12T21:49:58&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='动画' /><meta property='article:tag' content='Unity' /><meta property='article:modified_time' content='2025-03-14T21:21:39&#43;08:00'/>
 <meta name="twitter:title" content="Unity 动画 API">
 <meta name="twitter:description" content="判断Animator中是否存在动画 Unity中的animator是以哈希值存储动画状态的索引，先通过动画片段名字字符串获取哈希值，再用HasState这个API获取存在状态\n再通过animator.CrossFadeInFixedTime(animationName, time);过渡动画\nstring animationName; int stateID = Animator.StringToHash(animationName) bool hasAnimation = animator.HasState(layerIndex, stateID) ">
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -350,7 +350,7 @@
   <path d="M18 16.496v1.504l1 1" />
 </svg>
             <time>
-                2025 Mar 12 21:49 CST
+                2025 Mar 14 21:21 CST
             </time>
         </div></footer>
     
@@ -405,7 +405,7 @@
 
 
         <span>
-            最后更新于 2025 Mar 12 21:49 CST
+            最后更新于 2025 Mar 14 21:21 CST
         </span>
     </section></footer>
 
@@ -520,6 +520,57 @@
      
     
         
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="Chneixn/chneixn.github.io"
+    data-repo-id="R_kgDOOIDvzg"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOOIDvzs4CoBrA"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light');
+            } else {
+                setGiscusTheme('dark');
+            }
+        }
+    })();
+</script>
+
     
 
     <footer class="site-footer">
@@ -586,7 +637,7 @@
         
         
         发表了23篇文章 ·
-        总计11.20k字
+        总计11.21k字
     </section>
 
     <section class="powerby">

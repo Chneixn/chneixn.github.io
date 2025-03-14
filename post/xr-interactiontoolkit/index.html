@@ -11,7 +11,7 @@
 <meta property='og:description' content="Interactor Select Action Trigger Name Description State Unity将考虑在按下按钮时激活输入。用户可以在交互成为可能之前保持按钮，并且仍然在交互成为可能时触发交互。（一只手交互时，另一只手不能获取交互物） StateChange Unity将考虑仅在按下按钮的框架上激活输入，如果成功，则保持接合，直到释放输入。当交互可能触发交互时，用户必须按下按钮。如果他们在交互成为可能之前开始按下按钮，他们将不会触发交互。（一只手交互时，另一只手可以获取物品交互权） Sticky 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次释放。 Toggle 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次按压。 ">
 <meta property='og:url' content='http://localhost:1313/post/xr-interactiontoolkit/'>
 <meta property='og:site_name' content='Chneixn Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='XR' /><meta property='article:tag' content='Unity' /><meta property='article:modified_time' content='2025-03-12T21:54:02&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='XR' /><meta property='article:tag' content='Unity' /><meta property='article:modified_time' content='2025-03-14T21:21:39&#43;08:00'/>
 <meta name="twitter:title" content="Unity XR Interaction 笔记">
 <meta name="twitter:description" content="Interactor Select Action Trigger Name Description State Unity将考虑在按下按钮时激活输入。用户可以在交互成为可能之前保持按钮，并且仍然在交互成为可能时触发交互。（一只手交互时，另一只手不能获取交互物） StateChange Unity将考虑仅在按下按钮的框架上激活输入，如果成功，则保持接合，直到释放输入。当交互可能触发交互时，用户必须按下按钮。如果他们在交互成为可能之前开始按下按钮，他们将不会触发交互。（一只手交互时，另一只手可以获取物品交互权） Sticky 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次释放。 Toggle 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次按压。 ">
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -354,7 +354,7 @@
   <path d="M18 16.496v1.504l1 1" />
 </svg>
             <time>
-                2025 Mar 12 21:54 CST
+                2025 Mar 14 21:21 CST
             </time>
         </div></footer>
     
@@ -431,7 +431,7 @@
 
 
         <span>
-            最后更新于 2025 Mar 12 21:54 CST
+            最后更新于 2025 Mar 14 21:21 CST
         </span>
     </section></footer>
 
@@ -546,6 +546,57 @@
      
     
         
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="Chneixn/chneixn.github.io"
+    data-repo-id="R_kgDOOIDvzg"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOOIDvzs4CoBrA"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light');
+            } else {
+                setGiscusTheme('dark');
+            }
+        }
+    })();
+</script>
+
     
 
     <footer class="site-footer">
@@ -612,7 +663,7 @@
         
         
         发表了23篇文章 ·
-        总计11.20k字
+        总计11.21k字
     </section>
 
     <section class="powerby">
