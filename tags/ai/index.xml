@@ -4,26 +4,8 @@
 &lt;h3 id="特点">特点&lt;/h3>
 &lt;p>僵尸 AI 能根据自身情况（生命值，中枪与否）和外部条件（周围是否存在玩家），采取合理的行动。&lt;/p>
 &lt;h3 id="ai基础">&lt;strong>AI基础&lt;/strong>&lt;/h3>
-&lt;p>基本行为操控（靠近，远离，追逐，逃避&amp;hellip;）&lt;/p>
-&lt;p>寻路能力（从游戏场景中一个位置移动到另一个位置，最短路径）&lt;/p>
-&lt;p>感知能力（自身状态如血量，听觉和视觉等感知能力）&lt;/p>
-&lt;p>自主决策能力（根据自身状态和外部条件作出合理的反应）&lt;/p>
-&lt;h3 id="基本行为操控">&lt;strong>基本行为操控&lt;/strong>&lt;/h3>
-&lt;p>基本运动：行走，奔跑&lt;/p>
-&lt;p>高级运动：跳跃，攀爬，躲避&lt;/p>
-&lt;p>攻击：近身攻击，远程攻击，破坏障碍物&lt;/p>
-&lt;h3 id="寻路">&lt;strong>寻路&lt;/strong>&lt;/h3>
-&lt;p>使用 Unity 的 Navigation 导航系统，实现自动寻路。&lt;/p></description></item><item><title>集群行为 AI子模块</title><link>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E9%9B%86%E7%BE%A4%E8%A1%8C%E4%B8%BA/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E9%9B%86%E7%BE%A4%E8%A1%8C%E4%B8%BA/</guid><description>&lt;h1 id="类鸟群行为集群行为">类鸟群行为（集群行为）&lt;/h1>
-&lt;p>有时在游戏中为了添加沉浸感，会在深海环境，自然开放环境加入鸟群，鱼群。如何控制鸟群的运动，使其符合现实，不会突兀，且性能友好是该部分讨论的内容。&lt;/p>
-&lt;p>参考视频：https://www.youtube.com/watch?v=bqtqltqcQhw&lt;/p>
-&lt;p>国内视频翻译：https://www.bilibili.com/video/BV1VJ411y7wE/&lt;/p>
-&lt;p>鸟群中每只鸟有以下三个规则：&lt;/p>
-&lt;p>偏离附近的其他鸟（分离）&lt;/p>
-&lt;p>迎合附近鸟群，转向同一方向（对齐）&lt;/p></description></item><item><title>寻路算法</title><link>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/</guid><description>&lt;h1 id="动态避障算法-rvo">动态避障算法 RVO&lt;/h1>
+&lt;p>基本行为操控（靠近，远离，追逐，逃避&amp;hellip;）&lt;/p></description></item><item><title>集群行为 AI子模块</title><link>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E9%9B%86%E7%BE%A4%E8%A1%8C%E4%B8%BA/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E9%9B%86%E7%BE%A4%E8%A1%8C%E4%B8%BA/</guid><description>&lt;h1 id="类鸟群行为集群行为">类鸟群行为（集群行为）&lt;/h1>
+&lt;p>有时在游戏中为了添加沉浸感，会在深海环境，自然开放环境加入鸟群，鱼群。如何控制鸟群的运动，使其符合现实，不会突兀，且性能友好是该部分讨论的内容。&lt;/p></description></item><item><title>寻路算法</title><link>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/</guid><description>&lt;h1 id="动态避障算法-rvo">动态避障算法 RVO&lt;/h1>
 &lt;p>RVO是基于VO算法的优化&lt;/p>
 &lt;p>源码作者Github：https://github.com/snape&lt;/p>
-&lt;p>RVO仓库：https://gamma.cs.unc.edu/RVO2/&lt;/p>
-&lt;p>Unity实现例子：https://github.com/warmtrue/RVO2-Unity/tree/master&lt;/p>
-&lt;p>RVO算法的优化：&lt;/p>
-&lt;p>ORCA**（Optimal Reciprocal Collision Avoidance）**&lt;/p>
-&lt;p>ORCA中文文档：https://blog.csdn.net/u012740992/article/details/89397714&lt;/p></description></item></channel></rss>
+&lt;p>RVO仓库：https://gamma.cs.unc.edu/RVO2/&lt;/p></description></item></channel></rss>

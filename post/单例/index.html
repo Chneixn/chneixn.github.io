@@ -7,7 +7,7 @@
 
 <link rel='canonical' href='http://localhost:1313/post/%E5%8D%95%E4%BE%8B/'>
 
-<link rel="stylesheet" href="/scss/style.min.8797f750e6244e0e848f6b213441796ce66692fc43f8fdd2787e0196adb3207d.css"><meta property='og:title' content="Unity 单例">
+<link rel="stylesheet" href="/scss/style.min.b1b697db09e8be8ec18cf4922270b62a2ecaafe967999f644f12682dd177edb9.css"><meta property='og:title' content="Unity 单例">
 <meta property='og:description' content="继承 MonoBehaviour 跨场景调用 using UnityEngine; namespace UnityUtils { /// &lt;summary&gt; /// 跨场景使用的Mono单例基类 /// &lt;/summary&gt; /// &lt;typeparam name=&#34;T&#34;&gt;&lt;/typeparam&gt; public class PersistentSingleton&lt;T&gt; : MonoBehaviour where T : Component { public bool AutoUnparentOnAwake = true; protected static T instance; public static bool HasInstance =&gt; instance != null; public static T TryGetInstance() =&gt; HasInstance ? instance : null; public static T Instance { get { if (instance == null) { instance = FindAnyObjectByType&lt;T&gt;(); if (instance == null) { var go = new GameObject(typeof(T).Name + &#34; Auto-Generated&#34;); instance = go.AddComponent&lt;T&gt;(); } } return instance; } } /// &lt;summary&gt; /// Make sure to call base.Awake() in override if you need awake. /// &lt;/summary&gt; protected virtual void Awake() { InitializeSingleton(); } protected virtual void InitializeSingleton() { if (!Application.isPlaying) return; if (AutoUnparentOnAwake) { transform.SetParent(null); } if (instance == null) { instance = this as T; DontDestroyOnLoad(gameObject); } else { if (instance != this) { Destroy(gameObject); } } } } } 同场景调用 using System.Collections; using System.Collections.Generic; using UnityEngine; /// &lt;summary&gt; /// 单例模式基类 同场景内使用 /// &lt;/summary&gt; /// &lt;typeparam name=&#34;T&#34;&gt;子类&lt;/typeparam&gt; &lt;summary&gt; public class SameSceneSingleMono&lt;T&gt; : MonoBehaviour where T : SameSceneSingleMono&lt;T&gt; { public static T Instance; protected virtual void Awake() { if (Instance != null) Debug.LogError(this + &#34;出现多个单例!&#34;); Instance = (T)this; } protected void OnDestroy() { Destroy(); } public void Destroy() { Instance = null; } } ">
 <meta property='og:url' content='http://localhost:1313/post/%E5%8D%95%E4%BE%8B/'>
 <meta property='og:site_name' content='Chneixn Blog'>
@@ -733,7 +733,7 @@
         
         
         发表了23篇文章 ·
-        总计11.21k字
+        总计11.41k字
     </section>
 
     <section class="powerby">
@@ -825,11 +825,7 @@
 
             </main>
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script><script type="text/javascript" src="/ts/main.e2f4cfbf6362fdc1ca06af81f4f8441841c51ca7e52665f5c5ab24ba7ebb14b0.js" defer></script>
+        <script type="text/javascript" src="/ts/main.2b807a7ed13719c096c02688e19eddb70a6266ce7c5c849c1bc51908932bb2fd.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

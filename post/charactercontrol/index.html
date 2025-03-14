@@ -2,18 +2,18 @@
 <html lang="zh-cn" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name="color-scheme" content='dark'><meta name='description' content="模块化角色控制状态机 在我的 3D Demo 中，我需要控制一个具有高可扩展性的角色控制器，因此对其开始探究\n由于对引擎代码的理解不深，也暂时没有什么兴趣研究，因此选择了基于 KCC 角色控制器框架进行开发\n文章引用：\n有限状态机的实现与使用 Kinematic Character Controller CharacterControl 继承 MonoBehaviour, ICharacterController\n角色的控制器，也是这个模块最重要的一个组件\n担任 MVC 模式中 Controller 角色\n所有的状态模块在实例化后都需要在 CreateFSM 方法中加入 FSM 中才能被角色启用\nprivate void CreateFSM() { // 在创建状态机时输入第一个状态 FSM = new(idle, this); FSM.AddState(fly); FSM.AddState(inAir); FSM.AddState(crouching); } IMovementState 继承 ICharacterController\n状态模块的基类，所有自定义的状态模块都需要继承该类\n">
+<meta name="color-scheme" content='dark'><meta name='description' content="模块化角色控制状态机 在我的 3D Demo 中，我需要控制一个具有高可扩展性的角色控制器，因此对其开始探究\n由于对引擎代码的理解不深，也暂时没有什么兴趣研究，因此选择了基于 KCC 角色控制器框架进行开发\n">
 <title>库存管理系统</title>
 
 <link rel='canonical' href='http://localhost:1313/post/charactercontrol/'>
 
-<link rel="stylesheet" href="/scss/style.min.8797f750e6244e0e848f6b213441796ce66692fc43f8fdd2787e0196adb3207d.css"><meta property='og:title' content="库存管理系统">
-<meta property='og:description' content="模块化角色控制状态机 在我的 3D Demo 中，我需要控制一个具有高可扩展性的角色控制器，因此对其开始探究\n由于对引擎代码的理解不深，也暂时没有什么兴趣研究，因此选择了基于 KCC 角色控制器框架进行开发\n文章引用：\n有限状态机的实现与使用 Kinematic Character Controller CharacterControl 继承 MonoBehaviour, ICharacterController\n角色的控制器，也是这个模块最重要的一个组件\n担任 MVC 模式中 Controller 角色\n所有的状态模块在实例化后都需要在 CreateFSM 方法中加入 FSM 中才能被角色启用\nprivate void CreateFSM() { // 在创建状态机时输入第一个状态 FSM = new(idle, this); FSM.AddState(fly); FSM.AddState(inAir); FSM.AddState(crouching); } IMovementState 继承 ICharacterController\n状态模块的基类，所有自定义的状态模块都需要继承该类\n">
+<link rel="stylesheet" href="/scss/style.min.b1b697db09e8be8ec18cf4922270b62a2ecaafe967999f644f12682dd177edb9.css"><meta property='og:title' content="库存管理系统">
+<meta property='og:description' content="模块化角色控制状态机 在我的 3D Demo 中，我需要控制一个具有高可扩展性的角色控制器，因此对其开始探究\n由于对引擎代码的理解不深，也暂时没有什么兴趣研究，因此选择了基于 KCC 角色控制器框架进行开发\n">
 <meta property='og:url' content='http://localhost:1313/post/charactercontrol/'>
 <meta property='og:site_name' content='Chneixn Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Unity' /><meta property='article:tag' content='Inventory' /><meta property='article:modified_time' content='2025-03-14T21:21:39&#43;08:00'/>
 <meta name="twitter:title" content="库存管理系统">
-<meta name="twitter:description" content="模块化角色控制状态机 在我的 3D Demo 中，我需要控制一个具有高可扩展性的角色控制器，因此对其开始探究\n由于对引擎代码的理解不深，也暂时没有什么兴趣研究，因此选择了基于 KCC 角色控制器框架进行开发\n文章引用：\n有限状态机的实现与使用 Kinematic Character Controller CharacterControl 继承 MonoBehaviour, ICharacterController\n角色的控制器，也是这个模块最重要的一个组件\n担任 MVC 模式中 Controller 角色\n所有的状态模块在实例化后都需要在 CreateFSM 方法中加入 FSM 中才能被角色启用\nprivate void CreateFSM() { // 在创建状态机时输入第一个状态 FSM = new(idle, this); FSM.AddState(fly); FSM.AddState(inAir); FSM.AddState(crouching); } IMovementState 继承 ICharacterController\n状态模块的基类，所有自定义的状态模块都需要继承该类\n">
+<meta name="twitter:description" content="模块化角色控制状态机 在我的 3D Demo 中，我需要控制一个具有高可扩展性的角色控制器，因此对其开始探究\n由于对引擎代码的理解不深，也暂时没有什么兴趣研究，因此选择了基于 KCC 角色控制器框架进行开发\n">
     <link rel="shortcut icon" href="/favicon.ico" />
 <style>
      
@@ -667,7 +667,7 @@
         
         
         发表了23篇文章 ·
-        总计11.21k字
+        总计11.41k字
     </section>
 
     <section class="powerby">
@@ -759,11 +759,7 @@
 
             </main>
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script><script type="text/javascript" src="/ts/main.e2f4cfbf6362fdc1ca06af81f4f8441841c51ca7e52665f5c5ab24ba7ebb14b0.js" defer></script>
+        <script type="text/javascript" src="/ts/main.2b807a7ed13719c096c02688e19eddb70a6266ce7c5c849c1bc51908932bb2fd.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

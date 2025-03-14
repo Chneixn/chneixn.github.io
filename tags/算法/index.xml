@@ -3,12 +3,7 @@
 &lt;p>算法时间复杂度 &lt;em>O(n)&lt;/em>&lt;/p>
 &lt;p>算法空间复杂度 &lt;em>O(1)&lt;/em>&lt;/p>&lt;/blockquote>
 &lt;p>假设有这样一个数组 &lt;code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]&lt;/code>，我们使用 Knuth-Shuffle 算法将数据打乱。&lt;/p>
-&lt;p>基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第 1 个数之间，&lt;em>随机&lt;/em>选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的 Random 随机一个索引即可）。&lt;/p>
-&lt;p>例如上面的数组，第一次循环，当前数字为 10，我们从 1~10 之间，随机选择一个数，与 10 交换，这样第 9 个索引位就算洗完了，接下来就是第 8 个索引位，也就是数字为 9，我们从第 1 个索引位与第 8 个索引位之间，选择一个数，第 9 交换，这样第 8 个索引位也就洗完了&amp;hellip;&lt;/p></description></item><item><title>寻路算法</title><link>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/</guid><description>&lt;h1 id="动态避障算法-rvo">动态避障算法 RVO&lt;/h1>
+&lt;p>基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第 1 个数之间，&lt;em>随机&lt;/em>选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的 Random 随机一个索引即可）。&lt;/p></description></item><item><title>寻路算法</title><link>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/ai%E6%A8%A1%E5%9D%97-%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95/</guid><description>&lt;h1 id="动态避障算法-rvo">动态避障算法 RVO&lt;/h1>
 &lt;p>RVO是基于VO算法的优化&lt;/p>
 &lt;p>源码作者Github：https://github.com/snape&lt;/p>
-&lt;p>RVO仓库：https://gamma.cs.unc.edu/RVO2/&lt;/p>
-&lt;p>Unity实现例子：https://github.com/warmtrue/RVO2-Unity/tree/master&lt;/p>
-&lt;p>RVO算法的优化：&lt;/p>
-&lt;p>ORCA**（Optimal Reciprocal Collision Avoidance）**&lt;/p>
-&lt;p>ORCA中文文档：https://blog.csdn.net/u012740992/article/details/89397714&lt;/p></description></item></channel></rss>
+&lt;p>RVO仓库：https://gamma.cs.unc.edu/RVO2/&lt;/p></description></item></channel></rss>

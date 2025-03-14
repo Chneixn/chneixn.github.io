@@ -4,13 +4,4 @@
 &lt;h4 id="11-unity">1.1 Unity&lt;/h4>
 &lt;p>1.1.1 使用的Unity版本为2022.3.13f1&lt;/p>
 &lt;p>1.1.2 安装UnityComponent添加对IL2CPP的支持&lt;/p>
-&lt;p>笔记：https://blog.csdn.net/Chenxin_37/article/details/136747145&lt;/p>
-&lt;h4 id="12-visual-studio">1.2 Visual Studio&lt;/h4>
-&lt;p>1.2.1 安装“使用Unity的游戏开发”和“使用C++的游戏开发”套件&lt;/p>
-&lt;p>1.2.2 安装Window10-SDK最新版即可&lt;/p>
-&lt;p>&lt;img src="assets/image.png" alt="image">&lt;/p>
-&lt;h3 id="框架搭建">框架搭建&lt;/h3>
-&lt;h4 id="21-创建新项目">2.1 创建新项目&lt;/h4>
-&lt;p>2.2 安装HybridCLR&lt;/p>
-&lt;p>安装详看文档&lt;/p>
-&lt;p>文档主页：https://hybridclr.doc.code-philosophy.com/docs/beginner/quickstart&lt;/p></description></item></channel></rss>
+&lt;p>笔记：https://blog.csdn.net/Chenxin_37/article/details/136747145&lt;/p></description></item></channel></rss>

@@ -2,18 +2,18 @@
 <html lang="zh-cn" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name="color-scheme" content='dark'><meta name='description' content="行为树 示例 僵尸 AI 特点 僵尸 AI 能根据自身情况（生命值，中枪与否）和外部条件（周围是否存在玩家），采取合理的行动。\nAI基础 基本行为操控（靠近，远离，追逐，逃避&hellip;）\n寻路能力（从游戏场景中一个位置移动到另一个位置，最短路径）\n感知能力（自身状态如血量，听觉和视觉等感知能力）\n自主决策能力（根据自身状态和外部条件作出合理的反应）\n基本行为操控 基本运动：行走，奔跑\n高级运动：跳跃，攀爬，躲避\n攻击：近身攻击，远程攻击，破坏障碍物\n寻路 使用 Unity 的 Navigation 导航系统，实现自动寻路。\n">
+<meta name="color-scheme" content='dark'><meta name='description' content="行为树 示例 僵尸 AI 特点 僵尸 AI 能根据自身情况（生命值，中枪与否）和外部条件（周围是否存在玩家），采取合理的行动。\nAI基础 基本行为操控（靠近，远离，追逐，逃避&hellip;）\n">
 <title>基于行为树的 AI</title>
 
 <link rel='canonical' href='http://localhost:1313/post/%E5%9F%BA%E4%BA%8E%E8%A1%8C%E4%B8%BA%E6%A0%91%E7%9A%84ai/'>
 
-<link rel="stylesheet" href="/scss/style.min.8797f750e6244e0e848f6b213441796ce66692fc43f8fdd2787e0196adb3207d.css"><meta property='og:title' content="基于行为树的 AI">
-<meta property='og:description' content="行为树 示例 僵尸 AI 特点 僵尸 AI 能根据自身情况（生命值，中枪与否）和外部条件（周围是否存在玩家），采取合理的行动。\nAI基础 基本行为操控（靠近，远离，追逐，逃避&hellip;）\n寻路能力（从游戏场景中一个位置移动到另一个位置，最短路径）\n感知能力（自身状态如血量，听觉和视觉等感知能力）\n自主决策能力（根据自身状态和外部条件作出合理的反应）\n基本行为操控 基本运动：行走，奔跑\n高级运动：跳跃，攀爬，躲避\n攻击：近身攻击，远程攻击，破坏障碍物\n寻路 使用 Unity 的 Navigation 导航系统，实现自动寻路。\n">
+<link rel="stylesheet" href="/scss/style.min.b1b697db09e8be8ec18cf4922270b62a2ecaafe967999f644f12682dd177edb9.css"><meta property='og:title' content="基于行为树的 AI">
+<meta property='og:description' content="行为树 示例 僵尸 AI 特点 僵尸 AI 能根据自身情况（生命值，中枪与否）和外部条件（周围是否存在玩家），采取合理的行动。\nAI基础 基本行为操控（靠近，远离，追逐，逃避&hellip;）\n">
 <meta property='og:url' content='http://localhost:1313/post/%E5%9F%BA%E4%BA%8E%E8%A1%8C%E4%B8%BA%E6%A0%91%E7%9A%84ai/'>
 <meta property='og:site_name' content='Chneixn Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Unity' /><meta property='article:tag' content='AI' /><meta property='article:modified_time' content='2025-03-12T21:44:00&#43;08:00'/>
 <meta name="twitter:title" content="基于行为树的 AI">
-<meta name="twitter:description" content="行为树 示例 僵尸 AI 特点 僵尸 AI 能根据自身情况（生命值，中枪与否）和外部条件（周围是否存在玩家），采取合理的行动。\nAI基础 基本行为操控（靠近，远离，追逐，逃避&hellip;）\n寻路能力（从游戏场景中一个位置移动到另一个位置，最短路径）\n感知能力（自身状态如血量，听觉和视觉等感知能力）\n自主决策能力（根据自身状态和外部条件作出合理的反应）\n基本行为操控 基本运动：行走，奔跑\n高级运动：跳跃，攀爬，躲避\n攻击：近身攻击，远程攻击，破坏障碍物\n寻路 使用 Unity 的 Navigation 导航系统，实现自动寻路。\n">
+<meta name="twitter:description" content="行为树 示例 僵尸 AI 特点 僵尸 AI 能根据自身情况（生命值，中枪与否）和外部条件（周围是否存在玩家），采取合理的行动。\nAI基础 基本行为操控（靠近，远离，追逐，逃避&hellip;）\n">
     <link rel="shortcut icon" href="/favicon.ico" />
 <style>
      
@@ -685,7 +685,7 @@
         
         
         发表了23篇文章 ·
-        总计11.21k字
+        总计11.41k字
     </section>
 
     <section class="powerby">
@@ -777,11 +777,7 @@
 
             </main>
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script><script type="text/javascript" src="/ts/main.e2f4cfbf6362fdc1ca06af81f4f8441841c51ca7e52665f5c5ab24ba7ebb14b0.js" defer></script>
+        <script type="text/javascript" src="/ts/main.2b807a7ed13719c096c02688e19eddb70a6266ce7c5c849c1bc51908932bb2fd.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

@@ -2,18 +2,18 @@
 <html lang="zh-cn" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name="color-scheme" content='dark'><meta name='description' content="UniTask UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越\nForGet 是在同步方法中调用异步方法的一个方式, Fire and forget.\npublic void Call() { Run().Forget(); } private async UniTask Run() { await UniTask.WaitForSeconds(0.02f); } Cancel 取消异步操作 C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消\n抛出异常式 private CancellationTokenSource cancelSource; public async void Run(){ try{ await AsyncMethod(cancelTolen.Token) } catch(OperationCanceledException e){ Debug.Log(&#34;Runner had canceled.&#34;); } } 返回值式 private CancellationTokenSource cancelSource; public async void Run(){ // AsyncMethod 无返回值 var result = await AsyncMethod(cancelTolen.Token).SupperessCancellationThrow(); if (result){ // do something } // AsyncMethod 有返回值 var (result2, returnValue) = await AsyncMethodWithReturnValue(cancelTolen.Token).SupperessCancellationThrow(); if (result2){ // do something } } public async UniTask&lt;int&gt; AsyncMethodWithReturnValue(CancellationToken cancelToken){ await UniTask.NextFrame(cancelToken) return 0; } 取消异步操作 在创建异步操作后，取消异步操作\n">
+<meta name="color-scheme" content='dark'><meta name='description' content="UniTask UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越\nForGet 是在同步方法中调用异步方法的一个方式, Fire and forget.\npublic void Call() { Run().Forget(); } private async UniTask Run() { await UniTask.WaitForSeconds(0.02f); } Cancel 取消异步操作 C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消\n">
 <title>UniTask 学习笔记</title>
 
 <link rel='canonical' href='http://localhost:1313/post/unitask/'>
 
-<link rel="stylesheet" href="/scss/style.min.8797f750e6244e0e848f6b213441796ce66692fc43f8fdd2787e0196adb3207d.css"><meta property='og:title' content="UniTask 学习笔记">
-<meta property='og:description' content="UniTask UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越\nForGet 是在同步方法中调用异步方法的一个方式, Fire and forget.\npublic void Call() { Run().Forget(); } private async UniTask Run() { await UniTask.WaitForSeconds(0.02f); } Cancel 取消异步操作 C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消\n抛出异常式 private CancellationTokenSource cancelSource; public async void Run(){ try{ await AsyncMethod(cancelTolen.Token) } catch(OperationCanceledException e){ Debug.Log(&#34;Runner had canceled.&#34;); } } 返回值式 private CancellationTokenSource cancelSource; public async void Run(){ // AsyncMethod 无返回值 var result = await AsyncMethod(cancelTolen.Token).SupperessCancellationThrow(); if (result){ // do something } // AsyncMethod 有返回值 var (result2, returnValue) = await AsyncMethodWithReturnValue(cancelTolen.Token).SupperessCancellationThrow(); if (result2){ // do something } } public async UniTask&lt;int&gt; AsyncMethodWithReturnValue(CancellationToken cancelToken){ await UniTask.NextFrame(cancelToken) return 0; } 取消异步操作 在创建异步操作后，取消异步操作\n">
+<link rel="stylesheet" href="/scss/style.min.b1b697db09e8be8ec18cf4922270b62a2ecaafe967999f644f12682dd177edb9.css"><meta property='og:title' content="UniTask 学习笔记">
+<meta property='og:description' content="UniTask UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越\nForGet 是在同步方法中调用异步方法的一个方式, Fire and forget.\npublic void Call() { Run().Forget(); } private async UniTask Run() { await UniTask.WaitForSeconds(0.02f); } Cancel 取消异步操作 C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消\n">
 <meta property='og:url' content='http://localhost:1313/post/unitask/'>
 <meta property='og:site_name' content='Chneixn Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='UniTask' /><meta property='article:tag' content='Unity' /><meta property='article:modified_time' content='2025-03-14T21:21:39&#43;08:00'/>
 <meta name="twitter:title" content="UniTask 学习笔记">
-<meta name="twitter:description" content="UniTask UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越\nForGet 是在同步方法中调用异步方法的一个方式, Fire and forget.\npublic void Call() { Run().Forget(); } private async UniTask Run() { await UniTask.WaitForSeconds(0.02f); } Cancel 取消异步操作 C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消\n抛出异常式 private CancellationTokenSource cancelSource; public async void Run(){ try{ await AsyncMethod(cancelTolen.Token) } catch(OperationCanceledException e){ Debug.Log(&#34;Runner had canceled.&#34;); } } 返回值式 private CancellationTokenSource cancelSource; public async void Run(){ // AsyncMethod 无返回值 var result = await AsyncMethod(cancelTolen.Token).SupperessCancellationThrow(); if (result){ // do something } // AsyncMethod 有返回值 var (result2, returnValue) = await AsyncMethodWithReturnValue(cancelTolen.Token).SupperessCancellationThrow(); if (result2){ // do something } } public async UniTask&lt;int&gt; AsyncMethodWithReturnValue(CancellationToken cancelToken){ await UniTask.NextFrame(cancelToken) return 0; } 取消异步操作 在创建异步操作后，取消异步操作\n">
+<meta name="twitter:description" content="UniTask UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越\nForGet 是在同步方法中调用异步方法的一个方式, Fire and forget.\npublic void Call() { Run().Forget(); } private async UniTask Run() { await UniTask.WaitForSeconds(0.02f); } Cancel 取消异步操作 C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消\n">
     <link rel="shortcut icon" href="/favicon.ico" />
 <style>
      
@@ -721,7 +721,7 @@
         
         
         发表了23篇文章 ·
-        总计11.21k字
+        总计11.41k字
     </section>
 
     <section class="powerby">
@@ -813,11 +813,7 @@
 
             </main>
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script><script type="text/javascript" src="/ts/main.e2f4cfbf6362fdc1ca06af81f4f8441841c51ca7e52665f5c5ab24ba7ebb14b0.js" defer></script>
+        <script type="text/javascript" src="/ts/main.2b807a7ed13719c096c02688e19eddb70a6266ce7c5c849c1bc51908932bb2fd.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

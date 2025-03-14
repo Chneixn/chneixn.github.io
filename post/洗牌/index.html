@@ -2,18 +2,18 @@
 <html lang="zh-cn" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name="color-scheme" content='dark'><meta name='description' content="随机洗牌 Knuth-Durstenfeld Shuffle 算法时间复杂度 O(n)\n算法空间复杂度 O(1)\n假设有这样一个数组 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]，我们使用 Knuth-Shuffle 算法将数据打乱。\n基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第 1 个数之间，随机选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的 Random 随机一个索引即可）。\n例如上面的数组，第一次循环，当前数字为 10，我们从 1~10 之间，随机选择一个数，与 10 交换，这样第 9 个索引位就算洗完了，接下来就是第 8 个索引位，也就是数字为 9，我们从第 1 个索引位与第 8 个索引位之间，选择一个数，第 9 交换，这样第 8 个索引位也就洗完了&hellip;\n">
+<meta name="color-scheme" content='dark'><meta name='description' content="随机洗牌 Knuth-Durstenfeld Shuffle 算法时间复杂度 O(n)\n算法空间复杂度 O(1)\n假设有这样一个数组 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]，我们使用 Knuth-Shuffle 算法将数据打乱。\n基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第 1 个数之间，随机选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的 Random 随机一个索引即可）。\n">
 <title>随机洗牌算法</title>
 
 <link rel='canonical' href='http://localhost:1313/post/%E6%B4%97%E7%89%8C/'>
 
-<link rel="stylesheet" href="/scss/style.min.8797f750e6244e0e848f6b213441796ce66692fc43f8fdd2787e0196adb3207d.css"><meta property='og:title' content="随机洗牌算法">
-<meta property='og:description' content="随机洗牌 Knuth-Durstenfeld Shuffle 算法时间复杂度 O(n)\n算法空间复杂度 O(1)\n假设有这样一个数组 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]，我们使用 Knuth-Shuffle 算法将数据打乱。\n基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第 1 个数之间，随机选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的 Random 随机一个索引即可）。\n例如上面的数组，第一次循环，当前数字为 10，我们从 1~10 之间，随机选择一个数，与 10 交换，这样第 9 个索引位就算洗完了，接下来就是第 8 个索引位，也就是数字为 9，我们从第 1 个索引位与第 8 个索引位之间，选择一个数，第 9 交换，这样第 8 个索引位也就洗完了&hellip;\n">
+<link rel="stylesheet" href="/scss/style.min.b1b697db09e8be8ec18cf4922270b62a2ecaafe967999f644f12682dd177edb9.css"><meta property='og:title' content="随机洗牌算法">
+<meta property='og:description' content="随机洗牌 Knuth-Durstenfeld Shuffle 算法时间复杂度 O(n)\n算法空间复杂度 O(1)\n假设有这样一个数组 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]，我们使用 Knuth-Shuffle 算法将数据打乱。\n基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第 1 个数之间，随机选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的 Random 随机一个索引即可）。\n">
 <meta property='og:url' content='http://localhost:1313/post/%E6%B4%97%E7%89%8C/'>
 <meta property='og:site_name' content='Chneixn Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='洗牌' /><meta property='article:tag' content='算法' /><meta property='article:modified_time' content='2025-03-12T21:48:10&#43;08:00'/>
 <meta name="twitter:title" content="随机洗牌算法">
-<meta name="twitter:description" content="随机洗牌 Knuth-Durstenfeld Shuffle 算法时间复杂度 O(n)\n算法空间复杂度 O(1)\n假设有这样一个数组 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]，我们使用 Knuth-Shuffle 算法将数据打乱。\n基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第 1 个数之间，随机选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的 Random 随机一个索引即可）。\n例如上面的数组，第一次循环，当前数字为 10，我们从 1~10 之间，随机选择一个数，与 10 交换，这样第 9 个索引位就算洗完了，接下来就是第 8 个索引位，也就是数字为 9，我们从第 1 个索引位与第 8 个索引位之间，选择一个数，第 9 交换，这样第 8 个索引位也就洗完了&hellip;\n">
+<meta name="twitter:description" content="随机洗牌 Knuth-Durstenfeld Shuffle 算法时间复杂度 O(n)\n算法空间复杂度 O(1)\n假设有这样一个数组 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]，我们使用 Knuth-Shuffle 算法将数据打乱。\n基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第 1 个数之间，随机选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的 Random 随机一个索引即可）。\n">
     <link rel="shortcut icon" href="/favicon.ico" />
 <style>
      
@@ -629,7 +629,7 @@
         
         
         发表了23篇文章 ·
-        总计11.21k字
+        总计11.41k字
     </section>
 
     <section class="powerby">
@@ -721,11 +721,7 @@
 
             </main>
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script><script type="text/javascript" src="/ts/main.e2f4cfbf6362fdc1ca06af81f4f8441841c51ca7e52665f5c5ab24ba7ebb14b0.js" defer></script>
+        <script type="text/javascript" src="/ts/main.2b807a7ed13719c096c02688e19eddb70a6266ce7c5c849c1bc51908932bb2fd.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

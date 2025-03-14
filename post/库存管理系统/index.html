@@ -2,18 +2,18 @@
 <html lang="zh-cn" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name="color-scheme" content='dark'><meta name='description' content="库存管理模块 Inventory System 功能实现 编辑器功能（Editor） 列表显示物品库里所有物品 新增 Item 可以自动赋予 ID 允许编辑 ID 增加 Tip 提示 增加 Item 搜索功能 增加从 Excel 导入导出功能 增加从 JSON 导入导出功能 Item 可以使用 ItemType 进行分类显示 游戏内界面（UI） 塔科夫式背包\n背包固定格子，每个物品需要占用不同的格子大小 支持拖拽移动背包物品 支持给可使用物品设置使用热键 显示快捷物品栏\n允许在快捷物品栏滚轮切换物品选择 动态调整快捷物品栏容量 背包界面\n允许鼠标拖拽物品 组合键获取一半的物品 核心代码（Code） ">
+<meta name="color-scheme" content='dark'><meta name='description' content="库存管理模块 Inventory System 功能实现 编辑器功能（Editor） 列表显示物品库里所有物品 新增 Item 可以自动赋予 ID 允许编辑 ID 增加 Tip 提示 增加 Item 搜索功能 增加从 Excel 导入导出功能 增加从 JSON 导入导出功能 Item 可以使用 ItemType 进行分类显示 游戏内界面（UI） 塔科夫式背包\n">
 <title>库存管理系统</title>
 
 <link rel='canonical' href='http://localhost:1313/post/%E5%BA%93%E5%AD%98%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/'>
 
-<link rel="stylesheet" href="/scss/style.min.8797f750e6244e0e848f6b213441796ce66692fc43f8fdd2787e0196adb3207d.css"><meta property='og:title' content="库存管理系统">
-<meta property='og:description' content="库存管理模块 Inventory System 功能实现 编辑器功能（Editor） 列表显示物品库里所有物品 新增 Item 可以自动赋予 ID 允许编辑 ID 增加 Tip 提示 增加 Item 搜索功能 增加从 Excel 导入导出功能 增加从 JSON 导入导出功能 Item 可以使用 ItemType 进行分类显示 游戏内界面（UI） 塔科夫式背包\n背包固定格子，每个物品需要占用不同的格子大小 支持拖拽移动背包物品 支持给可使用物品设置使用热键 显示快捷物品栏\n允许在快捷物品栏滚轮切换物品选择 动态调整快捷物品栏容量 背包界面\n允许鼠标拖拽物品 组合键获取一半的物品 核心代码（Code） ">
+<link rel="stylesheet" href="/scss/style.min.b1b697db09e8be8ec18cf4922270b62a2ecaafe967999f644f12682dd177edb9.css"><meta property='og:title' content="库存管理系统">
+<meta property='og:description' content="库存管理模块 Inventory System 功能实现 编辑器功能（Editor） 列表显示物品库里所有物品 新增 Item 可以自动赋予 ID 允许编辑 ID 增加 Tip 提示 增加 Item 搜索功能 增加从 Excel 导入导出功能 增加从 JSON 导入导出功能 Item 可以使用 ItemType 进行分类显示 游戏内界面（UI） 塔科夫式背包\n">
 <meta property='og:url' content='http://localhost:1313/post/%E5%BA%93%E5%AD%98%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/'>
 <meta property='og:site_name' content='Chneixn Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Unity' /><meta property='article:tag' content='Inventory' /><meta property='article:modified_time' content='2025-03-12T21:44:45&#43;08:00'/>
 <meta name="twitter:title" content="库存管理系统">
-<meta name="twitter:description" content="库存管理模块 Inventory System 功能实现 编辑器功能（Editor） 列表显示物品库里所有物品 新增 Item 可以自动赋予 ID 允许编辑 ID 增加 Tip 提示 增加 Item 搜索功能 增加从 Excel 导入导出功能 增加从 JSON 导入导出功能 Item 可以使用 ItemType 进行分类显示 游戏内界面（UI） 塔科夫式背包\n背包固定格子，每个物品需要占用不同的格子大小 支持拖拽移动背包物品 支持给可使用物品设置使用热键 显示快捷物品栏\n允许在快捷物品栏滚轮切换物品选择 动态调整快捷物品栏容量 背包界面\n允许鼠标拖拽物品 组合键获取一半的物品 核心代码（Code） ">
+<meta name="twitter:description" content="库存管理模块 Inventory System 功能实现 编辑器功能（Editor） 列表显示物品库里所有物品 新增 Item 可以自动赋予 ID 允许编辑 ID 增加 Tip 提示 增加 Item 搜索功能 增加从 Excel 导入导出功能 增加从 JSON 导入导出功能 Item 可以使用 ItemType 进行分类显示 游戏内界面（UI） 塔科夫式背包\n">
     <link rel="shortcut icon" href="/favicon.ico" />
 <style>
      
@@ -680,7 +680,7 @@
         
         
         发表了23篇文章 ·
-        总计11.21k字
+        总计11.41k字
     </section>
 
     <section class="powerby">
@@ -772,11 +772,7 @@
 
             </main>
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script><script type="text/javascript" src="/ts/main.e2f4cfbf6362fdc1ca06af81f4f8441841c51ca7e52665f5c5ab24ba7ebb14b0.js" defer></script>
+        <script type="text/javascript" src="/ts/main.2b807a7ed13719c096c02688e19eddb70a6266ce7c5c849c1bc51908932bb2fd.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

@@ -12,42 +12,4 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">await&lt;/span> &lt;span style="color:#e06c75">UniTask&lt;/span>.&lt;span style="color:#e06c75">WaitForSeconds&lt;/span>(&lt;span style="color:#d19a66">0.02f&lt;/span>);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="cancel-取消异步操作">Cancel 取消异步操作&lt;/h2>
-&lt;p>C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消&lt;/p>
-&lt;h3 id="抛出异常式">抛出异常式&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">private&lt;/span> &lt;span style="color:#e06c75">CancellationTokenSource&lt;/span> &lt;span style="color:#e06c75">cancelSource&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">async&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">Run&lt;/span>(){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">try&lt;/span>{
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">await&lt;/span> &lt;span style="color:#e06c75">AsyncMethod&lt;/span>(&lt;span style="color:#e06c75">cancelTolen&lt;/span>.&lt;span style="color:#e06c75">Token&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">catch&lt;/span>(&lt;span style="color:#e06c75">OperationCanceledException&lt;/span> &lt;span style="color:#e06c75">e&lt;/span>){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e06c75">Debug&lt;/span>.&lt;span style="color:#e06c75">Log&lt;/span>(&lt;span style="color:#98c379">&amp;#34;Runner had canceled.&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="返回值式">返回值式&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">private&lt;/span> &lt;span style="color:#e06c75">CancellationTokenSource&lt;/span> &lt;span style="color:#e06c75">cancelSource&lt;/span>; 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">async&lt;/span> &lt;span style="color:#c678dd">void&lt;/span> &lt;span style="color:#e06c75">Run&lt;/span>(){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// AsyncMethod 无返回值&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e5c07b">var&lt;/span> &lt;span style="color:#e06c75">result&lt;/span> = &lt;span style="color:#c678dd">await&lt;/span> &lt;span style="color:#e06c75">AsyncMethod&lt;/span>(&lt;span style="color:#e06c75">cancelTolen&lt;/span>.&lt;span style="color:#e06c75">Token&lt;/span>).&lt;span style="color:#e06c75">SupperessCancellationThrow&lt;/span>();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (&lt;span style="color:#e06c75">result&lt;/span>){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// do something&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// AsyncMethod 有返回值&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e5c07b">var&lt;/span> (&lt;span style="color:#e06c75">result2&lt;/span>, &lt;span style="color:#e06c75">returnValue&lt;/span>) = &lt;span style="color:#c678dd">await&lt;/span> &lt;span style="color:#e06c75">AsyncMethodWithReturnValue&lt;/span>(&lt;span style="color:#e06c75">cancelTolen&lt;/span>.&lt;span style="color:#e06c75">Token&lt;/span>).&lt;span style="color:#e06c75">SupperessCancellationThrow&lt;/span>();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">if&lt;/span> (&lt;span style="color:#e06c75">result2&lt;/span>){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#7f848e">// do something&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">async&lt;/span> &lt;span style="color:#e06c75">UniTask&lt;/span>&amp;lt;&lt;span style="color:#e5c07b">int&lt;/span>&amp;gt; &lt;span style="color:#e06c75">AsyncMethodWithReturnValue&lt;/span>(&lt;span style="color:#e06c75">CancellationToken&lt;/span> &lt;span style="color:#e06c75">cancelToken&lt;/span>){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">await&lt;/span> &lt;span style="color:#e06c75">UniTask&lt;/span>.&lt;span style="color:#e06c75">NextFrame&lt;/span>(&lt;span style="color:#e06c75">cancelToken&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#c678dd">return&lt;/span> &lt;span style="color:#d19a66">0&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="取消异步操作">取消异步操作&lt;/h3>
-&lt;p>在创建异步操作后，取消异步操作&lt;/p></description></item></channel></rss>
+&lt;p>C# 在设计异步初衷并不希望我们能控制其他线程的运行，但是在 Unity 中确实有一定的需求需要能取消异步，一般使用以下两种方式取消&lt;/p></description></item></channel></rss>

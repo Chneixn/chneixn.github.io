@@ -7,11 +7,4 @@
 &lt;h3 id="ui框架todo">&lt;strong>UI框架（TODO）&lt;/strong>&lt;/h3>
 &lt;p>基于Dotween进行UI动效制作&lt;/p>
 &lt;h3 id="存档系统">&lt;strong>存档系统✓&lt;/strong>&lt;/h3>
-&lt;p>利用双列表建立可序列化字典，进行游戏数据记录，存档时转为JSON文件实现数据持久化保存和读取&lt;/p>
-&lt;h3 id="库存系统">&lt;strong>库存系统✓&lt;/strong>&lt;/h3>
-&lt;p>基于ScriptableObject的物品数据库&lt;/p>
-&lt;h3 id="交互操作">&lt;strong>交互操作✓&lt;/strong>&lt;/h3>
-&lt;h3 id="camera">&lt;strong>Camera✓&lt;/strong>&lt;/h3>
-&lt;p>使用Unity提供的Cinemachine进行相机管理，实现第一人称视角与第三人称视角的相机跟随&lt;/p>
-&lt;h3 id="角色控制系统doing">&lt;strong>角色控制系统（Doing）&lt;/strong>&lt;/h3>
-&lt;p>基于Unity.InputSystem和下推状态机的输入系统解决方案&lt;/p></description></item></channel></rss>
+&lt;p>利用双列表建立可序列化字典，进行游戏数据记录，存档时转为JSON文件实现数据持久化保存和读取&lt;/p></description></item></channel></rss>
