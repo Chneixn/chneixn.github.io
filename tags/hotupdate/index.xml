@@ -1,7 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>HotUpdate on Chneixn Blog</title><link>https://chneixn.github.io/tags/hotupdate/</link><description>Recent content in HotUpdate on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://chneixn.github.io/tags/hotupdate/index.xml" rel="self" type="application/rss+xml"/><item><title>Unity 的热更新</title><link>https://chneixn.github.io/post/%E7%83%AD%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%9D%97/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/%E7%83%AD%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%9D%97/</guid><description>&lt;h1 id="热更新">热更新&lt;/h1>
-&lt;h2 id="hybridclr--addressable">HybridCLR + Addressable&lt;/h2>
-&lt;h3 id="环境确认">环境确认&lt;/h3>
-&lt;h4 id="11-unity">1.1 Unity&lt;/h4>
-&lt;p>1.1.1 使用的Unity版本为2022.3.13f1&lt;/p>
-&lt;p>1.1.2 安装UnityComponent添加对IL2CPP的支持&lt;/p>
-&lt;p>笔记：https://blog.csdn.net/Chenxin_37/article/details/136747145&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>HotUpdate on Chneixn Blog</title><link>https://chneixn.github.io/tags/hotupdate/</link><description>Recent content in HotUpdate on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 16 Mar 2025 00:17:52 +0800</lastBuildDate><atom:link href="https://chneixn.github.io/tags/hotupdate/index.xml" rel="self" type="application/rss+xml"/><item><title>Unity 基于 HybridCLR + Addressable 实现的热更新</title><link>https://chneixn.github.io/post/hotupdate/</link><pubDate>Fri, 14 Mar 2025 23:00:30 +0800</pubDate><guid>https://chneixn.github.io/post/hotupdate/</guid><description>&lt;h1 id="hybridclr--addressable">HybridCLR + Addressable&lt;/h1>
+&lt;h1 id="unity">Unity&lt;/h1>
+&lt;h2 id="使用的unity版本为2022313f1">使用的Unity版本为2022.3.13f1&lt;/h2>
+&lt;h2 id="安装unitycomponent添加对il2cpp的支持">安装UnityComponent添加对IL2CPP的支持&lt;/h2>
+&lt;p>参考：&lt;a href="https://blog.csdn.net/Chenxin_37/article/details/136747145">Chneixn-Note&lt;/a>&lt;/p>
+&lt;h1 id="visual-studio">Visual Studio&lt;/h1>
+&lt;p>安装 &lt;strong>使用Unity的游戏开发&lt;/strong> 和 &lt;strong>使用C++的游戏开发&lt;/strong> 套件&lt;/p>
+&lt;p>依据你的系统，安装 Window10-SDK 或 Window11-SDK 最新版即可&lt;/p>
+&lt;p>&lt;img src="image.png" alt="image">&lt;/p>
+&lt;h1 id="框架搭建">框架搭建&lt;/h1>
+&lt;h2 id="安装hybridclr">安装HybridCLR&lt;/h2>
+&lt;p>安装详看文档&lt;/p>
+&lt;p>文档主页：https://hybridclr.doc.code-philosophy.com/docs/beginner/quickstart&lt;/p></description></item></channel></rss>

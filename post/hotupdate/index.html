@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name="color-scheme" content='dark'><meta name='description' content="HybridCLR + Addressable 热更新方案，抛开 lua，让你爽写 C# 脚本">
+<title>Unity 基于 HybridCLR &#43; Addressable 实现的热更新</title>
+
+<link rel='canonical' href='http://localhost:1313/post/hotupdate/'>
+
+<link rel="stylesheet" href="/scss/style.min.b1b697db09e8be8ec18cf4922270b62a2ecaafe967999f644f12682dd177edb9.css"><meta property='og:title' content="Unity 基于 HybridCLR + Addressable 实现的热更新">
+<meta property='og:description' content="HybridCLR + Addressable 热更新方案，抛开 lua，让你爽写 C# 脚本">
+<meta property='og:url' content='http://localhost:1313/post/hotupdate/'>
+<meta property='og:site_name' content='Chneixn Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Unity' /><meta property='article:tag' content='HotUpdate' /><meta property='article:published_time' content='2025-03-14T23:00:30&#43;08:00'/><meta property='article:modified_time' content='2025-03-15T00:17:37&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post/hotupdate/cover.png' />
+<meta name="twitter:title" content="Unity 基于 HybridCLR + Addressable 实现的热更新">
+<meta name="twitter:description" content="HybridCLR + Addressable 热更新方案，抛开 lua，让你爽写 C# 脚本"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/post/hotupdate/cover.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+<style>
+     
+    :root {
+        --code-font-family: "JetBrains Mono";  
+    }
+
+    code {
+        font-size: 1.4rem;  
+    }
+
+    pre {
+        font-size: 1.4rem;  
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=JetBrains Mono:wght@300;700&display=swap";  
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_9a7db2fefd0155a4.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Chneixn Blog</a></h1>
+            <h2 class="site-description">世界以痛吻我，要我报之以歌</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='http://space.bilibili.com/18346372'
+                        target="_blank"
+                        title="BiliBili"
+                        rel="me"
+                    >
+                        
+                        
+                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier">
+<defs>
+<style>.a{fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;}</style>
+</defs>
+<rect class="a" x="6.1336" y="9.4032" width="35.7327" height="26.5581" rx="6.7532"/>
+<line class="a" x1="17.4835" y1="4.5" x2="20.4078" y2="9.4032"/>
+<line class="a" x1="13.2594" y1="21.6849" x2="20.0829" y2="18.9592"/>
+<line class="a" x1="30.5165" y1="4.5" x2="27.5922" y2="9.4032"/>
+<line class="a" x1="34.7406" y1="21.6849" x2="27.9171" y2="18.9592"/>
+<path class="a" d="M29.0544,24.9161c-.5827,1.4721-1.1508,2.54-2.5273,2.54-1.074,0-1.666-.4976-2.5271-1.8363-.8611,1.3387-1.4531,1.8363-2.5271,1.8363-1.3765,0-1.9446-1.0682-2.5273-2.54"/>
+<path class="a" d="M25.9676,35.9613v2.033s8.6917.2889,8.6917,5.5057H13.3407c0-5.2168,8.6917-5.5057,8.6917-5.5057v-2.033"/>
+</g>
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='/about'
+                        
+                        title="Email 2726269548@qq.com"
+                        rel="me"
+                    >
+                        
+                        
+                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier">
+<defs>
+<style>.cls-1{fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;}</style>
+</defs>
+<path class="cls-1" d="M6.47,10.71a2,2,0,0,0-2,2h0V35.32a2,2,0,0,0,2,2H41.53a2,2,0,0,0,2-2h0V12.68a2,2,0,0,0-2-2H6.47Zm33.21,3.82L24,26.07,8.32,14.53"/>
+</g>
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Chenixn'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier">
+<defs>
+<style>.cls-1{fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;fill-rule:evenodd;}</style>
+</defs>
+<path class="cls-1" d="M24,2.5a21.5,21.5,0,0,0-6.8,41.9c1.08.2,1.47-.46,1.47-1s0-1.86,0-3.65c-6,1.3-7.24-2.88-7.24-2.88A5.7,5.7,0,0,0,9,33.68c-1.95-1.33.15-1.31.15-1.31a4.52,4.52,0,0,1,3.29,2.22c1.92,3.29,5,2.34,6.26,1.79a4.61,4.61,0,0,1,1.37-2.88c-4.78-.54-9.8-2.38-9.8-10.62a8.29,8.29,0,0,1,2.22-5.77,7.68,7.68,0,0,1,.21-5.69s1.8-.58,5.91,2.2a20.46,20.46,0,0,1,10.76,0c4.11-2.78,5.91-2.2,5.91-2.2a7.74,7.74,0,0,1,.21,5.69,8.28,8.28,0,0,1,2.21,5.77c0,8.26-5,10.07-9.81,10.61a5.12,5.12,0,0,1,1.46,4c0,2.87,0,5.19,0,5.9s.39,1.24,1.48,1A21.5,21.5,0,0,0,24,2.5"/>
+</g>
+</svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于我</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#hybridclr--addressable">HybridCLR + Addressable</a></li>
+    <li><a href="#unity">Unity</a>
+      <ol>
+        <li><a href="#使用的unity版本为2022313f1">使用的Unity版本为2022.3.13f1</a></li>
+        <li><a href="#安装unitycomponent添加对il2cpp的支持">安装UnityComponent添加对IL2CPP的支持</a></li>
+      </ol>
+    </li>
+    <li><a href="#visual-studio">Visual Studio</a></li>
+    <li><a href="#框架搭建">框架搭建</a>
+      <ol>
+        <li><a href="#安装hybridclr">安装HybridCLR</a></li>
+        <li><a href="#安装-adressable">安装 Adressable</a></li>
+      </ol>
+    </li>
+    <li><a href="#脚本热更新操作步骤">脚本热更新操作步骤</a></li>
+    <li><a href="#在-hotupdate-文件下的脚本需要注意">在 HotUpdate 文件下的脚本需要注意</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/hotupdate/">
+                <img src="/post/hotupdate/cover_hu_2db579a6417d12b6.png"
+                        srcset="/post/hotupdate/cover_hu_2db579a6417d12b6.png 800w, /post/hotupdate/cover_hu_feb66b9000d79f3f.png 1600w"
+                        width="800" 
+                        height="591" 
+                        loading="lazy"
+                        alt="Featured image of post Unity 基于 HybridCLR &#43; Addressable 实现的热更新" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+        <a href="/categories/unity/" >
+            Unity
+        </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/hotupdate/">Unity 基于 HybridCLR &#43; Addressable 实现的热更新</a>
+        </h2>
+
+        
+        <h3 class="article-subtitle">
+            HybridCLR &#43; Addressable 热更新方案，抛开 lua，让你爽写 C# 脚本
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+            <time class="article-time--published">2025 Mar 14</time>
+        </div>
+        
+
+        
+        
+        <span class="time-divider">|</span>
+        <div class="article-time--lastmod">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+            <time>
+                2025 Mar 15 00:17 CST
+            </time>
+        </div></footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="hybridclr--addressable"><a href="#hybridclr--addressable" class="header-anchor"></a>HybridCLR + Addressable
+</h1><h1 id="unity"><a href="#unity" class="header-anchor"></a>Unity
+</h1><h2 id="使用的unity版本为2022313f1"><a href="#%e4%bd%bf%e7%94%a8%e7%9a%84unity%e7%89%88%e6%9c%ac%e4%b8%ba2022313f1" class="header-anchor"></a>使用的Unity版本为2022.3.13f1
+</h2><h2 id="安装unitycomponent添加对il2cpp的支持"><a href="#%e5%ae%89%e8%a3%85unitycomponent%e6%b7%bb%e5%8a%a0%e5%af%b9il2cpp%e7%9a%84%e6%94%af%e6%8c%81" class="header-anchor"></a>安装UnityComponent添加对IL2CPP的支持
+</h2><p>参考：<a class="link" href="https://blog.csdn.net/Chenxin_37/article/details/136747145"  target="_blank" rel="noopener"
+    >Chneixn-Note</a></p>
+<h1 id="visual-studio"><a href="#visual-studio" class="header-anchor"></a>Visual Studio
+</h1><p>安装 <strong>使用Unity的游戏开发</strong> 和 <strong>使用C++的游戏开发</strong> 套件</p>
+<p>依据你的系统，安装 Window10-SDK 或 Window11-SDK 最新版即可</p>
+<p><img src="/post/hotupdate/image.png"
+	width="1587"
+	height="893"
+	srcset="/post/hotupdate/image_hu_74b188d464bed92b.png 480w, /post/hotupdate/image_hu_15e573972772d453.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<h1 id="框架搭建"><a href="#%e6%a1%86%e6%9e%b6%e6%90%ad%e5%bb%ba" class="header-anchor"></a>框架搭建
+</h1><h2 id="安装hybridclr"><a href="#%e5%ae%89%e8%a3%85hybridclr" class="header-anchor"></a>安装HybridCLR
+</h2><p>安装详看文档</p>
+<p>文档主页：https://hybridclr.doc.code-philosophy.com/docs/beginner/quickstart</p>
+<p>国内Git地址：https://gitee.com/focus-creative-games/hybridclr_unity.git</p>
+<p>国外Git地址：https://github.com/focus-creative-games/hybridclr_unity.git</p>
+<p>创建 <code>Asset/HotUpdate</code> 文件夹</p>
+<p>在 <code>HotUpdate</code> 文件夹创建 <code>HotUpdate</code> 的程序集（Assembly Definition）</p>
+<p>在 <code>HotUpdate</code> 文件夹任意创建一个脚本</p>
+<p>在 Visual Studio 重载项目，此时的解决方案资源管理器应该显示两个程序集，如图</p>
+<p><img src="/post/hotupdate/image-1740498352544-13.png"
+	width="330"
+	height="373"
+	srcset="/post/hotupdate/image-1740498352544-13_hu_d13f57763d225e8d.png 480w, /post/hotupdate/image-1740498352544-13_hu_60fb32396c81580e.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="88"
+		data-flex-basis="212px"
+	
+></p>
+<p>选择 Unity 的上方菜单项 <code>HybridCLR/Installer...</code></p>
+<p>选择 Install（安装成功后控制台会打印成功的信息，以及绿框位置显示为 True）</p>
+<p><img src="/post/hotupdate/image-1740498363409-15.png"
+	width="301"
+	height="252"
+	srcset="/post/hotupdate/image-1740498363409-15_hu_a2759126b7a06097.png 480w, /post/hotupdate/image-1740498363409-15_hu_dc35d02b2e16f968.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="119"
+		data-flex-basis="286px"
+	
+></p>
+<p>选择 Unity 的上方菜单项 <code>HybridCLR/Settings...</code></p>
+<p>在热更新的 <code>Assembly Definition</code> 中添加在 <code>HotUpdate</code> 文件夹中的程序集</p>
+
+        <link rel="stylesheet" href="/css/vendors/admonitions.css">
+  <div class="admonition note">
+    <div class="admonition-header">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 125.7-86.8 86.8c-10.3 10.3-17.5 23.1-21 37.2l-18.7 74.9c-2.3 9.2-1.8 18.8 1.3 27.5L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM549.8 235.7l14.4 14.4c15.6 15.6 15.6 40.9 0 56.6l-29.4 29.4-71-71 29.4-29.4c15.6-15.6 40.9-15.6 56.6 0zM311.9 417L441.1 287.8l71 71L382.9 487.9c-4.1 4.1-9.2 7-14.9 8.4l-60.1 15c-5.5 1.4-11.2-.2-15.2-4.2s-5.6-9.7-4.2-15.2l15-60.1c1.4-5.6 4.3-10.8 8.4-14.9z"/></svg>
+      <span>Note</span>
+    </div>
+      <div class="admonition-content">
+        <p>如果没有显示 HybridCLR Settings，重启 Unity</p>
+      </div>
+  </div>
+<p><img src="/post/hotupdate/image-1740498375113-17.png"
+	width="1011"
+	height="596"
+	srcset="/post/hotupdate/image-1740498375113-17_hu_ac49d2347d459f70.png 480w, /post/hotupdate/image-1740498375113-17_hu_315703be3950d109.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="407px"
+	
+></p>
+<p>选择 Unity 的上方菜单项 <code>Edit/Project Settings...</code></p>
+<p>在左侧选择 <code>Player</code></p>
+<p>在下方展开 <code>Other Settings</code></p>
+<p><img src="/post/hotupdate/image-1740498388801-19.png"
+	width="1011"
+	height="596"
+	srcset="/post/hotupdate/image-1740498388801-19_hu_bba94deabf91dbd8.png 480w, /post/hotupdate/image-1740498388801-19_hu_c616075a45fdc7a3.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="407px"
+	
+></p>
+<p>按照图中选项修改</p>
+<p><img src="/post/hotupdate/image-1740498399272-21.png"
+	width="1011"
+	height="596"
+	srcset="/post/hotupdate/image-1740498399272-21_hu_763151d85a0a3c25.png 480w, /post/hotupdate/image-1740498399272-21_hu_1d9562c86fcf5eb0.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="407px"
+	
+></p>
+<p>选择 Unity 的上方菜单项 <code>HybridCLR/Generate/All</code></p>
+<p>将 <code>{proj}/HybridCLRData/HotUpdateDlls/StandaloneWindows64</code>(MacOS 下为 <code>StandaloneMacXxx</code>) 目录下的 <code>HotUpdate.dll</code> 重命名为 <code>HotUpdate.dll.bytes</code>，将其复制到 <code>Asset/HotUpdate/Dlls</code> 内（无则新建）</p>
+
+  <div class="admonition note">
+    <div class="admonition-header">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 125.7-86.8 86.8c-10.3 10.3-17.5 23.1-21 37.2l-18.7 74.9c-2.3 9.2-1.8 18.8 1.3 27.5L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM549.8 235.7l14.4 14.4c15.6 15.6 15.6 40.9 0 56.6l-29.4 29.4-71-71 29.4-29.4c15.6-15.6 40.9-15.6 56.6 0zM311.9 417L441.1 287.8l71 71L382.9 487.9c-4.1 4.1-9.2 7-14.9 8.4l-60.1 15c-5.5 1.4-11.2-.2-15.2-4.2s-5.6-9.7-4.2-15.2l15-60.1c1.4-5.6 4.3-10.8 8.4-14.9z"/></svg>
+      <span>可选：对项目进行一次打包</span>
+    </div>
+  </div>
+<p>在 HotUpdate 文件夹下的所有脚本发生任何变更后，都需要在 Unity 的上方菜单项选择 <code>HybridCLR/CompileDll/ActiveBuildTarget</code></p>
+<h2 id="安装-adressable"><a href="#%e5%ae%89%e8%a3%85-adressable" class="header-anchor"></a>安装 Adressable
+</h2><p>打开 <code>Package Manager</code> 窗口</p>
+<p>选择 <code>Package: Unity Registry</code></p>
+<p>搜索 <code>Addressable</code></p>
+<p>点击 Install 安装</p>
+<p><img src="/post/hotupdate/image-1740498412328-23.png"
+	width="1016"
+	height="300"
+	srcset="/post/hotupdate/image-1740498412328-23_hu_45c3b9f6748d8d6f.png 480w, /post/hotupdate/image-1740498412328-23_hu_b5ad0d8c288a620a.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="338"
+		data-flex-basis="812px"
+	
+></p>
+<p>选择 Unity 的上方菜单项 <code>Window/Asset Management/Addressable/Groups</code></p>
+<p>选择 <code>Generate...</code></p>
+<p>选择 <code>Profile：Default</code></p>
+<p><img src="/post/hotupdate/image-1740498436165-25.png"
+	width="977"
+	height="123"
+	srcset="/post/hotupdate/image-1740498436165-25_hu_2d7eaef24f6d8de9.png 480w, /post/hotupdate/image-1740498436165-25_hu_2d0a6da33f45e662.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="794"
+		data-flex-basis="1906px"
+	
+></p>
+<p>选择 <code>Manage Profiles</code></p>
+<p><img src="/post/hotupdate/image-1740498443946-27.png"
+	width="385"
+	height="124"
+	srcset="/post/hotupdate/image-1740498443946-27_hu_467b341349b97796.png 480w, /post/hotupdate/image-1740498443946-27_hu_7739a357ad992356.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="310"
+		data-flex-basis="745px"
+	
+></p>
+<p>修改设置</p>
+<p>选择 <code>Remote</code> 为 <code>Custom</code></p>
+<p>将 <code>Remote.LoadPath</code> 修改为自己的远程或本地的 http 资源服务器，路径内文件为本地的 <code>{project}/ServerData/[BuildTarget]</code></p>
+<p><img src="/post/hotupdate/image-1740498461399-29.png"
+	width="894"
+	height="290"
+	srcset="/post/hotupdate/image-1740498461399-29_hu_81a19b629a3aeee5.png 480w, /post/hotupdate/image-1740498461399-29_hu_97b0af05bd1a2c2a.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="308"
+		data-flex-basis="739px"
+	
+></p>
+<p>点击 <code>Addressables Groups</code> 窗口的 <code>New</code></p>
+<p>创建一个新的组并命名为 <code>HotUpdateDll</code></p>
+<p><img src="/post/hotupdate/image-1740498474011-31.png"
+	width="405"
+	height="128"
+	srcset="/post/hotupdate/image-1740498474011-31_hu_7e08941635fd615f.png 480w, /post/hotupdate/image-1740498474011-31_hu_22b40aa62ce1614c.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="316"
+		data-flex-basis="759px"
+	
+></p>
+<p>选择组 <code>HotUpdateDll</code>，在右侧 Inspector 窗口修改 <code>Build &amp; Load Paths</code> 为 <code>Remote</code></p>
+<p><img src="/post/hotupdate/image-1740498495082-33.png"
+	width="625"
+	height="310"
+	srcset="/post/hotupdate/image-1740498495082-33_hu_67a78c09f56e1954.png 480w, /post/hotupdate/image-1740498495082-33_hu_6fa18144d3ab7073.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="201"
+		data-flex-basis="483px"
+	
+></p>
+<p>在 Project 窗口找到 AddressableAssetSettings</p>
+<p><img src="/post/hotupdate/image-1740498507616-35.png"
+	width="282"
+	height="177"
+	srcset="/post/hotupdate/image-1740498507616-35_hu_391f4cf0f6c07d67.png 480w, /post/hotupdate/image-1740498507616-35_hu_a96121142f0242ea.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="159"
+		data-flex-basis="382px"
+	
+></p>
+<p>在 Inspector 窗口勾选 <code>Build Remote Catalog</code></p>
+<p><img src="/post/hotupdate/image-1740498515911-37.png"
+	width="625"
+	height="530"
+	srcset="/post/hotupdate/image-1740498515911-37_hu_b7ff9e6f48f976ce.png 480w, /post/hotupdate/image-1740498515911-37_hu_15410737bc35d22d.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="117"
+		data-flex-basis="283px"
+	
+></p>
+<p>选择 <code>Asset/HotUpdate/Dlls/HotUpdate.dll</code></p>
+
+  <div class="admonition note">
+    <div class="admonition-header">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 125.7-86.8 86.8c-10.3 10.3-17.5 23.1-21 37.2l-18.7 74.9c-2.3 9.2-1.8 18.8 1.3 27.5L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM549.8 235.7l14.4 14.4c15.6 15.6 15.6 40.9 0 56.6l-29.4 29.4-71-71 29.4-29.4c15.6-15.6 40.9-15.6 56.6 0zM311.9 417L441.1 287.8l71 71L382.9 487.9c-4.1 4.1-9.2 7-14.9 8.4l-60.1 15c-5.5 1.4-11.2-.2-15.2-4.2s-5.6-9.7-4.2-15.2l15-60.1c1.4-5.6 4.3-10.8 8.4-14.9z"/></svg>
+      <span>此时该文件在文件管理器中的后缀应为.bytes</span>
+    </div>
+  </div>
+<p><img src="/post/hotupdate/image-1740498528435-39.png"
+	width="354"
+	height="34"
+	srcset="/post/hotupdate/image-1740498528435-39_hu_af1b9b928392d0c2.png 480w, /post/hotupdate/image-1740498528435-39_hu_e044491fc1c1fbbd.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1041"
+		data-flex-basis="2498px"
+	
+></p>
+<p>将其拖入 <code>Addressables Groups</code> 窗口的 <code>HotUpdateDll</code> 组内</p>
+
+  <div class="admonition note">
+    <div class="admonition-header">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 125.7-86.8 86.8c-10.3 10.3-17.5 23.1-21 37.2l-18.7 74.9c-2.3 9.2-1.8 18.8 1.3 27.5L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM549.8 235.7l14.4 14.4c15.6 15.6 15.6 40.9 0 56.6l-29.4 29.4-71-71 29.4-29.4c15.6-15.6 40.9-15.6 56.6 0zM311.9 417L441.1 287.8l71 71L382.9 487.9c-4.1 4.1-9.2 7-14.9 8.4l-60.1 15c-5.5 1.4-11.2-.2-15.2-4.2s-5.6-9.7-4.2-15.2l15-60.1c1.4-5.6 4.3-10.8 8.4-14.9z"/></svg>
+      <span>可选: 打上标签Dll</span>
+    </div>
+  </div>
+<p><img src="/post/hotupdate/image-1740498540148-41.png"
+	width="895"
+	height="165"
+	srcset="/post/hotupdate/image-1740498540148-41_hu_cd917ee3f12ac074.png 480w, /post/hotupdate/image-1740498540148-41_hu_ae76444ee7afd0f1.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="542"
+		data-flex-basis="1301px"
+	
+></p>
+<p>选择 <code>Play Mode Script</code> 里的第三项 <code>Use Exiting Build（Window）</code></p>
+<p><img src="/post/hotupdate/image-1740498550345-43.png"
+	width="687"
+	height="167"
+	srcset="/post/hotupdate/image-1740498550345-43_hu_d2f04731045d2d7d.png 480w, /post/hotupdate/image-1740498550345-43_hu_f82ae221f071da3c.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="411"
+		data-flex-basis="987px"
+	
+></p>
+<p>点击 <code>Player Mode...</code> 左侧的 <code>Build</code>，选择 <code>New Build/Defalut Build Script</code></p>
+<p>此时在 <code>{Project}/ServerData</code> 下会有文件夹为 <code>StandardWindow64</code> 文件夹</p>
+
+  <div class="admonition note">
+    <div class="admonition-header">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 125.7-86.8 86.8c-10.3 10.3-17.5 23.1-21 37.2l-18.7 74.9c-2.3 9.2-1.8 18.8 1.3 27.5L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM549.8 235.7l14.4 14.4c15.6 15.6 15.6 40.9 0 56.6l-29.4 29.4-71-71 29.4-29.4c15.6-15.6 40.9-15.6 56.6 0zM311.9 417L441.1 287.8l71 71L382.9 487.9c-4.1 4.1-9.2 7-14.9 8.4l-60.1 15c-5.5 1.4-11.2-.2-15.2-4.2s-5.6-9.7-4.2-15.2l15-60.1c1.4-5.6 4.3-10.8 8.4-14.9z"/></svg>
+      <span>此文件夹内文件需与资源服务器内容同步</span>
+    </div>
+  </div>
+<p><img src="/post/hotupdate/image-1740498561893-45.png"
+	width="596"
+	height="123"
+	srcset="/post/hotupdate/image-1740498561893-45_hu_aa3db0bf803546ba.png 480w, /post/hotupdate/image-1740498561893-45_hu_55885fe21e54257.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="484"
+		data-flex-basis="1162px"
+	
+></p>
+<h1 id="脚本热更新操作步骤"><a href="#%e8%84%9a%e6%9c%ac%e7%83%ad%e6%9b%b4%e6%96%b0%e6%93%8d%e4%bd%9c%e6%ad%a5%e9%aa%a4" class="header-anchor"></a>脚本热更新操作步骤
+</h1><p>在 HotUpdate 文件夹下的所有脚本发生任何变更后，都需要在 Unity 的上方菜单项选择 <code>HybridCLR/CompileDll/ActiveBuildTarget</code></p>
+<p>在 Addressables Groups 窗口选择 <code>Build/New Build/Defalut Build Script</code></p>
+<p>同步 <code>ServerData</code> 文件夹内的文件至资源服务器</p>
+<p>运行客户端下载</p>
+<h1 id="在-hotupdate-文件下的脚本需要注意"><a href="#%e5%9c%a8-hotupdate-%e6%96%87%e4%bb%b6%e4%b8%8b%e7%9a%84%e8%84%9a%e6%9c%ac%e9%9c%80%e8%a6%81%e6%b3%a8%e6%84%8f" class="header-anchor"></a>在 HotUpdate 文件下的脚本需要注意
+</h1><p>在引用其他命名空间时，在客户端有可能会出现 Script Missing 错误</p>
+<p>因此需要选择 HotUpdate 文件夹里的 HotUpdate 程序集</p>
+<p><img src="/post/hotupdate/image-1740498574241-47.png"
+	width="206"
+	height="143"
+	srcset="/post/hotupdate/image-1740498574241-47_hu_de466284d284105d.png 480w, /post/hotupdate/image-1740498574241-47_hu_dd07ced1648cff26.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="345px"
+	
+></p>
+<p>在 Inspector 勾选 <code>Allow 'unsafe' Code</code></p>
+<p>在 Assembly Definition Reference 添加引用的命名空间程序集</p>
+<p><img src="/post/hotupdate/image-1740498582068-49.png"
+	width="625"
+	height="518"
+	srcset="/post/hotupdate/image-1740498582068-49_hu_7c717360183326d5.png 480w, /post/hotupdate/image-1740498582068-49_hu_f0db2bac455aa82e.png 1024w"
+	loading="lazy"
+	
+		alt="image"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="120"
+		data-flex-basis="289px"
+	
+></p>
+<p>在 <code>Assets/StreamingAssets</code> 文件夹放置对应所需的 Dll 文件</p>
+<p>并在客户端的资源检查脚本第一时间读取</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/unity/">Unity</a>
+        
+            <a href="/tags/hotupdate/">HotUpdate</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 2025 Mar 15 00:17 CST
+        </span>
+    </section></footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/unity%E9%9D%A2%E8%AF%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity 客户端开发问题笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/unitask/">
+        
+        
+            <div class="article-image">
+                <img src="/post/unitask/Icon.44386f8f2f6fb60099959a84f96008f9_hu_b526271093ad0a7.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post UniTask 学习笔记"
+                        
+                        data-hash="md5-RDhvjy9vtgCZlZqE&#43;WAI&#43;Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">UniTask 学习笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/cinemachine/">
+        
+        
+            <div class="article-image">
+                <img src="/post/cinemachine/cover.acf2e5594abee2f41679dd2dd129d936_hu_11ed872f377755d3.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Unity Cinemachine 3.0"
+                        
+                        data-hash="md5-rPLlWUq&#43;4vQWed0t0SnZNg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity Cinemachine 3.0</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/inspecter%E6%8B%93%E5%B1%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity Inspector 拓展笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unitymathf/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity Mathf 笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="Chneixn/chneixn.github.io"
+    data-repo-id="R_kgDOOIDvzg"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOOIDvzs4CoBrA"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light');
+            } else {
+                setGiscusTheme('dark');
+            }
+        }
+    })();
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2024 -
+        
+        2025 Chneixn Blog
+    </section>
+
+    
+    <section class="totalcount">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        发表了24篇文章 ·
+        总计11.66k字
+    </section>
+
+    <section class="powerby">
+        
+        Chneixn 2726269548@qq.com <br />
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
+                data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script type="text/javascript" src="/ts/main.2b807a7ed13719c096c02688e19eddb70a6266ce7c5c849c1bc51908932bb2fd.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

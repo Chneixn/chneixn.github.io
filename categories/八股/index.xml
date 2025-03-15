@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>八股 on Chneixn Blog</title><link>https://chneixn.github.io/categories/%E5%85%AB%E8%82%A1/</link><description>Recent content in 八股 on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 16 Mar 2025 00:17:52 +0800</lastBuildDate><atom:link href="https://chneixn.github.io/categories/%E5%85%AB%E8%82%A1/index.xml" rel="self" type="application/rss+xml"/><item><title>SVN 与 Git 的区别</title><link>https://chneixn.github.io/post/svn%E5%92%8Cgit/</link><pubDate>Fri, 14 Mar 2025 21:55:30 +0800</pubDate><guid>https://chneixn.github.io/post/svn%E5%92%8Cgit/</guid><description>&lt;h1 id="svn-与-git-的区别">&lt;strong>SVN 与 Git 的区别&lt;/strong>&lt;/h1>
+&lt;p>选择 SVN 的场景包括：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>传统团队：&lt;/strong> 对于一些较老的项目，团队对分布式开发的要求不高，或者团队成员对 SVN 更为熟悉等情况下，选择 SVN 可能更为合适。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>集中式开发：&lt;/strong> 如果团队成员集中在一个地理位置，或者不需要进行远程协作开发，SVN 的集中式特性可能更符合团队的需求。&lt;/p></description></item></channel></rss>

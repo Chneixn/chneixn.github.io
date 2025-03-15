@@ -383,14 +383,14 @@
 <p>角色的控制器，也是这个模块最重要的一个组件</p>
 <p>担任 MVC 模式中 Controller 角色</p>
 <p>所有的状态模块在实例化后都需要在 CreateFSM 方法中加入 FSM 中才能被角色启用</p>
-<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#c678dd">private</span> <span style="color:#c678dd">void</span> <span style="color:#e06c75">CreateFSM</span>()
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#7f848e">// 在创建状态机时输入第一个状态</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e06c75">FSM</span> = <span style="color:#c678dd">new</span>(<span style="color:#e06c75">idle</span>, <span style="color:#c678dd">this</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#e06c75">FSM</span>.<span style="color:#e06c75">AddState</span>(<span style="color:#e06c75">fly</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#e06c75">FSM</span>.<span style="color:#e06c75">AddState</span>(<span style="color:#e06c75">inAir</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#e06c75">FSM</span>.<span style="color:#e06c75">AddState</span>(<span style="color:#e06c75">crouching</span>);
-</span></span><span style="display:flex;"><span>    }
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1</span><span><span style="color:#c678dd">private</span> <span style="color:#c678dd">void</span> <span style="color:#e06c75">CreateFSM</span>()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3</span><span>        <span style="color:#7f848e">// 在创建状态机时输入第一个状态</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4</span><span>        <span style="color:#e06c75">FSM</span> = <span style="color:#c678dd">new</span>(<span style="color:#e06c75">idle</span>, <span style="color:#c678dd">this</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5</span><span>        <span style="color:#e06c75">FSM</span>.<span style="color:#e06c75">AddState</span>(<span style="color:#e06c75">fly</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6</span><span>        <span style="color:#e06c75">FSM</span>.<span style="color:#e06c75">AddState</span>(<span style="color:#e06c75">inAir</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">7</span><span>        <span style="color:#e06c75">FSM</span>.<span style="color:#e06c75">AddState</span>(<span style="color:#e06c75">crouching</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">8</span><span>    }
 </span></span></code></pre></div><h2 id="imovementstate"><a href="#imovementstate" class="header-anchor"></a>IMovementState
 </h2><blockquote>
 <p>继承 ICharacterController</p></blockquote>
@@ -493,51 +493,51 @@
             
                 
 <article class="">
-    <a href="/post/unitask/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">UniTask 学习笔记</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/post/cinemachine/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Unity Cinemachine 3.0</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/post/unityinspector%E6%89%A9%E5%B1%95/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Unity Inspector 拓展笔记</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
     <a href="/post/unitymathf/">
         
         
 
         <div class="article-details">
             <h2 class="article-title">Unity Mathf 笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unityxr-alxygrab/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity XR 像 Alyx 一样抓取物体</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/unity%E4%BC%98%E5%8C%96%E6%B3%A8%E6%84%8F/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity 优化笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/animation-api/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity 动画 API</h2>
         </div>
     </a>
 </article>
@@ -666,8 +666,12 @@
         
         
         
-        发表了23篇文章 ·
-        总计11.41k字
+        
+        
+        
+        
+        发表了24篇文章 ·
+        总计11.66k字
     </section>
 
     <section class="powerby">

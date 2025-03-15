@@ -2,18 +2,18 @@
 <html lang="zh-cn" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name="color-scheme" content='dark'><meta name='description' content="Interactor Select Action Trigger Name Description State Unity将考虑在按下按钮时激活输入。用户可以在交互成为可能之前保持按钮，并且仍然在交互成为可能时触发交互。（一只手交互时，另一只手不能获取交互物） StateChange Unity将考虑仅在按下按钮的框架上激活输入，如果成功，则保持接合，直到释放输入。当交互可能触发交互时，用户必须按下按钮。如果他们在交互成为可能之前开始按下按钮，他们将不会触发交互。（一只手交互时，另一只手可以获取物品交互权） Sticky 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次释放。 Toggle 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次按压。 ">
+<meta name="color-scheme" content='dark'><meta name='description' content="Interactor Select Action Trigger Name Description State Unity将考虑在按下按钮时激活输入。用户可以在交互成为可能之前保持按钮，并且仍然在交互成为可能时触发交互。（一只手交互时，另一只手不能获取交互物） StateChange Unity将考虑仅在按下按钮的框架上激活输入，如果成功，则保持接合，直到释放输入。当交互可能触发交互时，用户必须按下按钮。如果他们在交互成为可能之前开始按下按钮，他们将不会触发交互。（一只手交互时，另一只手可以获取物品交互权） Sticky 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次释放。 Toggle 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次按压。 创建物体在交互时的反馈 在 XR Interaction Toolkit 版本 &gt;2.3 之后，提供了 XR Interactable Affordance State Provider 组件，以及一些预设好的 Affordance 组件用于创建效果\n">
 <title>Unity XR Interaction 笔记</title>
 
 <link rel='canonical' href='http://localhost:1313/post/xr-interactiontoolkit/'>
 
 <link rel="stylesheet" href="/scss/style.min.b1b697db09e8be8ec18cf4922270b62a2ecaafe967999f644f12682dd177edb9.css"><meta property='og:title' content="Unity XR Interaction 笔记">
-<meta property='og:description' content="Interactor Select Action Trigger Name Description State Unity将考虑在按下按钮时激活输入。用户可以在交互成为可能之前保持按钮，并且仍然在交互成为可能时触发交互。（一只手交互时，另一只手不能获取交互物） StateChange Unity将考虑仅在按下按钮的框架上激活输入，如果成功，则保持接合，直到释放输入。当交互可能触发交互时，用户必须按下按钮。如果他们在交互成为可能之前开始按下按钮，他们将不会触发交互。（一只手交互时，另一只手可以获取物品交互权） Sticky 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次释放。 Toggle 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次按压。 ">
+<meta property='og:description' content="Interactor Select Action Trigger Name Description State Unity将考虑在按下按钮时激活输入。用户可以在交互成为可能之前保持按钮，并且仍然在交互成为可能时触发交互。（一只手交互时，另一只手不能获取交互物） StateChange Unity将考虑仅在按下按钮的框架上激活输入，如果成功，则保持接合，直到释放输入。当交互可能触发交互时，用户必须按下按钮。如果他们在交互成为可能之前开始按下按钮，他们将不会触发交互。（一只手交互时，另一只手可以获取物品交互权） Sticky 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次释放。 Toggle 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次按压。 创建物体在交互时的反馈 在 XR Interaction Toolkit 版本 &gt;2.3 之后，提供了 XR Interactable Affordance State Provider 组件，以及一些预设好的 Affordance 组件用于创建效果\n">
 <meta property='og:url' content='http://localhost:1313/post/xr-interactiontoolkit/'>
 <meta property='og:site_name' content='Chneixn Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='XR' /><meta property='article:tag' content='Unity' /><meta property='article:modified_time' content='2025-03-14T21:21:39&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='XR' /><meta property='article:tag' content='Unity' /><meta property='article:published_time' content='2025-03-15T22:44:32&#43;08:00'/><meta property='article:modified_time' content='2025-03-14T21:21:39&#43;08:00'/>
 <meta name="twitter:title" content="Unity XR Interaction 笔记">
-<meta name="twitter:description" content="Interactor Select Action Trigger Name Description State Unity将考虑在按下按钮时激活输入。用户可以在交互成为可能之前保持按钮，并且仍然在交互成为可能时触发交互。（一只手交互时，另一只手不能获取交互物） StateChange Unity将考虑仅在按下按钮的框架上激活输入，如果成功，则保持接合，直到释放输入。当交互可能触发交互时，用户必须按下按钮。如果他们在交互成为可能之前开始按下按钮，他们将不会触发交互。（一只手交互时，另一只手可以获取物品交互权） Sticky 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次释放。 Toggle 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次按压。 ">
+<meta name="twitter:description" content="Interactor Select Action Trigger Name Description State Unity将考虑在按下按钮时激活输入。用户可以在交互成为可能之前保持按钮，并且仍然在交互成为可能时触发交互。（一只手交互时，另一只手不能获取交互物） StateChange Unity将考虑仅在按下按钮的框架上激活输入，如果成功，则保持接合，直到释放输入。当交互可能触发交互时，用户必须按下按钮。如果他们在交互成为可能之前开始按下按钮，他们将不会触发交互。（一只手交互时，另一只手可以获取物品交互权） Sticky 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次释放。 Toggle 交互在输入被按压的帧上开始，并且保持接合直到输入被第二次按压。 创建物体在交互时的反馈 在 XR Interaction Toolkit 版本 &gt;2.3 之后，提供了 XR Interactable Affordance State Provider 组件，以及一些预设好的 Affordance 组件用于创建效果\n">
     <link rel="shortcut icon" href="/favicon.ico" />
 <style>
      
@@ -302,6 +302,13 @@
         <li><a href="#select-action-trigger">Select Action Trigger</a></li>
       </ol>
     </li>
+    <li><a href="#创建物体在交互时的反馈">创建物体在交互时的反馈</a>
+      <ol>
+        <li><a href="#xr-interactable-affordance-state-provider">XR Interactable Affordance State Provider</a></li>
+        <li><a href="#color-affordance">Color Affordance</a></li>
+        <li><a href="#audio-affordance">Audio Affordance</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -341,8 +348,23 @@
     
     <footer class="article-time">
         
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+            <time class="article-time--published">2025 Mar 15</time>
+        </div>
+        
 
         
+        
+        <span class="time-divider">|</span>
         <div class="article-time--lastmod">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -394,7 +416,42 @@
       </tr>
   </tbody>
 </table></div>
+<h1 id="创建物体在交互时的反馈"><a href="#%e5%88%9b%e5%bb%ba%e7%89%a9%e4%bd%93%e5%9c%a8%e4%ba%a4%e4%ba%92%e6%97%b6%e7%9a%84%e5%8f%8d%e9%a6%88" class="header-anchor"></a>创建物体在交互时的反馈
+</h1><p>在 XR Interaction Toolkit 版本 &gt;2.3 之后，提供了 <code>XR Interactable Affordance State Provider</code> 组件，以及一些预设好的 Affordance 组件用于创建效果</p>
+<h2 id="xr-interactable-affordance-state-provider"><a href="#xr-interactable-affordance-state-provider" class="header-anchor"></a>XR Interactable Affordance State Provider
+</h2><p>在安装了 Starter Assets 资源后，会提供一个 <code>Interaction Affordance</code> 预制体，并默认附带了一个 <code>Color Affordance</code> 物体</p>
+<p><img src="/post/xr-interactiontoolkit/image-2.png"
+	width="231"
+	height="44"
+	srcset="/post/xr-interactiontoolkit/image-2_hu_32826f6d6b6c0603.png 480w, /post/xr-interactiontoolkit/image-2_hu_18190bc9393a56b6.png 1024w"
+	loading="lazy"
+	
+		alt="Interaction Affordance"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="525"
+		data-flex-basis="1260px"
+	
+></p>
+<p>在 <code>Interaction Affordance</code> 预制体中，会默认附带一个 <code>XR Interactable Affordance State Provider</code> 组件，该组件会配合 <code>Affordance</code> 组件反馈物体的交互状态</p>
+<figure><img src="/post/xr-interactiontoolkit/image.png" width="50%"><figcaption>
+      <h4>Interaction Affordance</h4>
+    </figcaption>
+</figure>
 
+<p>将 <code>Interaction Affordance</code> 预制体作为需要反馈交互状态的物体的子物体，在 <code>Interactable Source</code> 绑定需要被监听交互状态的物体即可</p>
+<h2 id="color-affordance"><a href="#color-affordance" class="header-anchor"></a>Color Affordance
+</h2><figure><img src="/post/xr-interactiontoolkit/image-1.png" width="50%"><figcaption>
+      <h4>Color Affordance</h4>
+    </figcaption>
+</figure>
+
+<p>该组件一般作为 <code>Interaction Affordance</code> 的子物体，在 <code>Affordance State Provider</code> 中绑定反馈交互状态的 <code>XR Interactable Affordance State Provider</code> 组件</p>
+<p>并在 <code>Affordance Theme Datum</code> 中选择反馈的颜色样式，颜色样式可以在 Assets 资源文件夹中 <code>Create/Affordance Theme/Color Affordance Theme</code> 创建</p>
+<p>该组件创建后会附带 <code>Material Property Block Helper</code> 组件，在 Render 处绑定要改变颜色的模型</p>
+<h2 id="audio-affordance"><a href="#audio-affordance" class="header-anchor"></a>Audio Affordance
+</h2>
 </section>
 
 
@@ -488,9 +545,57 @@
 
             
                 
+<article class="has-image">
+    <a href="/post/hotupdate/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hotupdate/cover.99c6b65ff70d6be819fc83fd2655e0ee_hu_7bded63fed6f0943.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Unity 基于 HybridCLR &#43; Addressable 实现的热更新"
+                        
+                        data-hash="md5-mca2X/cNa&#43;gZ/IP9JlXg7g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity 基于 HybridCLR &#43; Addressable 实现的热更新</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
 <article class="">
+    <a href="/post/unity%E9%9D%A2%E8%AF%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity 客户端开发问题笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
     <a href="/post/unitask/">
         
+        
+            <div class="article-image">
+                <img src="/post/unitask/Icon.44386f8f2f6fb60099959a84f96008f9_hu_b526271093ad0a7.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post UniTask 学习笔记"
+                        
+                        data-hash="md5-RDhvjy9vtgCZlZqE&#43;WAI&#43;Q==">
+                
+            </div>
         
 
         <div class="article-details">
@@ -501,39 +606,24 @@
 
             
                 
-<article class="">
+<article class="has-image">
     <a href="/post/cinemachine/">
         
+        
+            <div class="article-image">
+                <img src="/post/cinemachine/cover.acf2e5594abee2f41679dd2dd129d936_hu_11ed872f377755d3.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Unity Cinemachine 3.0"
+                        
+                        data-hash="md5-rPLlWUq&#43;4vQWed0t0SnZNg==">
+                
+            </div>
         
 
         <div class="article-details">
             <h2 class="article-title">Unity Cinemachine 3.0</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/post/unityinspector%E6%89%A9%E5%B1%95/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Unity Inspector 拓展笔记</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/post/unitymathf/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Unity Mathf 笔记</h2>
         </div>
     </a>
 </article>
@@ -662,8 +752,12 @@
         
         
         
-        发表了23篇文章 ·
-        总计11.41k字
+        
+        
+        
+        
+        发表了24篇文章 ·
+        总计11.66k字
     </section>
 
     <section class="powerby">

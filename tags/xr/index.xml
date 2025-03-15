@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>XR on Chneixn Blog</title><link>https://chneixn.github.io/tags/xr/</link><description>Recent content in XR on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://chneixn.github.io/tags/xr/index.xml" rel="self" type="application/rss+xml"/><item><title>Unity XR Interaction 笔记</title><link>https://chneixn.github.io/post/xr-interactiontoolkit/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/xr-interactiontoolkit/</guid><description>&lt;h1 id="interactor">Interactor&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>XR on Chneixn Blog</title><link>https://chneixn.github.io/tags/xr/</link><description>Recent content in XR on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 16 Mar 2025 00:17:52 +0800</lastBuildDate><atom:link href="https://chneixn.github.io/tags/xr/index.xml" rel="self" type="application/rss+xml"/><item><title>Unity XR Interaction 笔记</title><link>https://chneixn.github.io/post/xr-interactiontoolkit/</link><pubDate>Sat, 15 Mar 2025 22:44:32 +0800</pubDate><guid>https://chneixn.github.io/post/xr-interactiontoolkit/</guid><description>&lt;h1 id="interactor">Interactor&lt;/h1>
 &lt;h2 id="select-action-trigger">Select Action Trigger&lt;/h2>
 &lt;table>
  &lt;thead>
@@ -25,7 +25,9 @@
  &lt;td>交互在输入被按压的帧上开始，并且保持接合直到输入被第二次按压。&lt;/td>
  &lt;/tr>
  &lt;/tbody>
-&lt;/table></description></item><item><title>Unity XR 像 Alyx 一样抓取物体</title><link>https://chneixn.github.io/post/unityxr-alxygrab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/unityxr-alxygrab/</guid><description>&lt;h1 id="像-alyx-一样抓取物体">像 Alyx 一样抓取物体&lt;/h1>
+&lt;/table>
+&lt;h1 id="创建物体在交互时的反馈">创建物体在交互时的反馈&lt;/h1>
+&lt;p>在 XR Interaction Toolkit 版本 &amp;gt;2.3 之后，提供了 &lt;code>XR Interactable Affordance State Provider&lt;/code> 组件，以及一些预设好的 Affordance 组件用于创建效果&lt;/p></description></item><item><title>Unity XR 像 Alyx 一样抓取物体</title><link>https://chneixn.github.io/post/unityxr-alxygrab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/unityxr-alxygrab/</guid><description>&lt;h1 id="像-alyx-一样抓取物体">像 Alyx 一样抓取物体&lt;/h1>
 &lt;p>Source Video: &lt;a href="https://www.youtube.com/watch?v=WU23Uj1oeh8">https://www.youtube.com/watch?v=WU23Uj1oeh8&lt;/a>&lt;/p>
 &lt;p>基于 Unity XR Interaction Toolkit 2.6.3&lt;/p>
 &lt;h2 id="ray-interactor">Ray Interactor&lt;/h2>
