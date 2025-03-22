@@ -1,8 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>C#, Docfx on Chneixn Blog</title><link>https://chneixn.github.io/tags/c%23-docfx/</link><description>Recent content in C#, Docfx on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 16 Mar 2025 00:17:52 +0800</lastBuildDate><atom:link href="https://chneixn.github.io/tags/c%23-docfx/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 DOCFX 创建 C# API 文档</title><link>https://chneixn.github.io/post/api-documentation/</link><pubDate>Sat, 15 Mar 2025 16:00:19 +0800</pubDate><guid>https://chneixn.github.io/post/api-documentation/</guid><description>&lt;h1 id="安装-docfx">安装 DOCFX&lt;/h1>
-&lt;h2 id="从-dotnet-tool-安装推荐">从 dotnet tool 安装（推荐）&lt;/h2>
-&lt;p>在 cmd 键入 &lt;code>dotnet tool install -g docfx&lt;/code>&lt;/p>
-&lt;p>等待安装完成&amp;hellip;&lt;/p>
-&lt;p>键入 &lt;code>docfx -v&lt;/code> ，没有报错则安装完成&lt;/p>
-&lt;h2 id="从-github-下载最新构建手动安装">从 Github 下载最新构建手动安装&lt;/h2>
-&lt;p>在 Github 下载 &lt;a href="https://github.com/dotnet/docfx/releases">https://github.com/dotnet/docfx/releases&lt;/a>&lt;/p>
-&lt;p>将压缩包解压到自己的文件夹中，示例 &lt;code>e:/tools/docfx&lt;/code>&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>C#, Docfx on Chneixn Blog</title>
+        <link>http://localhost:1313/tags/c%23-docfx/</link>
+        <description>Recent content in C#, Docfx on Chneixn Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sun, 16 Mar 2025 00:17:52 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/c%23-docfx/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>使用 DOCFX 创建 C# API 文档</title>
+        <link>http://localhost:1313/post/api-documentation/</link>
+        <pubDate>Sat, 15 Mar 2025 16:00:19 +0800</pubDate>
+        
+        <guid>http://localhost:1313/post/api-documentation/</guid>
+        <description>&lt;h1 id=&#34;安装-docfx&#34;&gt;&lt;a href=&#34;#%e5%ae%89%e8%a3%85-docfx&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;安装 DOCFX
+&lt;/h1&gt;&lt;h2 id=&#34;从-dotnet-tool-安装推荐&#34;&gt;&lt;a href=&#34;#%e4%bb%8e-dotnet-tool-%e5%ae%89%e8%a3%85%e6%8e%a8%e8%8d%90&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;从 dotnet tool 安装（推荐）
+&lt;/h2&gt;&lt;p&gt;在 cmd 键入 &lt;code&gt;dotnet tool install -g docfx&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;等待安装完成&amp;hellip;&lt;/p&gt;
+&lt;p&gt;键入 &lt;code&gt;docfx -v&lt;/code&gt; ，没有报错则安装完成&lt;/p&gt;
+&lt;h2 id=&#34;从-github-下载最新构建手动安装&#34;&gt;&lt;a href=&#34;#%e4%bb%8e-github-%e4%b8%8b%e8%bd%bd%e6%9c%80%e6%96%b0%e6%9e%84%e5%bb%ba%e6%89%8b%e5%8a%a8%e5%ae%89%e8%a3%85&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;从 Github 下载最新构建手动安装
+&lt;/h2&gt;&lt;p&gt;在 Github 下载 &lt;a class=&#34;link&#34; href=&#34;https://github.com/dotnet/docfx/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/dotnet/docfx/releases&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;将压缩包解压到自己的文件夹中，示例 &lt;code&gt;e:/tools/docfx&lt;/code&gt;&lt;/p&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

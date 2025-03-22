@@ -1,9 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>语法 on Chneixn Blog</title><link>https://chneixn.github.io/tags/%E8%AF%AD%E6%B3%95/</link><description>Recent content in 语法 on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><atom:link href="https://chneixn.github.io/tags/%E8%AF%AD%E6%B3%95/index.xml" rel="self" type="application/rss+xml"/><item><title>C# Switch 语法</title><link>https://chneixn.github.io/post/c%23switch/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/c%23switch/</guid><description>&lt;h1 id="switch语句">switch语句&lt;/h1>
-&lt;h2 id="弃元模式-c70">弃元模式 C#7.0&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1&lt;/span>&lt;span>&lt;span style="color:#e5c07b">var&lt;/span> &lt;span style="color:#e06c75">result&lt;/span> = &lt;span style="color:#e06c75">score&lt;/span> &lt;span style="color:#c678dd">switch&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2&lt;/span>&lt;span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3&lt;/span>&lt;span> &amp;gt;= &lt;span style="color:#d19a66">80&lt;/span> =&amp;gt; &lt;span style="color:#98c379">&amp;#34;excellent&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4&lt;/span>&lt;span> &amp;gt;= &lt;span style="color:#d19a66">60&lt;/span> =&amp;gt; &lt;span style="color:#98c379">&amp;#34;good&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5&lt;/span>&lt;span> &lt;span style="color:#e06c75">_&lt;/span> =&amp;gt; &lt;span style="color:#98c379">&amp;#34;poor&amp;#34;&lt;/span> &lt;span style="color:#7f848e">//弃元在switch表达式中就相当于default&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6&lt;/span>&lt;span> };
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>语法 on Chneixn Blog</title>
+        <link>http://localhost:1313/tags/%E8%AF%AD%E6%B3%95/</link>
+        <description>Recent content in 语法 on Chneixn Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language><atom:link href="http://localhost:1313/tags/%E8%AF%AD%E6%B3%95/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>C# Switch 语法</title>
+        <link>http://localhost:1313/post/c%23switch/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/post/c%23switch/</guid>
+        <description>&lt;h1 id=&#34;switch语句&#34;&gt;&lt;a href=&#34;#switch%e8%af%ad%e5%8f%a5&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;switch语句
+&lt;/h1&gt;&lt;h2 id=&#34;弃元模式-c70&#34;&gt;&lt;a href=&#34;#%e5%bc%83%e5%85%83%e6%a8%a1%e5%bc%8f-c70&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;弃元模式 C#7.0
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f&#34;&gt;1&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#e5c07b&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#e06c75&#34;&gt;result&lt;/span&gt; = &lt;span style=&#34;color:#e06c75&#34;&gt;score&lt;/span&gt; &lt;span style=&#34;color:#c678dd&#34;&gt;switch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f&#34;&gt;2&lt;/span&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f&#34;&gt;3&lt;/span&gt;&lt;span&gt;        &amp;gt;= &lt;span style=&#34;color:#d19a66&#34;&gt;80&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#98c379&#34;&gt;&amp;#34;excellent&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f&#34;&gt;4&lt;/span&gt;&lt;span&gt;        &amp;gt;= &lt;span style=&#34;color:#d19a66&#34;&gt;60&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#98c379&#34;&gt;&amp;#34;good&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f&#34;&gt;5&lt;/span&gt;&lt;span&gt;        &lt;span style=&#34;color:#e06c75&#34;&gt;_&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#98c379&#34;&gt;&amp;#34;poor&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#7f848e&#34;&gt;//弃元在switch表达式中就相当于default&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f&#34;&gt;6&lt;/span&gt;&lt;span&gt;    };
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

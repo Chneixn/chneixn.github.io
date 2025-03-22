@@ -2,18 +2,18 @@
 <html lang="zh-cn" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name="color-scheme" content='dark'><meta name='description' content="3.3 游戏开发问题\n关于游戏开发的通用问题。各个模块会再问一些特定引擎的问题，对照上面的3.2。\n1.游戏AI\n①常用的做法简述（NavMesh + 寻路）\n②NavMesh的生成过程简述\n">
+<meta name="color-scheme" content='dark'><meta name='description' content="Unity 引擎相关 1.游戏AI ①常用的做法简述（NavMesh + 寻路）\n②NavMesh的生成过程简述\n顶点\n③A*寻路算法的原理\n广度搜索\n④是否了解多个AI都在自动寻路时的动态避障算法\n">
 <title>Unity 客户端开发问题笔记</title>
 
 <link rel='canonical' href='http://localhost:1313/post/unity%E9%9D%A2%E8%AF%95/'>
 
 <link rel="stylesheet" href="/scss/style.min.b1b697db09e8be8ec18cf4922270b62a2ecaafe967999f644f12682dd177edb9.css"><meta property='og:title' content="Unity 客户端开发问题笔记">
-<meta property='og:description' content="3.3 游戏开发问题\n关于游戏开发的通用问题。各个模块会再问一些特定引擎的问题，对照上面的3.2。\n1.游戏AI\n①常用的做法简述（NavMesh + 寻路）\n②NavMesh的生成过程简述\n">
+<meta property='og:description' content="Unity 引擎相关 1.游戏AI ①常用的做法简述（NavMesh + 寻路）\n②NavMesh的生成过程简述\n顶点\n③A*寻路算法的原理\n广度搜索\n④是否了解多个AI都在自动寻路时的动态避障算法\n">
 <meta property='og:url' content='http://localhost:1313/post/unity%E9%9D%A2%E8%AF%95/'>
 <meta property='og:site_name' content='Chneixn Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='面试' /><meta property='article:tag' content='Unity' /><meta property='article:published_time' content='2025-03-14T21:55:30&#43;08:00'/><meta property='article:modified_time' content='2025-03-14T22:10:12&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='客户端' /><meta property='article:tag' content='Unity' /><meta property='article:published_time' content='2025-03-14T21:55:30&#43;08:00'/><meta property='article:modified_time' content='2025-03-22T15:13:54&#43;08:00'/>
 <meta name="twitter:title" content="Unity 客户端开发问题笔记">
-<meta name="twitter:description" content="3.3 游戏开发问题\n关于游戏开发的通用问题。各个模块会再问一些特定引擎的问题，对照上面的3.2。\n1.游戏AI\n①常用的做法简述（NavMesh + 寻路）\n②NavMesh的生成过程简述\n">
+<meta name="twitter:description" content="Unity 引擎相关 1.游戏AI ①常用的做法简述（NavMesh + 寻路）\n②NavMesh的生成过程简述\n顶点\n③A*寻路算法的原理\n广度搜索\n④是否了解多个AI都在自动寻路时的动态避障算法\n">
     <link rel="shortcut icon" href="/favicon.ico" />
 <style>
      
@@ -275,7 +275,50 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#unity-引擎相关">Unity 引擎相关</a>
+      <ol>
+        <li><a href="#1游戏ai">1.游戏AI</a></li>
+        <li><a href="#2物理碰撞">2.物理碰撞</a></li>
+        <li><a href="#3网络同步">3.网络同步</a></li>
+        <li><a href="#4场景题">4.场景题</a></li>
+        <li><a href="#5游戏设计模式">5.游戏设计模式</a></li>
+        <li><a href="#6其他">6.其他</a></li>
+      </ol>
+    </li>
+    <li><a href="#34-图形学">3.4 图形学</a></li>
+    <li><a href="#计算机基础">计算机基础</a></li>
+    <li><a href="#算法题数学题脑筋急转弯">算法题、数学题、脑筋急转弯</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -334,7 +377,7 @@
   <path d="M18 16.496v1.504l1 1" />
 </svg>
             <time>
-                2025 Mar 14 22:10 CST
+                2025 Mar 22 15:13 CST
             </time>
         </div></footer>
     
@@ -346,80 +389,105 @@
     <section class="article-content">
     
     
-    <p>3.3 游戏开发问题</p>
-<p>关于游戏开发的通用问题。各个模块会再问一些特定引擎的问题，对照上面的3.2。</p>
-<p>1.游戏AI</p>
-<p>①常用的做法简述（NavMesh + 寻路）</p>
+    <h1 id="unity-引擎相关"><a href="#unity-%e5%bc%95%e6%93%8e%e7%9b%b8%e5%85%b3" class="header-anchor"></a>Unity 引擎相关
+</h1><h2 id="1游戏ai"><a href="#1%e6%b8%b8%e6%88%8fai" class="header-anchor"></a>1.游戏AI
+</h2><p>①常用的做法简述（NavMesh + 寻路）</p>
 <p>②NavMesh的生成过程简述</p>
+<p>顶点</p>
 <p>③A*寻路算法的原理</p>
+<p>广度搜索</p>
 <p>④是否了解多个AI都在自动寻路时的动态避障算法</p>
-<p>2.物理碰撞</p>
-<p>①如何判断子弹射击到敌人（然后继续问包围盒、碰撞检测算法等），如果子弹特别快怎么办</p>
+<p>RVO 避障算法</p>
+<h2 id="2物理碰撞"><a href="#2%e7%89%a9%e7%90%86%e7%a2%b0%e6%92%9e" class="header-anchor"></a>2.物理碰撞
+</h2><p>①如何判断子弹射击到敌人（然后继续问包围盒、碰撞检测算法等），如果子弹特别快怎么办</p>
+<p>特别快：使用射线检测，获取子弹上一帧位置，从上一帧位置到当前位置创建射线</p>
 <p>②BVH、八叉树等场景管理加速结构，在这些树上检测碰撞的过程</p>
-<p>3.网络同步</p>
-<p>①状态同步和帧同步的原理</p>
+<h2 id="3网络同步"><a href="#3%e7%bd%91%e7%bb%9c%e5%90%8c%e6%ad%a5" class="header-anchor"></a>3.网络同步
+</h2><p>①状态同步和帧同步的原理</p>
 <p>②上面两个在反作弊、断线重连、实时性等等场合，用哪种同步策略好</p>
 <p>③TCP和UDP应用上的区别和游戏开发中的使用偏向（不用细说它们的原理）</p>
-<p>4.场景题</p>
-<p>①跳跃到最高点自动开枪，这个功能应该怎么做</p>
-<p>②游戏分辨率变换、窗口尺寸变换时，UI应该怎么适配</p>
-<p>③角色可以穿脱装备，每个装备对角色的血量有不同的buff，该如何设计这个功能</p>
+<h2 id="4场景题"><a href="#4%e5%9c%ba%e6%99%af%e9%a2%98" class="header-anchor"></a>4.场景题
+</h2><p>①跳跃到最高点自动开枪，这个功能应该怎么做
+从Character Controller 可以获取角色的速度，当角色到达最高点时，其纵向的速度大小为0</p>
+<p>②游戏分辨率变换、窗口尺寸变换时，UI应该怎么适配
+Canvas 有 依据窗口缩放的组件，其他 UI 要设置好锚点
+③角色可以穿脱装备，每个装备对角色的血量有不同的buff，该如何设计这个功能</p>
 <p>④水的着色应该写在vertex shader还是fragment shader</p>
 <p>⑤游戏中物体从不透明变成透明，对渲染有什么难度</p>
-<p>5.游戏设计模式</p>
-<p>①单例模式的作用，使用单例模式和只创建一个static对象有什么区别</p>
+<h2 id="5游戏设计模式"><a href="#5%e6%b8%b8%e6%88%8f%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f" class="header-anchor"></a>5.游戏设计模式
+</h2><p>①单例模式的作用，使用单例模式和只创建一个static对象有什么区别</p>
 <p>②工厂模式，有构造函数为什么还要设计抽象工厂模式</p>
 <p>③观察者模式，MVC是什么、怎样对应观察者模式，观察者模式的应用场景</p>
-<p>6.其他</p>
-<p>①Unity对象生命周期（乍一听不知道是什么意思，实际上是问MonoBehaviour类的tick过程中，各函数调用的顺序，Awake、Update、FixedUpdate、OnDisable等等）</p>
+<h2 id="6其他"><a href="#6%e5%85%b6%e4%bb%96" class="header-anchor"></a>6.其他
+</h2><p>①Unity对象生命周期（乍一听不知道是什么意思，实际上是问MonoBehaviour类的tick过程中，各函数调用的顺序，Awake、Update、FixedUpdate、OnDisable等等）</p>
 <p>②让你设计一个游戏引擎UI框架，有什么想法，要考虑什么</p>
 <p>③游戏引擎的RHI是干嘛的</p>
 <p>④游戏开发中的对象池技术是干嘛的</p>
-<p>3.4 图形学</p>
-<p>对于客户端开发，图形学只是加分项，不算特别重要。我是入门水平，也没有相关的项目，所以被问到的不多，绝大多数公司只让讲一下渲染管线就好了。</p>
-<p>1.图形渲染管线，会先让你大致讲一下渲染管线，然后问一些细节问题</p>
-<p>①drawcall是什么，为什么要减小drawcall</p>
-<p>②粗细粒度culling的区别</p>
-<p>③MVP、viewport分别进行什么变换</p>
-<p>④深度测试是什么，early-z是什么</p>
-<p>⑤延迟渲染管线是什么，有什么优缺点</p>
-<p>⑥半透明物体的渲染顺序</p>
-<p>⑦shader中为什么要避免使用if语句</p>
-<p>2.抗锯齿技术</p>
-<p>①MSAA、SSAA的区别</p>
-<p>②延迟渲染为什么用不了硬件AA</p>
-<p>③DLSS原理的简单说明</p>
-<p>3.光照模型</p>
-<p>①BRDF概念</p>
-<p>②简单描述blinn-phong光照模型，specular、ambiant、diffuse</p>
-<p>③简单描述pbr光照模型，lambert漫反射 + cooktorrence反射（DGF）</p>
-<p>3.5 计算机基础</p>
-<p>五百年没看了，只记得几个经典知识点，再问详细的实在是忘了。跟面试官说不会，基本上也不会再细究。</p>
-<p>编译的过程，几个阶段分别发生什么</p>
+<p>对象复用，避免高频的生成实例，实例化需要从堆栈分配内存，复用对象以减少GC</p>
+<h1 id="34-图形学"><a href="#34-%e5%9b%be%e5%bd%a2%e5%ad%a6" class="header-anchor"></a>3.4 图形学
+</h1><p>对于客户端开发，图形学只是加分项，不算特别重要。我是入门水平，也没有相关的项目，所以被问到的不多，绝大多数公司只让讲一下渲染管线就好了。
+1.图形渲染管线，会先让你大致讲一下渲染管线，然后问一些细节问题
+①drawcall是什么，为什么要减小drawcall
+②粗细粒度culling的区别
+③MVP、viewport分别进行什么变换
+④深度测试是什么，early-z是什么
+⑤延迟渲染管线是什么，有什么优缺点
+⑥半透明物体的渲染顺序
+⑦shader中为什么要避免使用if语句
+2.抗锯齿技术
+①MSAA、SSAA的区别
+②延迟渲染为什么用不了硬件AA
+③DLSS原理的简单说明
+3.光照模型
+①BRDF概念
+②简单描述blinn-phong光照模型，specular、ambiant、diffuse
+③简单描述pbr光照模型，lambert漫反射 + cooktorrence反射（DGF）</p>
+<h1 id="计算机基础"><a href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e5%9f%ba%e7%a1%80" class="header-anchor"></a>计算机基础
+</h1><p>五百年没看了，只记得几个经典知识点，再问详细的实在是忘了。跟面试官说不会，基本上也不会再细究。
+编译的过程，几个阶段分别发生什么</p>
 <p>寻址的过程</p>
 <p>虚拟内存空间的概念</p>
 <p>进程和线程的概念</p>
 <p>进程间通信方式</p>
-<p>进程的多个线程是否共享进程的全部资源</p>
-<p>进程切换、线程切换，是否引起上下文切换、用户态/内核态切换</p>
+<p>Q: 进程的多个线程是否共享进程的全部资源</p>
+<p>A: 是，线程共享进程的全局资源，但拥有独立的执行上下文。</p>
+<p><strong>共享的资源：</strong></p>
+<ul>
+<li>内存空间（代码段、堆、全局/静态变量）</li>
+<li>打开的文件句柄</li>
+<li>子进程/线程</li>
+<li>信号处理机制</li>
+<li>进程ID等系统资源</li>
+</ul>
+<p><strong>不共享的资源：</strong></p>
+<ul>
+<li>每个线程有自己的栈空间（存储局部变量和函数调用信息）</li>
+<li>线程自己的寄存器上下文（如程序计数器、通用寄存器等）</li>
+<li>线程私有的数据（如线程局部存储TLS）</li>
+<li>独立的线程ID</li>
+</ul>
+<p>Q: 进程切换、线程切换，是否引起上下文切换、用户态/内核态切换</p>
 <p>为什么线程太多会导致性能下降（1s的进程分10个线程，比分100个线程的执行时间要更短，为什么？我答了调度有消耗但面试官不认同）</p>
 <p>怎么发现、定位内存泄漏</p>
 <p>OSI网络模型</p>
 <p>TCP、UDP的区别</p>
 <p>在应用层如何保证UDP的可靠传输</p>
 <p>TCP的三次握手四次挥手</p>
-<p>3.6 算法题、数学题、脑筋急转弯</p>
-<p>口述：判断扇形攻击命中（2D空间判断点在扇形内）</p>
+<h1 id="算法题数学题脑筋急转弯"><a href="#%e7%ae%97%e6%b3%95%e9%a2%98%e6%95%b0%e5%ad%a6%e9%a2%98%e8%84%91%e7%ad%8b%e6%80%a5%e8%bd%ac%e5%bc%af" class="header-anchor"></a>算法题、数学题、脑筋急转弯
+</h1><p>口述：判断扇形攻击命中（2D空间判断点在扇形内）</p>
 <p>口述：2D空间中，在三角形/圆内如何随机并且均匀采样点，均匀是指点各自占的面积尽量均匀</p>
 <p>口述：判断点在三角形内（比较基础，但经常被问。重心坐标、叉乘法、面积求和）</p>
 <p>口述：层次遍历二叉树</p>
+<p>前序、中序、后序</p>
 <p>口述：快速排序</p>
 <p>口述：绳子分成3段，要求三段长度乘积最大</p>
 <p>口述：两个鸡蛋判断最少从哪层楼扔下来会碎，怎么弄比较好</p>
 <p>口述：如何检测链表相交的所有情况，包括有环、在环上相交、入环点不一样等等</p>
 <p>手撕：1、2、3、4、5、6、7、8的链表变成1、8、2、7、3、6、4、5，不使用额外存储空间</p>
+<p>头尾双指针</p>
 <p>手撕：合并n个有序链表</p>
 <p>手撕：有重复元素的顺序数组，查找新来的元素最前面的插入位置</p>
+<p>二分找，最后前后大小不同插入，相同向前找</p>
 <p>手撕：DFS解数独</p>
 <p>手撕：数组的最长递增连续子序列长度</p>
 <p>手撕：两个字符串的最长不连续公共子串（逆天，看一眼直接放弃）</p>
@@ -428,6 +496,8 @@
 <p>手撕：数组的第k大元素</p>
 <p>手撕：判断汉字的unicode编码是否合法（题很长，记不清了）</p>
 <p>手撕：判断回文链表，不使用额外存储空间</p>
+<p>参考 <a class="link" href="https://blog.csdn.net/weixin_51609435/article/details/124770417"  target="_blank" rel="noopener"
+    >回文链表</a></p>
 
 </section>
 
@@ -436,7 +506,7 @@
     
     <section class="article-tags">
         
-            <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            <a href="/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/">客户端</a>
         
             <a href="/tags/unity/">Unity</a>
         
@@ -465,7 +535,7 @@
 
 
         <span>
-            最后更新于 2025 Mar 14 22:10 CST
+            最后更新于 2025 Mar 22 15:13 CST
         </span>
     </section></footer>
 
@@ -722,8 +792,12 @@
         
         
         
-        发表了24篇文章 ·
-        总计11.66k字
+        
+        
+        
+        
+        发表了26篇文章 ·
+        总计12.19k字
     </section>
 
     <section class="powerby">

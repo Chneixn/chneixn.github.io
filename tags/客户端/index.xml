@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>客户端 on Chneixn Blog</title><link>https://chneixn.github.io/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/</link><description>Recent content in 客户端 on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 22 Mar 2025 15:14:15 +0800</lastBuildDate><atom:link href="https://chneixn.github.io/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>Unity 客户端开发问题笔记</title><link>https://chneixn.github.io/post/unity%E9%9D%A2%E8%AF%95/</link><pubDate>Fri, 14 Mar 2025 21:55:30 +0800</pubDate><guid>https://chneixn.github.io/post/unity%E9%9D%A2%E8%AF%95/</guid><description>&lt;h1 id="unity-引擎相关">Unity 引擎相关&lt;/h1>
+&lt;h2 id="1游戏ai">1.游戏AI&lt;/h2>
+&lt;p>①常用的做法简述（NavMesh + 寻路）&lt;/p>
+&lt;p>②NavMesh的生成过程简述&lt;/p>
+&lt;p>顶点&lt;/p>
+&lt;p>③A*寻路算法的原理&lt;/p>
+&lt;p>广度搜索&lt;/p>
+&lt;p>④是否了解多个AI都在自动寻路时的动态避障算法&lt;/p></description></item></channel></rss>

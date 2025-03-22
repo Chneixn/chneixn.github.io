@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Unity on Chneixn Blog</title><link>https://chneixn.github.io/categories/unity/</link><description>Recent content in Unity on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 16 Mar 2025 00:17:52 +0800</lastBuildDate><atom:link href="https://chneixn.github.io/categories/unity/index.xml" rel="self" type="application/rss+xml"/><item><title>Unity 基于 HybridCLR + Addressable 实现的热更新</title><link>https://chneixn.github.io/post/hotupdate/</link><pubDate>Fri, 14 Mar 2025 23:00:30 +0800</pubDate><guid>https://chneixn.github.io/post/hotupdate/</guid><description>&lt;h1 id="hybridclr--addressable">HybridCLR + Addressable&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Unity on Chneixn Blog</title><link>https://chneixn.github.io/categories/unity/</link><description>Recent content in Unity on Chneixn Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 22 Mar 2025 15:14:15 +0800</lastBuildDate><atom:link href="https://chneixn.github.io/categories/unity/index.xml" rel="self" type="application/rss+xml"/><item><title>FPS 开发日志 第一篇</title><link>https://chneixn.github.io/post/note1/</link><pubDate>Thu, 20 Mar 2025 11:43:59 +0800</pubDate><guid>https://chneixn.github.io/post/note1/</guid><description/></item><item><title>Unity 基于 HybridCLR + Addressable 实现的热更新</title><link>https://chneixn.github.io/post/hotupdate/</link><pubDate>Fri, 14 Mar 2025 23:00:30 +0800</pubDate><guid>https://chneixn.github.io/post/hotupdate/</guid><description>&lt;h1 id="hybridclr--addressable">HybridCLR + Addressable&lt;/h1>
 &lt;h1 id="unity">Unity&lt;/h1>
 &lt;h2 id="使用的unity版本为2022313f1">使用的Unity版本为2022.3.13f1&lt;/h2>
 &lt;h2 id="安装unitycomponent添加对il2cpp的支持">安装UnityComponent添加对IL2CPP的支持&lt;/h2>
@@ -17,11 +17,14 @@
 &lt;p>&lt;strong>传统团队：&lt;/strong> 对于一些较老的项目，团队对分布式开发的要求不高，或者团队成员对 SVN 更为熟悉等情况下，选择 SVN 可能更为合适。&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>&lt;strong>集中式开发：&lt;/strong> 如果团队成员集中在一个地理位置，或者不需要进行远程协作开发，SVN 的集中式特性可能更符合团队的需求。&lt;/p></description></item><item><title>Unity 客户端开发问题笔记</title><link>https://chneixn.github.io/post/unity%E9%9D%A2%E8%AF%95/</link><pubDate>Fri, 14 Mar 2025 21:55:30 +0800</pubDate><guid>https://chneixn.github.io/post/unity%E9%9D%A2%E8%AF%95/</guid><description>&lt;p>3.3 游戏开发问题&lt;/p>
-&lt;p>关于游戏开发的通用问题。各个模块会再问一些特定引擎的问题，对照上面的3.2。&lt;/p>
-&lt;p>1.游戏AI&lt;/p>
+&lt;p>&lt;strong>集中式开发：&lt;/strong> 如果团队成员集中在一个地理位置，或者不需要进行远程协作开发，SVN 的集中式特性可能更符合团队的需求。&lt;/p></description></item><item><title>Unity 客户端开发问题笔记</title><link>https://chneixn.github.io/post/unity%E9%9D%A2%E8%AF%95/</link><pubDate>Fri, 14 Mar 2025 21:55:30 +0800</pubDate><guid>https://chneixn.github.io/post/unity%E9%9D%A2%E8%AF%95/</guid><description>&lt;h1 id="unity-引擎相关">Unity 引擎相关&lt;/h1>
+&lt;h2 id="1游戏ai">1.游戏AI&lt;/h2>
 &lt;p>①常用的做法简述（NavMesh + 寻路）&lt;/p>
-&lt;p>②NavMesh的生成过程简述&lt;/p></description></item><item><title>UniTask 学习笔记</title><link>https://chneixn.github.io/post/unitask/</link><pubDate>Sat, 08 Mar 2025 23:00:30 +0800</pubDate><guid>https://chneixn.github.io/post/unitask/</guid><description>&lt;h1 id="unitask">UniTask&lt;/h1>
+&lt;p>②NavMesh的生成过程简述&lt;/p>
+&lt;p>顶点&lt;/p>
+&lt;p>③A*寻路算法的原理&lt;/p>
+&lt;p>广度搜索&lt;/p>
+&lt;p>④是否了解多个AI都在自动寻路时的动态避障算法&lt;/p></description></item><item><title>UniTask 学习笔记</title><link>https://chneixn.github.io/post/unitask/</link><pubDate>Sat, 08 Mar 2025 23:00:30 +0800</pubDate><guid>https://chneixn.github.io/post/unitask/</guid><description>&lt;h1 id="unitask">UniTask&lt;/h1>
 &lt;p>UniTask 是一个公开库，基于 MIT 协议开源，是 Unity 异步调用的一个方案，该方案性能优越&lt;/p>
 &lt;h2 id="forget">ForGet&lt;/h2>
 &lt;p>是在同步方法中调用异步方法的一个方式, Fire and forget.&lt;/p>
@@ -75,15 +78,7 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4&lt;/span>&lt;span> &lt;span style="color:#e06c75">serializedObject&lt;/span>.&lt;span style="color:#e06c75">Update&lt;/span>();
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5&lt;/span>&lt;span> &lt;span style="color:#c678dd">base&lt;/span>.&lt;span style="color:#e06c75">OnInspectorGUI&lt;/span>();
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6&lt;/span>&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="重写-createinspectorgui-uitoolkit框架">重写 CreateInspectorGUI (UIToolkit框架)&lt;/h1>
-&lt;h2 id="添加默认显示的-attribute-1">添加默认显示的 Attribute&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c#" data-lang="c#">&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1&lt;/span>&lt;span>&lt;span style="color:#c678dd">public&lt;/span> &lt;span style="color:#c678dd">override&lt;/span> &lt;span style="color:#e06c75">VisualElement&lt;/span> &lt;span style="color:#e06c75">CreateInspectorGUI&lt;/span>()
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2&lt;/span>&lt;span>{
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3&lt;/span>&lt;span> &lt;span style="color:#e5c07b">var&lt;/span> &lt;span style="color:#e06c75">root&lt;/span> = &lt;span style="color:#c678dd">new&lt;/span> &lt;span style="color:#e06c75">VisualElement&lt;/span>();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4&lt;/span>&lt;span> &lt;span style="color:#e06c75">root&lt;/span>.&lt;span style="color:#e06c75">Add&lt;/span>(&lt;span style="color:#c678dd">new&lt;/span> &lt;span style="color:#e06c75">IMGUIContainer&lt;/span>(&lt;span style="color:#e06c75">OnInspectorGUI&lt;/span>));
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5&lt;/span>&lt;span> &lt;span style="color:#c678dd">return&lt;/span> &lt;span style="color:#e06c75">root&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6&lt;/span>&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Unity Mathf 笔记</title><link>https://chneixn.github.io/post/unitymathf/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/unitymathf/</guid><description>&lt;h1 id="pingpong">PingPong&lt;/h1>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>示例&lt;/p></description></item><item><title>Unity Mathf 笔记</title><link>https://chneixn.github.io/post/unitymathf/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/unitymathf/</guid><description>&lt;h1 id="pingpong">PingPong&lt;/h1>
 &lt;p>PingPong 返回一个在零和长度之间递增和递减的值。它遵循三角波公式，其中底部设置为零，峰值设置为长度。&lt;/p>
 &lt;p>PingPong 要求值 t 是自增量值。例如，Time.time和Time.unscaledTime。&lt;/p></description></item><item><title>Unity 单例</title><link>https://chneixn.github.io/post/singleton/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chneixn.github.io/post/singleton/</guid><description>&lt;h1 id="继承-monobehaviour">继承 MonoBehaviour&lt;/h1>
 &lt;h2 id="跨场景调用">跨场景调用&lt;/h2>
